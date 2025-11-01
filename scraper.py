@@ -6,7 +6,8 @@ import random
 import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass, asdict
+from dataclasses import asdict
+from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 from urllib.parse import urljoin
 
@@ -16,6 +17,14 @@ from bs4 import BeautifulSoup
 from requests import Response, Session
 from requests.exceptions import HTTPError
 from tqdm import tqdm
+
+from listing_schema import (
+    COLUMN_ORDER,
+    COLUMN_RENAMES,
+    CSV_FIELDNAMES,
+    ListingRecord,
+    sanitize_csv_value,
+)
 
 
 LISTING_ID_PATTERN = re.compile(r"/detail/([^/]+)/")
@@ -41,48 +50,7 @@ DEFAULT_HEADERS = {
 }
 
 
-@dataclass
-class Listing:
-    property_id: str
-    link: str
-    property_name: str
-    address_street: str
-    address_town: str
-    address_zrea: str
-    room_number: Optional[int]
-    floor_area: Optional[int]
-    building_status: str
-    year_of_construction: Optional[int]
-    year_of_top: Optional[int]
-    floor: str
-    energ_cert: str
-    price: Optional[int]
-    price_area: Optional[int]
-
-
-COLUMN_ORDER = [
-    "property_id",
-    "link",
-    "property_name",
-    "address_street",
-    "address_town",
-    "address_zrea",
-    "room_number",
-    "floor_area",
-    "building_status",
-    "year_of_construction",
-    "year_of_top",
-    "floor",
-    "energ_cert",
-    "price",
-    "price_area",
-]
-
-COLUMN_RENAMES = {
-    column: column for column in COLUMN_ORDER
-}
-
-CSV_FIELDNAMES = [COLUMN_RENAMES[column] for column in COLUMN_ORDER]
+Listing = ListingRecord
 
 
 def create_session() -> Session:
@@ -344,7 +312,57 @@ def derive_address_parts(location: str, attributes: Dict[str, str], default_city
     return street or "", town or "", area or ""
 
 
-def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str) -> Listing:
+def extract_photo_urls(soup: BeautifulSoup, detail_url: str, limit: int = 3) -> List[str]:
+    photo_urls: List[str] = []
+    seen: set[str] = set()
+
+    def clean_url(raw_url: Optional[str]) -> Optional[str]:
+        if not raw_url:
+            return None
+        url = raw_url.strip()
+        if not url or url.startswith("data:"):
+            return None
+        if url.startswith("//"):
+            url = f"https:{url}"
+        elif url.startswith("/"):
+            url = urljoin(detail_url, url)
+        if url.lower().endswith(".svg"):
+            return None
+        return url
+
+    def extract_src(img_tag) -> Optional[str]:
+        for attr in ("data-src", "data-original", "src", "data-srcset", "srcset"):
+            value = img_tag.get(attr)
+            if not value:
+                continue
+            if attr.endswith("srcset"):
+                first_entry = value.split(",")[0].strip()
+                value = first_entry.split(" ")[0]
+            cleaned = clean_url(value)
+            if cleaned:
+                return cleaned
+        return None
+
+    selectors = [
+        '[data-testid="gallery-image"] img',
+        '[data-testid="gallery"] img',
+        'figure img',
+        'img',
+    ]
+
+    for selector in selectors:
+        for img in soup.select(selector):
+            candidate = extract_src(img)
+            if not candidate or candidate in seen:
+                continue
+            seen.add(candidate)
+            photo_urls.append(candidate)
+            if len(photo_urls) >= limit:
+                return photo_urls
+    return photo_urls
+
+
+def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, transaction: str) -> Listing:
     soup = BeautifulSoup(html, "html.parser")
     type_heading = soup.find("h2")
     type_text = type_heading.get_text(strip=True) if type_heading else ""
@@ -390,8 +408,11 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str) -
 
     floor = extract_field(attributes, ("podlaž", "poschod"))
     energ_cert = extract_field(attributes, ("energet", "certifik"))
+    photo_urls = extract_photo_urls(soup, url, limit=3)
 
     return Listing(
+        source="nehnutelnosti_sk",
+        transaction=transaction,
         property_id=listing_id,
         link=url,
         property_name=property_name,
@@ -407,17 +428,10 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str) -
         energ_cert=energ_cert,
         price=price,
         price_area=price_area,
+        photo_url_1=photo_urls[0] if len(photo_urls) > 0 else "",
+        photo_url_2=photo_urls[1] if len(photo_urls) > 1 else "",
+        photo_url_3=photo_urls[2] if len(photo_urls) > 2 else "",
     )
-
-
-def sanitize_csv_value(value) -> str:
-    if isinstance(value, str):
-        cleaned = value.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
-        cleaned = re.sub(r"[ \t]{2,}", " ", cleaned)
-        return cleaned.strip()
-    return "" if value is None else value
-
-
 def write_listing_csv_row(listing: Listing, csv_writer: csv.DictWriter, csv_file) -> None:
     row_dict = asdict(listing)
     mapped_row = {
@@ -449,6 +463,7 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
             progress_bar.update(1)
         if csv_writer and csv_file:
             write_listing_csv_row(listing, csv_writer, csv_file)
+        logging.info("Scraped %s listings so far.", len(all_listings))
 
     def fetch_listing_detail_concurrent(listing_id: str, link: str) -> Listing:
         logging.info("Fetching detail for %s", listing_id)
@@ -457,7 +472,7 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
             detail_response = request_with_retry(local_session, link)
         finally:
             local_session.close()
-        listing = parse_listing_detail(listing_id, link, detail_response.text, city)
+        listing = parse_listing_detail(listing_id, link, detail_response.text, city, transaction)
         gentle_pause(delay)
         return listing
 
@@ -491,14 +506,14 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
                 )
             if progress_bar is None:
                 progress_total = limit if limit else reported_total
-                progress_bar = tqdm(total=progress_total, unit="listing", desc="Scraping listings")
+                progress_bar = tqdm(total=progress_total, unit="listing", desc=f"Scraping {city}")
         elif progress_bar is None and limit:
-            progress_bar = tqdm(total=limit, unit="listing", desc="Scraping listings")
+            progress_bar = tqdm(total=limit, unit="listing", desc=f"Scraping {city}")
 
         new_links = [(lid, link) for lid, link in listings if lid not in seen_ids]
         if progress_bar is None and new_links:
             progress_total = limit if limit else reported_total
-            progress_bar = tqdm(total=progress_total, unit="listing", desc="Scraping listings")
+            progress_bar = tqdm(total=progress_total, unit="listing", desc=f"Scraping {city}")
         if not new_links:
             logging.info("No new listings found on page %s, stopping.", page)
             break
@@ -525,7 +540,7 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
             for listing_id, link in new_links:
                 logging.info("Fetching detail for %s", listing_id)
                 detail_response = request_with_retry(session, link)
-                listing = parse_listing_detail(listing_id, link, detail_response.text, city)
+                listing = parse_listing_detail(listing_id, link, detail_response.text, city, transaction)
                 handle_listing(listing)
                 gentle_pause(delay)
         else:
@@ -551,6 +566,7 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
 
     if progress_bar:
         progress_bar.close()
+    logging.info("Finished scraping %s listings.", len(all_listings))
     return all_listings
 
 
@@ -580,7 +596,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--city",
         default="trnava",
-        help="City slug to scrape (default: trnava)",
+        help="Comma-separated city slugs to scrape (default: trnava)",
     )
     parser.add_argument(
         "--transaction",
@@ -595,13 +611,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        default="trnava_byty.xls",
-        help="Output XLS filename (default: trnava_byty.xls)",
+        default="output/nehnutelnosti_trnava_byty.xls",
+        help="Output XLS filename (default: output/nehnutelnosti_trnava_byty.xls)",
     )
     parser.add_argument(
         "--csv-output",
-        default="trnava_byty.csv",
-        help="Output CSV filename for incremental saves (default: trnava_byty.csv)",
+        default="output/nehnutelnosti_trnava_byty.csv",
+        help="Output CSV filename for incremental saves (default: output/nehnutelnosti_trnava_byty.csv)",
     )
     parser.add_argument(
         "--max-pages",
@@ -613,7 +629,7 @@ def parse_args() -> argparse.Namespace:
         "--limit",
         type=int,
         default=3,
-        help="Maximum number of listings to scrape (default: 3).",
+        help="Maximum number of listings to scrape (default: 3, use 0 for all).",
     )
     parser.add_argument(
         "--delay",
@@ -642,37 +658,55 @@ def main() -> None:
     categories = [cat.strip() for cat in args.categories.split(",") if cat.strip()]
     if not categories:
         raise ValueError("At least one category must be specified.")
+    city_slugs = [city.strip() for city in args.city.split(",") if city.strip()]
+    if not city_slugs:
+        raise ValueError("At least one city must be specified.")
+    listing_limit = args.limit
+    if listing_limit is not None and listing_limit <= 0:
+        listing_limit = None
+
+    csv_path = Path(args.csv_output)
+    if csv_path.parent:
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
+    xls_path = Path(args.output)
+    if xls_path.parent:
+        xls_path.parent.mkdir(parents=True, exist_ok=True)
 
     try:
-        with open(args.csv_output, "w", newline="", encoding="utf-8") as csv_file:
+        with open(csv_path, "w", newline="", encoding="utf-8") as csv_file:
             csv_writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDNAMES)
             csv_writer.writeheader()
-            listings = scrape_listings(
-                city=args.city,
-                transaction=args.transaction,
-                categories=categories,
-                max_pages=args.max_pages,
-                delay=args.delay,
-                limit=args.limit,
-                workers=args.workers,
-                csv_writer=csv_writer,
-                csv_file=csv_file,
-            )
-            if not listings:
-                logging.warning("No listings scraped. Nothing to export.")
+            combined_listings: List[Listing] = []
+            for city_slug in city_slugs:
+                logging.info("Starting scrape for city '%s'", city_slug)
+                city_listings = scrape_listings(
+                    city=city_slug,
+                    transaction=args.transaction,
+                    categories=categories,
+                    max_pages=args.max_pages,
+                    delay=args.delay,
+                    limit=listing_limit,
+                    workers=args.workers,
+                    csv_writer=csv_writer,
+                    csv_file=csv_file,
+                )
+                combined_listings.extend(city_listings)
+
+            if not combined_listings:
+                logging.warning("No listings scraped across requested cities. Nothing to export.")
                 return
 
-            df = listings_to_dataframe(listings)
-            logging.info("Writing %s listings to %s", len(df), args.output)
+            df = listings_to_dataframe(combined_listings)
+            logging.info("Writing %s listings to %s", len(df), xls_path)
             try:
-                df.to_excel(args.output, index=False, engine="xlwt")
+                df.to_excel(xls_path, index=False, engine="xlwt")
             except ValueError as exc:
                 if "No Excel writer 'xlwt'" in str(exc):
                     logging.error(
                         "Excel writer 'xlwt' is not available. Install it with 'pip install xlwt' "
                         "or run 'pip install -r requirements.txt' inside a virtual environment."
                     )
-                    logging.info("Skipping XLS export; CSV output at %s is ready.", args.csv_output)
+                    logging.info("Skipping XLS export; CSV output at %s is ready.", csv_path)
                 else:
                     raise
     finally:

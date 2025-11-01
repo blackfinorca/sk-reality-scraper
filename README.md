@@ -27,8 +27,8 @@ python scraper.py \
   --city trnava,bratislava \
   --transaction predaj \
   --categories 11,12,300001 \
-  --output trnava_byty.xls \
-  --csv-output trnava_byty.csv \
+  --output output/nehnutelnosti_trnava_byty.xls \
+  --csv-output output/nehnutelnosti_trnava_byty.csv \
   --limit 5
 
 *The `--limit` value applies to each city individually; use `--limit 0` to scrape all listings per city.*
@@ -41,8 +41,8 @@ python reality_scraper.py \
   --property-type byty \
   --city trnava,piestany \
   --transaction predaj \
-  --csv-output reality_trnava_byty.csv \
-  --output reality_trnava_byty.xls \
+  --csv-output output/reality_trnava_byty.csv \
+  --output output/reality_trnava_byty.xls \
   --limit 5
 ```
 
