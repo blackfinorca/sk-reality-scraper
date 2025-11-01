@@ -5,7 +5,9 @@ Scrape real estate listings from [nehnutelnosti.sk](https://www.nehnutelnosti.sk
 ## Features
 
 - Fetches listings for a selected city, transaction type, and list of category IDs.
-- Visits every listing detail page to collect structured data (price, price per m², floor, number of rooms, development name, energy certificate, description, etc.).
+- Every row includes the `source` and `transaction` columns so ETL can track marketplace and deal type (e.g., `predaj`).
+- Accepts comma-separated city slugs, scraping each sequentially into the same output files.
+- Visits every listing detail page to collect structured data (price, price per m², floor, number of rooms, development name, energy certificate, description, etc.) and captures the first three photo URLs for each property, including the `source` column for downstream ETL tracking.
 - Streams results into a CSV file row-by-row (so partial data is saved even if the run stops early).
 - Writes the final results to an Excel workbook (`.xls`) that is compatible with legacy spreadsheet software.
 - Includes throttling with gentle randomised delays, retry logic, a progress bar, and CLI options for customisation.
@@ -22,11 +24,25 @@ pip install -r requirements.txt
 
 ```bash
 python scraper.py \
-  --city trnava \
+  --city trnava,bratislava \
   --transaction predaj \
   --categories 11,12,300001 \
   --output trnava_byty.xls \
   --csv-output trnava_byty.csv \
+  --limit 5
+
+*The `--limit` value applies to each city individually; use `--limit 0` to scrape all listings per city.*
+```
+
+### Reality.sk scraper
+
+```bash
+python reality_scraper.py \
+  --property-type byty \
+  --city trnava,piestany \
+  --transaction predaj \
+  --csv-output reality_trnava_byty.csv \
+  --output reality_trnava_byty.xls \
   --limit 5
 ```
 
@@ -44,3 +60,4 @@ The defaults already match the request for Trnava apartments for sale (categorie
 - The script relies on page structure that can change; if parsing fails, increase the delay or re-run after inspecting new HTML structure.
 - Respect the website's terms of service and avoid making frequent scraping runs.
 - When scraping the provided Trnava apartments link the script logs the total count reported by the site (currently 314–315 listings depending on live data) and adjusts automatically.
+# sk-reality-scraper
