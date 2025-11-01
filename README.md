@@ -61,3 +61,4 @@ The defaults already match the request for Trnava apartments for sale (categorie
 - Respect the website's terms of service and avoid making frequent scraping runs.
 - When scraping the provided Trnava apartments link the script logs the total count reported by the site (currently 314–315 listings depending on live data) and adjusts automatically.
 # sk-reality-scraper
+# sk-reality-scraper
