@@ -1,11 +1,20 @@
 import argparse
 import copy
 import logging
+import os
+import shutil
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
+
+import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, str(PROJECT_ROOT))
+from pipelines.deduplicate import deduplicate_and_merge
 
 
 DEFAULT_SOURCE_PRIORITY = ["nehnutelnosti_sk", "reality_sk", "bazos_sk"]
@@ -20,7 +29,7 @@ DEFAULT_CONFIG = {
         "csv_output": "output/nehnutelnosti_trnava_byty.csv",
         "xls_output": "output/nehnutelnosti_trnava_byty.xls",
         "max_pages": None,
-        "limit": 30,
+        "limit": 500,
         "delay": 1.2,
         "workers": 1,
         "verbose": False,
@@ -41,7 +50,7 @@ DEFAULT_CONFIG = {
         "csv_output": "output/reality_trnava_byty.csv",
         "xls_output": "output/reality_trnava_byty.xls",
         "max_pages": None,
-        "limit": 30,
+        "limit": 500,
         "delay": 1.0,
         "workers": 1,
         "verbose": False,
@@ -53,7 +62,7 @@ DEFAULT_CONFIG = {
         "csv_output": "output/bazos_trnava_byty.csv",
         "xls_output": "output/bazos_trnava_byty.xls",
         "max_pages": None,
-        "limit": 30,
+        "limit": 500,
         "delay": 1.5,
         "verbose": False,
     },
@@ -64,13 +73,32 @@ DEFAULT_CONFIG = {
         "source_priority": list(DEFAULT_SOURCE_PRIORITY),
         "prev_run": None,
     },
+    "geo_locator": {
+        "enabled": True,
+        "user_agent": "RealEstate-Investor-Map/1.0 (contact: you@example.com)",
+        "country": "Slovakia",
+        "cache": "data/geocode_cache.json",
+        "max_new": 200,
+        "dry_run": False,
+        "in_place": True,
+    },
+    "summarizer": {
+        "enabled": True,
+        "force": False,
+        "dry_run": False,
+        "analyze_only": False,
+        "source_dir": "output",
+        "summary_column": "summary_short_sk",
+        "cache": "data/summary_cache.json",
+        "in_place": True,
+    },
 }
 
 
 def build_nehnutelnosti_command(config: Dict[str, object]) -> List[str]:
     cmd = [
         sys.executable,
-        "scraper.py",
+        str(PROJECT_ROOT / "scrapers" / "nehnutelnosti_scraper.py"),
         "--city",
         ",".join(config["city"]) if isinstance(config["city"], list) else str(config["city"]),
         "--transaction",
@@ -103,7 +131,7 @@ def build_nehnutelnosti_command(config: Dict[str, object]) -> List[str]:
 def build_etl_command(config: Dict[str, object]) -> List[str]:
     cmd = [
         sys.executable,
-        "etl.py",
+        str(PROJECT_ROOT / "pipelines" / "etl.py"),
         "--date",
         str(config["date"]),
         "--site",
@@ -121,7 +149,7 @@ def build_etl_command(config: Dict[str, object]) -> List[str]:
 def build_reality_command(config: Dict[str, object]) -> List[str]:
     cmd = [
         sys.executable,
-        "reality_scraper.py",
+        str(PROJECT_ROOT / "scrapers" / "reality_scraper.py"),
         "--property-type",
         str(config["property_type"]),
         "--city",
@@ -154,7 +182,7 @@ def build_reality_command(config: Dict[str, object]) -> List[str]:
 def build_bazos_command(config: Dict[str, object]) -> List[str]:
     cmd = [
         sys.executable,
-        "bazos_reality_trnava.py",
+        str(PROJECT_ROOT / "scrapers" / "bazos_reality_scraper.py"),
         "--city",
         str(config["city"]),
         "--transaction",
@@ -178,6 +206,165 @@ def build_bazos_command(config: Dict[str, object]) -> List[str]:
         cmd.append("--verbose")
 
     return cmd
+
+
+def run_deduplicate_pipeline(
+    project_root: Path,
+    norm_out_dir: Path,
+    run_date: str,
+    source_priority: List[str],
+) -> Optional[Path]:
+    normalized_path = norm_out_dir / f"run={run_date}" / "normalized_sources.parquet"
+    if not normalized_path.exists():
+        logging.warning("Normalized sources parquet not found at %s; skipping deduplicate step.", normalized_path)
+        return None
+
+    logging.info("Loading normalized sources from %s", normalized_path)
+    df = pd.read_parquet(normalized_path)
+    if df.empty:
+        logging.info("Normalized dataset is empty; skipping deduplicate step.")
+        return None
+
+    priority = list(source_priority) if source_priority else list(DEFAULT_SOURCE_PRIORITY)
+
+    dedupe_root = project_root / "dedupe_runs"
+    latest_dir = dedupe_root / "latest"
+    prev_gold = prev_sources = None
+    prev_gold_path = latest_dir / "gold_listings.parquet"
+    prev_sources_path = latest_dir / "gold_listing_sources.parquet"
+    if prev_gold_path.exists():
+        prev_gold = pd.read_parquet(prev_gold_path)
+    if prev_sources_path.exists():
+        prev_sources = pd.read_parquet(prev_sources_path)
+
+    logging.info("Running deduplication with %s source rows.", len(df))
+    gold, sources, history = deduplicate_and_merge(
+        df=df,
+        run_date=run_date,
+        source_priority=priority,
+        prev_gold=prev_gold,
+        prev_sources=prev_sources,
+    )
+
+    run_dir = dedupe_root / f"run={run_date}"
+    if run_dir.exists():
+        shutil.rmtree(run_dir)
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    gold.to_parquet(run_dir / "gold_listings.parquet", index=False)
+    sources.to_parquet(run_dir / "gold_listing_sources.parquet", index=False)
+    history.to_parquet(run_dir / "gold_listing_history.parquet", index=False)
+
+    if latest_dir.exists():
+        shutil.rmtree(latest_dir)
+    latest_dir.mkdir(parents=True, exist_ok=True)
+    gold.to_parquet(latest_dir / "gold_listings.parquet", index=False)
+    sources.to_parquet(latest_dir / "gold_listing_sources.parquet", index=False)
+    history.to_parquet(latest_dir / "gold_listing_history.parquet", index=False)
+
+    cluster_counts = gold["cluster_size"].value_counts().sort_index().to_dict() if not gold.empty else {}
+    logging.info(
+        "Deduplicate produced %s golden listings (cluster distribution: %s).",
+        len(gold),
+        cluster_counts,
+    )
+    return latest_dir / "gold_listings.parquet"
+
+
+def run_geo_locator(gold_path: Path, config: Dict[str, object], project_root: Path) -> None:
+    if not config.get("enabled", True):
+        return
+    user_agent = config.get("user_agent")
+    if not user_agent:
+        logging.warning("Geo locator user agent missing; skipping geo enrichment.")
+        return
+
+    cmd = [
+        sys.executable,
+        str(PROJECT_ROOT / "tools" / "geo_locator.py"),
+        "--parquet",
+        str(gold_path),
+    ]
+
+    if config.get("in_place", True):
+        cmd.append("--in-place")
+    else:
+        out_parquet = config.get("out_parquet")
+        out_path = Path(out_parquet) if out_parquet else gold_path.with_name("gold_listings_geo.parquet")
+        if not out_path.is_absolute():
+            out_path = project_root / out_path
+        cmd.extend(["--out-parquet", str(out_path)])
+
+    cache_path = Path(config.get("cache", "data/geocode_cache.json"))
+    if not cache_path.is_absolute():
+        cache_path = project_root / cache_path
+    cmd.extend(["--cache", str(cache_path)])
+
+    country = config.get("country")
+    if country:
+        cmd.extend(["--country", str(country)])
+
+    cmd.extend(["--user-agent", str(user_agent)])
+
+    max_new = config.get("max_new")
+    if max_new is not None:
+        cmd.extend(["--max-new", str(max_new)])
+
+    dry_run = str(config.get("dry_run", False)).lower() in {"true", "1", "yes"}
+    cmd.extend(["--dry-run", "true" if dry_run else "false"])
+
+    run_command("geo locator", cmd, project_root)
+
+
+def run_summarizer(gold_path: Path, config: Dict[str, object], project_root: Path) -> None:
+    if not config.get("enabled", True):
+        return
+    if not os.getenv("OPENAI_API_KEY"):
+        logging.warning("OPENAI_API_KEY not set; skipping summarizer.")
+        return
+
+    cmd = [
+        sys.executable,
+        str(PROJECT_ROOT / "tools" / "sumamrizer.py"),
+        "--gold-parquet",
+        str(gold_path),
+    ]
+
+    if config.get("in_place", True):
+        cmd.append("--in-place")
+    else:
+        out_parquet = config.get("out_parquet")
+        out_path = Path(out_parquet) if out_parquet else gold_path.with_name("gold_listings_with_summary.parquet")
+        if not out_path.is_absolute():
+            out_path = project_root / out_path
+        cmd.extend(["--out-parquet", str(out_path)])
+
+    source_dir = config.get("source_dir")
+    if source_dir:
+        dir_path = Path(source_dir)
+        if not dir_path.is_absolute():
+            dir_path = project_root / dir_path
+        cmd.extend(["--source-dir", str(dir_path)])
+
+    summary_column = config.get("summary_column")
+    if summary_column:
+        cmd.extend(["--summary-column", str(summary_column)])
+
+    cache_path = config.get("cache")
+    if cache_path:
+        cache_path = Path(cache_path)
+        if not cache_path.is_absolute():
+            cache_path = project_root / cache_path
+        cmd.extend(["--cache", str(cache_path)])
+
+    if config.get("force"):
+        cmd.append("--force")
+    if config.get("dry_run"):
+        cmd.append("--dry-run")
+    if config.get("analyze_only"):
+        cmd.append("--analyze-only")
+
+    run_command("summarizer", cmd, project_root)
 
 
 def run_command(label: str, command: List[str], cwd: Path) -> None:
@@ -212,6 +399,8 @@ def load_arguments() -> argparse.Namespace:
     parser.add_argument("--bazos-limit", type=int, help="Override Bazos.sk scraper limit.")
     parser.add_argument("--bazos-delay", type=float, help="Override Bazos.sk scraper delay.")
     parser.add_argument("--bazos-verbose", action="store_true", help="Enable Bazos.sk scraper verbose mode.")
+    parser.add_argument("--skip-geo", action="store_true", help="Skip geo locator enrichment.")
+    parser.add_argument("--skip-summarizer", action="store_true", help="Skip summary generation.")
     return parser.parse_args()
 
 
@@ -224,6 +413,8 @@ def main() -> None:
     bazos_cfg = copy.deepcopy(DEFAULT_CONFIG["bazos"])
     etl_cfg = copy.deepcopy(DEFAULT_CONFIG["etl"])
     norm_cfg = copy.deepcopy(DEFAULT_CONFIG["normalizer"])
+    geo_cfg = copy.deepcopy(DEFAULT_CONFIG["geo_locator"])
+    summarizer_cfg = copy.deepcopy(DEFAULT_CONFIG["summarizer"])
 
     if args.config_date:
         etl_cfg["date"] = args.config_date
@@ -266,6 +457,10 @@ def main() -> None:
 
     if args.skip_normalizer:
         norm_cfg["enabled"] = False
+    if args.skip_geo:
+        geo_cfg["enabled"] = False
+    if args.skip_summarizer:
+        summarizer_cfg["enabled"] = False
     skip_nehn = args.skip_scraper or args.skip_nehnutelnosti
     skip_reality = args.skip_scraper or args.skip_reality
     skip_bazos = args.skip_scraper or args.skip_bazos
@@ -276,7 +471,7 @@ def main() -> None:
     run_etl = etl_cfg["enabled"] and not args.skip_etl
     run_normalizer = norm_cfg["enabled"] and not args.skip_normalizer
 
-    project_root = Path(__file__).resolve().parent
+    project_root = PROJECT_ROOT
     default_out_dir = norm_cfg.get("out_dir", "parquet_runs")
     norm_cfg["out_dir"] = str((project_root / default_out_dir).resolve())
 
@@ -327,12 +522,14 @@ def main() -> None:
             etl_cmd = build_etl_command(job_cfg)
             run_command(f"etl ({job_cfg['site']})", etl_cmd, project_root)
 
+    gold_latest_path: Optional[Path] = None
+
     if run_normalizer:
         norm_cfg["input"] = str(project_root / "output" / "*byty.csv")
         norm_cfg["run_date"] = datetime.now().strftime("%Y-%m-%d")
         norm_command = [
             sys.executable,
-            "normalizer.py",
+            str(PROJECT_ROOT / "pipelines" / "normalizer.py"),
             "--input",
             norm_cfg["input"],
             "--out-dir",
@@ -346,6 +543,23 @@ def main() -> None:
         if prev_run:
             norm_command.extend(["--prev-run", prev_run])
         run_command("normalizer", norm_command, project_root)
+        gold_latest_path = run_deduplicate_pipeline(
+            project_root=project_root,
+            norm_out_dir=Path(norm_cfg["out_dir"]),
+            run_date=norm_cfg["run_date"],
+            source_priority=norm_cfg.get("source_priority", DEFAULT_SOURCE_PRIORITY),
+        )
+
+    if gold_latest_path is None:
+        default_gold = project_root / "dedupe_runs" / "latest" / "gold_listings.parquet"
+        if default_gold.exists():
+            gold_latest_path = default_gold
+
+    if gold_latest_path and gold_latest_path.exists():
+        run_geo_locator(gold_latest_path, geo_cfg, project_root)
+        run_summarizer(gold_latest_path, summarizer_cfg, project_root)
+    else:
+        logging.info("Skipping geo locator and summarizer; gold listings parquet not available.")
 
     logging.info("Runner completed.")
 

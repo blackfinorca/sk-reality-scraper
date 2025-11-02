@@ -5,6 +5,7 @@ import math
 import random
 import re
 import time
+import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
 from pathlib import Path
@@ -17,6 +18,10 @@ from bs4 import BeautifulSoup
 from requests import Response, Session
 from requests.exceptions import HTTPError
 from tqdm import tqdm
+
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from listing_schema import (
     COLUMN_ORDER,
@@ -362,6 +367,62 @@ def extract_photo_urls(soup: BeautifulSoup, detail_url: str, limit: int = 3) -> 
     return photo_urls
 
 
+def extract_description(soup: BeautifulSoup) -> str:
+    def iter_json_descriptions() -> List[str]:
+        descriptions: List[str] = []
+
+        def visit(node) -> None:
+            if isinstance(node, dict):
+                value = node.get("description")
+                if isinstance(value, str):
+                    cleaned = value.strip()
+                    if cleaned:
+                        descriptions.append(cleaned)
+                for child in node.values():
+                    visit(child)
+            elif isinstance(node, list):
+                for child in node:
+                    visit(child)
+
+        for script in soup.find_all("script", type="application/ld+json"):
+            text = script.string or ""
+            if not text.strip():
+                continue
+            try:
+                data = json.loads(text)
+            except json.JSONDecodeError:
+                continue
+            visit(data)
+            if descriptions:
+                break
+        return descriptions
+
+    json_descriptions = iter_json_descriptions()
+    if json_descriptions:
+        return json_descriptions[0]
+
+    selectors = [
+        '[itemprop="description"]',
+        '[data-test-id="description"]',
+        '[data-testid="description"]',
+        'section[data-testid="property-description"]',
+        'section[data-test-id="property-description"]',
+    ]
+    for selector in selectors:
+        container = soup.select_one(selector)
+        if container:
+            text = container.get_text("\n", strip=True)
+            if text:
+                return text
+
+    fallback_container = soup.find("article")
+    if fallback_container:
+        text = fallback_container.get_text("\n", strip=True)
+        if text:
+            return text
+    return ""
+
+
 def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, transaction: str) -> Listing:
     soup = BeautifulSoup(html, "html.parser")
     type_heading = soup.find("h2")
@@ -409,6 +470,9 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, t
     floor = extract_field(attributes, ("podlaž", "poschod"))
     energ_cert = extract_field(attributes, ("energet", "certifik"))
     photo_urls = extract_photo_urls(soup, url, limit=3)
+    description = extract_description(soup)
+    if not description and property_name:
+        description = property_name
 
     return Listing(
         source="nehnutelnosti_sk",
@@ -416,6 +480,7 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, t
         property_id=listing_id,
         link=url,
         property_name=property_name,
+        description=description,
         address_street=address_street,
         address_town=address_town,
         address_zrea=address_area,
@@ -434,10 +499,13 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, t
     )
 def write_listing_csv_row(listing: Listing, csv_writer: csv.DictWriter, csv_file) -> None:
     row_dict = asdict(listing)
-    mapped_row = {
-        COLUMN_RENAMES[key]: sanitize_csv_value(row_dict.get(key, ""))
-        for key in COLUMN_ORDER
-    }
+    mapped_row = {}
+    for key in COLUMN_ORDER:
+        value = row_dict.get(key, "")
+        if key == "description":
+            mapped_row[COLUMN_RENAMES[key]] = "" if value is None else str(value)
+        else:
+            mapped_row[COLUMN_RENAMES[key]] = sanitize_csv_value(value)
     csv_writer.writerow(mapped_row)
     csv_file.flush()
 

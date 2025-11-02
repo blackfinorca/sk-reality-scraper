@@ -8,6 +8,10 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Sequence
 from urllib.parse import urljoin
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import requests
 from bs4 import BeautifulSoup
 from requests import Response, Session
@@ -372,6 +376,7 @@ def parse_listing_detail(session: Session, url: str, transaction: str, default_c
         property_id=extract_listing_id(url),
         link=url,
         property_name=title,
+        description=description_text,
         address_street=street_attr,
         address_town=town_attr,
         address_zrea=address_zrea,
@@ -393,7 +398,13 @@ def parse_listing_detail(session: Session, url: str, transaction: str, default_c
 
 def write_listing_csv_row(listing: ListingRecord, csv_writer: csv.DictWriter, csv_file) -> None:
     row_dict = asdict(listing)
-    mapped = {COLUMN_RENAMES[key]: sanitize_csv_value(row_dict.get(key, "")) for key in COLUMN_ORDER}
+    mapped = {}
+    for key in COLUMN_ORDER:
+        value = row_dict.get(key, "")
+        if key == "description":
+            mapped[COLUMN_RENAMES[key]] = "" if value is None else str(value)
+        else:
+            mapped[COLUMN_RENAMES[key]] = sanitize_csv_value(value)
     csv_writer.writerow(mapped)
     csv_file.flush()
 

@@ -10,6 +10,7 @@ class ListingRecord:
     property_id: str
     link: str
     property_name: str
+    description: str
     address_street: str
     address_town: str
     address_zrea: str
@@ -33,6 +34,7 @@ COLUMN_ORDER = [
     "property_id",
     "link",
     "property_name",
+    "description",
     "address_street",
     "address_town",
     "address_zrea",

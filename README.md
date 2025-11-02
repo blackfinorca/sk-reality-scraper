@@ -2,6 +2,17 @@
 
 Scrape real estate listings from [nehnutelnosti.sk](https://www.nehnutelnosti.sk/) and export the data to an Excel `.xls` file.
 
+## Project structure
+
+```
+scrapers/         # Standalone marketplace scrapers
+pipelines/        # ETL, normalization, deduplication modules
+tools/            # Enrichment utilities (summaries, geocoding)
+scripts/          # Orchestration and helper CLI scripts
+output/           # Latest scraped CSVs (per portal)
+parquet_runs/     # Normalized and deduplicated Parquet snapshots
+```
+
 ## Features
 
 - Fetches listings for a selected city, transaction type, and list of category IDs.
@@ -23,7 +34,7 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python scraper.py \
+python scrapers/nehnutelnosti_scraper.py \
   --city trnava,bratislava \
   --transaction predaj \
   --categories 11,12,300001 \
@@ -37,7 +48,7 @@ python scraper.py \
 ### Reality.sk scraper
 
 ```bash
-python reality_scraper.py \
+python scrapers/reality_scraper.py \
   --property-type byty \
   --city trnava,piestany \
   --transaction predaj \
@@ -62,3 +73,10 @@ The defaults already match the request for Trnava apartments for sale (categorie
 - When scraping the provided Trnava apartments link the script logs the total count reported by the site (currently 314–315 listings depending on live data) and adjusts automatically.
 # sk-reality-scraper
 # sk-reality-scraper
+### Or run the full pipeline
+
+```bash
+python scripts/runner.py
+```
+
+This command orchestrates scraping (all portals), ETL, normalization, and deduplication.

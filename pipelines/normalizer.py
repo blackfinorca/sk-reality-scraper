@@ -804,6 +804,65 @@ def main() -> None:
     write_parquet_tables(out_dir, run_date, gold_df, sources_df, history_df)
     write_latest(out_dir, gold_df)
 
+    run_dir = out_dir / f"run={run_date}"
+    normalized_export = norm_df.copy()
+    normalized_export = normalized_export.rename(
+        columns={"source": "portal", "photo_tokens": "photo_fingerprints", "room_number": "rooms"}
+    )
+
+    def _ensure_token_list(tokens: Any) -> List[str]:
+        if tokens is None:
+            return []
+        if isinstance(tokens, list):
+            iterable = tokens
+        elif isinstance(tokens, (tuple, set)):
+            iterable = list(tokens)
+        else:
+            iterable = [tokens]
+        result: List[str] = []
+        for tok in iterable:
+            tok_str = str(tok).strip()
+            if tok_str:
+                result.append(tok_str)
+        return result
+
+    normalized_export["photo_fingerprints"] = normalized_export["photo_fingerprints"].apply(_ensure_token_list)
+    normalized_export["project_name_norm"] = normalized_export.get("project_name_norm", pd.NA)
+    normalized_export["unit_no"] = pd.NA
+    normalized_export["lat"] = pd.NA
+    normalized_export["lng"] = pd.NA
+
+    normalized_columns = [
+        "row_id",
+        "portal",
+        "portal_listing_key",
+        "source_url",
+        "updated_at",
+        "address_street",
+        "address_town",
+        "address_norm",
+        "address_ascii",
+        "project_name_norm",
+        "size_m2",
+        "photo_fingerprints",
+        "lat",
+        "lng",
+        "unit_no",
+        "rooms",
+        "floor",
+        "floors_total",
+        "elevator",
+        "year_of_construction",
+        "year_of_top",
+        "energ_cert",
+        "transaction",
+    ]
+    for column in normalized_columns:
+        if column not in normalized_export.columns:
+            normalized_export[column] = pd.NA
+    normalized_export = normalized_export[normalized_columns]
+    normalized_export.to_parquet(run_dir / "normalized_sources.parquet", index=False)
+
     report_df = pd.DataFrame(report_rows)
     if report_df.empty:
         report_df = pd.DataFrame(columns=["listing_id", "conflict_fields", "source_count"])

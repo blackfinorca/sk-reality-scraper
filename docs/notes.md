@@ -1,4 +1,4 @@
-- Implemented `scraper.py` to crawl Nehnutelnosti.sk pages with retries, pagination, detail parsing, and CSV/XLS exports.
+- Implemented `nehnutelnosti_scraper.py` to crawl Nehnutelnosti.sk pages with retries, pagination, detail parsing, and CSV/XLS exports.
 - Implemented `reality_scraper.py` that pulls JSON-LD payloads from Reality.sk listings and maps them into the shared listing schema.
 - Centralized datamodel in `listing_schema.py` keeps column order, CSV headers, and sanitization consistent across scrapers.
 - `runner.py` orchestrates scrapers, ETL, and normalizer steps with CLI overrides, enabling flexible pipeline runs.

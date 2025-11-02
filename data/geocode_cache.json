@@ -1,0 +1,517 @@
+{
+  "jána sambucusa|trnava|slovakia": {
+    "lat": 48.3764756,
+    "lng": 17.5760497,
+    "ts": "2025-11-01T11:45:51Z"
+  },
+  "trnava|trnava|slovakia": {
+    "lat": 48.3767652,
+    "lng": 17.5858175,
+    "ts": "2025-11-01T11:45:52Z"
+  },
+  "dolné zelenice|trnava|slovakia": {
+    "lat": 48.3765002,
+    "lng": 17.7472554,
+    "ts": "2025-11-01T11:45:53Z"
+  },
+  "veterná|trnava|slovakia": {
+    "lat": 48.3893453,
+    "lng": 17.6027229,
+    "ts": "2025-11-01T11:45:54Z"
+  },
+  "zelenečská|trnava|slovakia": {
+    "lat": 48.3597276,
+    "lng": 17.5884624,
+    "ts": "2025-11-01T11:45:55Z"
+  },
+  "||slovakia": {
+    "lat": 48.7411522,
+    "lng": 19.4528646,
+    "ts": "2025-11-01T11:45:57Z"
+  },
+  "športová|trnava|slovakia": {
+    "lat": 48.3734023,
+    "lng": 17.5906433,
+    "ts": "2025-11-01T11:45:58Z"
+  },
+  "orolská|trnava|slovakia": {
+    "lat": 48.3749194,
+    "lng": 17.5882837,
+    "ts": "2025-11-01T11:45:59Z"
+  },
+  "františkánska|trnava|slovakia": {
+    "lat": 48.3794717,
+    "lng": 17.5829474,
+    "ts": "2025-11-01T11:46:14Z"
+  },
+  "vladimíra clementisa 4|trnava|slovakia": {
+    "lat": 48.3754539,
+    "lng": 17.6004903,
+    "ts": "2025-11-01T11:46:15Z"
+  },
+  "mozartova|trnava|slovakia": {
+    "lat": 48.3691919,
+    "lng": 17.5677741,
+    "ts": "2025-11-01T11:46:36Z"
+  },
+  "šalgočka|trnava|slovakia": {
+    "lat": 48.3342651,
+    "lng": 17.8147076,
+    "ts": "2025-11-01T11:46:37Z"
+  },
+  "saleziánska|trnava|slovakia": {
+    "lat": 48.3899321,
+    "lng": 17.596495,
+    "ts": "2025-11-01T11:46:38Z"
+  },
+  "čajkovského|trnava|slovakia": {
+    "lat": 48.3647683,
+    "lng": 17.5670531,
+    "ts": "2025-11-01T11:46:39Z"
+  },
+  "špačinská cesta|trnava|slovakia": {
+    "lat": 48.388086,
+    "lng": 17.5913866,
+    "ts": "2025-11-01T11:46:41Z"
+  },
+  "cukrovarská|trnava|slovakia": {
+    "lat": 48.2833478,
+    "lng": 17.7343874,
+    "ts": "2025-11-01T11:46:42Z"
+  },
+  "topoľová|trnava|slovakia": {
+    "lat": 48.3437457,
+    "lng": 17.6153782,
+    "ts": "2025-11-01T11:46:43Z"
+  },
+  "cukrová ulica|trnava|slovakia": {
+    "lat": 48.3887289,
+    "lng": 17.5846306,
+    "ts": "2025-11-01T11:46:44Z"
+  },
+  "mikovíniho|trnava|slovakia": {
+    "lat": 48.3572643,
+    "lng": 17.5896419,
+    "ts": "2025-11-01T11:46:45Z"
+  },
+  "sereďská|trnava|slovakia": {
+    "lat": 48.341439,
+    "lng": 17.620689,
+    "ts": "2025-11-01T11:46:46Z"
+  },
+  "trstínská cesta|trnava|slovakia": {
+    "lat": 48.3883722,
+    "lng": 17.5697924,
+    "ts": "2025-11-01T11:46:48Z"
+  },
+  "cukrová|trnava|slovakia": {
+    "lat": 48.3872274,
+    "lng": 17.5789362,
+    "ts": "2025-11-01T11:46:49Z"
+  },
+  "jirásková|trnava|slovakia": {
+    "lat": 48.3584376,
+    "lng": 17.5799442,
+    "ts": "2025-11-01T11:46:50Z"
+  },
+  "gejzu dusíka|trnava|slovakia": {
+    "lat": 48.3701605,
+    "lng": 17.5702226,
+    "ts": "2025-11-01T11:46:52Z"
+  },
+  "na hlinách|trnava|slovakia": {
+    "lat": 48.3871405,
+    "lng": 17.5952278,
+    "ts": "2025-11-01T11:46:53Z"
+  },
+  "včelárska|trnava|slovakia": {
+    "lat": 48.374061,
+    "lng": 17.6062716,
+    "ts": "2025-11-01T11:46:54Z"
+  },
+  "modranka|topoľová|slovakia": {
+    "lat": 48.3428846,
+    "lng": 17.6169821,
+    "ts": "2025-11-01T11:46:57Z"
+  },
+  "jána hajdóczyho|trnava|slovakia": {
+    "lat": 48.3864323,
+    "lng": 17.5881656,
+    "ts": "2025-11-01T11:46:59Z"
+  },
+  "okružná|trnava|slovakia": {
+    "lat": 48.372149,
+    "lng": 17.534345,
+    "ts": "2025-11-01T11:47:00Z"
+  },
+  "vajanského|trnava|slovakia": {
+    "lat": 48.3737848,
+    "lng": 17.5849466,
+    "ts": "2025-11-01T11:47:01Z"
+  },
+  "j.g. tajovského|trnava|slovakia": {
+    "lat": 48.3659438,
+    "lng": 17.5707487,
+    "ts": "2025-11-01T11:47:03Z"
+  },
+  "vladimíra clementisa|trnava|slovakia": {
+    "lat": 48.3833896,
+    "lng": 17.5995062,
+    "ts": "2025-11-01T11:47:04Z"
+  },
+  "modranka|trnava|slovakia": {
+    "lat": 48.3488886,
+    "lng": 17.6103251,
+    "ts": "2025-11-01T11:47:05Z"
+  },
+  "jozefa adamca|trnava|slovakia": {
+    "lat": 48.3891809,
+    "lng": 17.5824691,
+    "ts": "2025-11-01T11:47:06Z"
+  },
+  "pekárska|trnava|slovakia": {
+    "lat": 48.3798421,
+    "lng": 17.585989,
+    "ts": "2025-11-01T11:47:07Z"
+  },
+  "andreja hlinku|trnava|slovakia": {
+    "lat": 48.3726263,
+    "lng": 17.5813614,
+    "ts": "2025-11-01T11:47:09Z"
+  },
+  "hlavná|trnava|slovakia": {
+    "lat": 48.3738405,
+    "lng": 17.5871606,
+    "ts": "2025-11-01T11:47:10Z"
+  },
+  "|trnava|slovakia": {
+    "lat": 48.3767652,
+    "lng": 17.5858175,
+    "ts": "2025-11-01T11:47:11Z"
+  },
+  "novomestská|trnava|slovakia": {
+    "lat": 48.3886779,
+    "lng": 17.6055449,
+    "ts": "2025-11-01T11:47:32Z"
+  },
+  "horné bašty|trnava|slovakia": {
+    "lat": 48.3811647,
+    "lng": 17.5848291,
+    "ts": "2025-11-01T11:47:33Z"
+  },
+  "zavarská|trnava|slovakia": {
+    "lat": 48.3755576,
+    "lng": 17.6208244,
+    "ts": "2025-11-01T11:47:35Z"
+  },
+  "štefánikova|trnava|slovakia": {
+    "lat": 48.3796482,
+    "lng": 17.5844866,
+    "ts": "2025-11-01T11:47:36Z"
+  },
+  "b. s. timravy|trnava|slovakia": {
+    "lat": 48.3710948,
+    "lng": 17.5919545,
+    "ts": "2025-11-01T11:47:41Z"
+  },
+  "koniarekova|trnava|slovakia": {
+    "lat": 48.3742496,
+    "lng": 17.6045446,
+    "ts": "2025-11-01T11:47:42Z"
+  },
+  "halenárska|trnava|slovakia": {
+    "lat": 48.3781083,
+    "lng": 17.5893158,
+    "ts": "2025-11-01T11:48:12Z"
+  },
+  "pekárska 17|trnava|slovakia": {
+    "lat": 48.3811548,
+    "lng": 17.5859422,
+    "ts": "2025-11-01T11:48:13Z"
+  },
+  "cukrovarská||slovakia": {
+    "lat": 48.3860737,
+    "lng": 20.014408,
+    "ts": "2025-11-01T11:48:15Z"
+  },
+  "ludvika van beethovena|trnava|slovakia": {
+    "lat": 48.3756829,
+    "lng": 17.568478,
+    "ts": "2025-11-01T11:48:16Z"
+  },
+  "bedřicha smetanu|trnava|slovakia": {
+    "lat": 48.3669174,
+    "lng": 17.5742788,
+    "ts": "2025-11-01T11:48:18Z"
+  },
+  "spartakovská|trnava|slovakia": {
+    "lat": 48.3735511,
+    "lng": 17.5947926,
+    "ts": "2025-11-01T11:48:19Z"
+  },
+  "hornopotočná|trnava|slovakia": {
+    "lat": 48.3817829,
+    "lng": 17.586661,
+    "ts": "2025-11-01T11:48:21Z"
+  },
+  "nerudova|trnava|slovakia": {
+    "lat": 48.3563977,
+    "lng": 17.5790186,
+    "ts": "2025-11-01T11:48:22Z"
+  },
+  "bedřicha smetanu 12|trnava|slovakia": {
+    "lat": 48.3673474,
+    "lng": 17.5742696,
+    "ts": "2025-11-01T11:48:23Z"
+  },
+  "coburgova|trnava|slovakia": {
+    "lat": 48.3632067,
+    "lng": 17.5771202,
+    "ts": "2025-11-01T11:48:24Z"
+  },
+  "hajdóczyho|trnava|slovakia": {
+    "lat": 48.3864323,
+    "lng": 17.5881656,
+    "ts": "2025-11-01T11:48:27Z"
+  },
+  "-|trnava|slovakia": {
+    "lat": 48.3767652,
+    "lng": 17.5858175,
+    "ts": "2025-11-01T11:48:28Z"
+  },
+  "hospodárska|trnava|slovakia": {
+    "lat": 48.3799238,
+    "lng": 17.5808012,
+    "ts": "2025-11-01T11:48:29Z"
+  },
+  "olympijská 6560/26|trnava|slovakia": {
+    "lat": 48.3901525,
+    "lng": 17.6031646,
+    "ts": "2025-11-01T11:48:31Z"
+  },
+  "zavar|trnava|slovakia": {
+    "lat": 48.3626584,
+    "lng": 17.6287231,
+    "ts": "2025-11-01T11:48:32Z"
+  },
+  "bohdanovce|trnava|slovakia": {
+    "lat": 48.4332864,
+    "lng": 17.5415418,
+    "ts": "2025-11-01T11:48:33Z"
+  },
+  "poštová|trnava|slovakia": {
+    "lat": 48.3920033,
+    "lng": 17.603299,
+    "ts": "2025-11-01T11:48:34Z"
+  },
+  "prúdy|trnava|slovakia": {
+    "lat": 48.3040094,
+    "lng": 17.7296476,
+    "ts": "2025-11-01T11:48:36Z"
+  },
+  "študentská|trnava|slovakia": {
+    "lat": 48.375662,
+    "lng": 17.5778599,
+    "ts": "2025-11-01T11:48:39Z"
+  },
+  "na hlinach|trnava|slovakia": {
+    "lat": 48.3871405,
+    "lng": 17.5952278,
+    "ts": "2025-11-01T11:48:41Z"
+  },
+  "gen. goliána|trnava|slovakia": {
+    "lat": 48.356947,
+    "lng": 17.5859545,
+    "ts": "2025-11-01T11:48:42Z"
+  },
+  "andreja žarnova|trnava|slovakia": {
+    "lat": 48.3722382,
+    "lng": 17.5868107,
+    "ts": "2025-11-01T11:48:43Z"
+  },
+  "hospodárska 84|trnava|slovakia": {
+    "lat": 48.3814935,
+    "lng": 17.5783031,
+    "ts": "2025-11-01T11:48:44Z"
+  },
+  "ľudmily podjavorinskej|trnava|slovakia": {
+    "lat": 48.3713329,
+    "lng": 17.5935024,
+    "ts": "2025-11-01T11:48:45Z"
+  },
+  "botanická|trnava|slovakia": {
+    "lat": 48.3729192,
+    "lng": 17.5697655,
+    "ts": "2025-11-01T11:48:46Z"
+  },
+  "klempova|trnava|slovakia": {
+    "lat": 48.3709459,
+    "lng": 17.58803,
+    "ts": "2025-11-01T11:48:48Z"
+  },
+  "hviezdoslavova|trnava|slovakia": {
+    "lat": 48.3783233,
+    "lng": 17.5881123,
+    "ts": "2025-11-01T11:48:49Z"
+  },
+  "mozartová|trnava|slovakia": {
+    "lat": 48.3691919,
+    "lng": 17.5677741,
+    "ts": "2025-11-01T11:48:50Z"
+  },
+  "tehelná|trnava|slovakia": {
+    "lat": 48.3796978,
+    "lng": 17.5951576,
+    "ts": "2025-11-01T11:48:51Z"
+  },
+  "lúčna|trnava|slovakia": {
+    "lat": 48.3546837,
+    "lng": 17.6042877,
+    "ts": "2025-11-01T11:48:52Z"
+  },
+  "kornela mahra|trnava|slovakia": {
+    "lat": 48.3695125,
+    "lng": 17.5732702,
+    "ts": "2025-11-01T11:48:54Z"
+  },
+  "suchovská|trnava|slovakia": {
+    "lat": 48.3856227,
+    "lng": 17.5689521,
+    "ts": "2025-11-01T11:48:55Z"
+  },
+  "orešianska|trnava|slovakia": {
+    "lat": 48.3925439,
+    "lng": 17.5493339,
+    "ts": "2025-11-01T11:48:56Z"
+  },
+  "biely kostol|trnava|slovakia": {
+    "lat": 48.367599,
+    "lng": 17.5308197,
+    "ts": "2025-11-01T11:49:00Z"
+  },
+  "jána bottu|trnava|slovakia": {
+    "lat": 48.3778822,
+    "lng": 17.5730206,
+    "ts": "2025-11-01T11:49:01Z"
+  },
+  "j. g. tajovského|trnava|slovakia": {
+    "lat": 48.3659438,
+    "lng": 17.5707487,
+    "ts": "2025-11-01T11:49:02Z"
+  },
+  "jiráskova|trnava|slovakia": {
+    "lat": 48.3584376,
+    "lng": 17.5799442,
+    "ts": "2025-11-01T11:49:03Z"
+  },
+  "štefana moyzesa|trnava|slovakia": {
+    "lat": 48.3845529,
+    "lng": 17.571966,
+    "ts": "2025-11-01T11:49:24Z"
+  },
+  "staničná|trnava|slovakia": {
+    "lat": 48.3700256,
+    "lng": 17.5829231,
+    "ts": "2025-11-01T11:49:25Z"
+  },
+  "andreja kubinu|trnava|slovakia": {
+    "lat": 48.3838061,
+    "lng": 17.5747094,
+    "ts": "2025-11-01T11:49:27Z"
+  },
+  "arboria|trnava|slovakia": {
+    "lat": 48.3896569,
+    "lng": 17.6067094,
+    "ts": "2025-11-01T11:49:29Z"
+  },
+  "ovocná 9|trnava|slovakia": {
+    "lat": 48.376708,
+    "lng": 17.5683597,
+    "ts": "2025-11-01T11:49:30Z"
+  },
+  "ľ. podjavorinskej|trnava|slovakia": {
+    "lat": 48.4284556,
+    "lng": 17.7714919,
+    "ts": "2025-11-01T11:49:31Z"
+  },
+  "kalinčiakova|trnava|slovakia": {
+    "lat": 48.3801728,
+    "lng": 17.5785106,
+    "ts": "2025-11-01T11:49:33Z"
+  },
+  "juraja slottu|trnava|slovakia": {
+    "lat": 48.378016,
+    "lng": 17.6021907,
+    "ts": "2025-11-01T11:49:34Z"
+  },
+  "hattalova|trnava|slovakia": {
+    "lat": 48.3710123,
+    "lng": 17.6040057,
+    "ts": "2025-11-01T11:49:36Z"
+  },
+  "saleziánska 26|trnava|slovakia": {
+    "lat": 48.3888822,
+    "lng": 17.5965541,
+    "ts": "2025-11-01T11:49:37Z"
+  },
+  "orešianska 9|trnava|slovakia": {
+    "lat": 48.3890606,
+    "lng": 17.5602924,
+    "ts": "2025-11-01T11:49:38Z"
+  },
+  "špačinská|trnava|slovakia": {
+    "lat": 48.4292015,
+    "lng": 17.5464507,
+    "ts": "2025-11-01T11:49:39Z"
+  },
+  "gen. goliána 32|trnava|slovakia": {
+    "lat": 48.3580809,
+    "lng": 17.5850778,
+    "ts": "2025-11-01T11:49:41Z"
+  },
+  "družba|trnava|slovakia": {
+    "lat": 48.3784969,
+    "lng": 17.6001697,
+    "ts": "2025-11-01T11:49:44Z"
+  },
+  "a. kubinu|trnava|slovakia": {
+    "lat": 48.2809464,
+    "lng": 17.5608897,
+    "ts": "2025-11-01T11:49:46Z"
+  },
+  "nobelová|trnava|slovakia": {
+    "lat": 48.3688947,
+    "lng": 17.6021399,
+    "ts": "2025-11-01T11:49:47Z"
+  },
+  "tajovského|trnava|slovakia": {
+    "lat": 48.3680365,
+    "lng": 17.5694216,
+    "ts": "2025-11-01T11:49:48Z"
+  },
+  "teodora tekela|trnava|slovakia": {
+    "lat": 48.3798658,
+    "lng": 17.601954,
+    "ts": "2025-11-01T11:50:09Z"
+  },
+  "jeruzalemská|trnava|slovakia": {
+    "lat": 48.3816092,
+    "lng": 17.5903081,
+    "ts": "2025-11-01T11:50:10Z"
+  },
+  "jesenského|trnava|slovakia": {
+    "lat": 48.391054,
+    "lng": 17.5941403,
+    "ts": "2025-11-01T11:50:14Z"
+  },
+  "nová|trnava|slovakia": {
+    "lat": 48.367942,
+    "lng": 17.6162044,
+    "ts": "2025-11-01T11:50:15Z"
+  },
+  "sladovnícka|trnava|slovakia": {
+    "lat": 48.3680362,
+    "lng": 17.5972153,
+    "ts": "2025-11-01T11:50:16Z"
+  }
+}

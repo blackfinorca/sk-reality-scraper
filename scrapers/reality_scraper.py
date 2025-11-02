@@ -13,6 +13,10 @@ from urllib.parse import urlencode, urlparse
 
 from html import unescape
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import requests
 from bs4 import BeautifulSoup
 from requests import Response, Session
@@ -194,6 +198,51 @@ def extract_photo_urls(product_data: Dict) -> Tuple[str, str, str]:
     return images[0], images[1], images[2]
 
 
+def extract_description(soup: BeautifulSoup, json_docs: List[Dict]) -> str:
+    def find_in_node(node) -> Optional[str]:
+        if isinstance(node, dict):
+            candidate = node.get("description")
+            if isinstance(candidate, str):
+                cleaned = candidate.strip()
+                if cleaned:
+                    return cleaned
+            for value in node.values():
+                result = find_in_node(value)
+                if result:
+                    return result
+        elif isinstance(node, list):
+            for value in node:
+                result = find_in_node(value)
+                if result:
+                    return result
+        return None
+
+    for doc in json_docs:
+        result = find_in_node(doc)
+        if result:
+            return result
+
+    selectors = [
+        '[itemprop="description"]',
+        '[data-testid="description"]',
+        '[data-test-id="description"]',
+        'section.detail-text',
+    ]
+    for selector in selectors:
+        container = soup.select_one(selector)
+        if container:
+            text = container.get_text("\n", strip=True)
+            if text:
+                return text
+
+    fallback = soup.find("article")
+    if fallback:
+        text = fallback.get_text("\n", strip=True)
+        if text:
+            return text
+    return ""
+
+
 def parse_listing_detail(session: Session, url: str, transaction: str) -> ListingRecord:
     response = request_with_retry(session, url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -259,6 +308,7 @@ def parse_listing_detail(session: Session, url: str, transaction: str) -> Listin
         price_per_m2 = None
 
     photo_url_1, photo_url_2, photo_url_3 = extract_photo_urls(product)
+    description = extract_description(soup, json_docs)
 
     listing = ListingRecord(
         source="reality_sk",
@@ -266,6 +316,7 @@ def parse_listing_detail(session: Session, url: str, transaction: str) -> Listin
         property_id=extract_listing_id(url),
         link=url,
         property_name=str(product.get("name", "")).strip(),
+        description=description,
         address_street=str(address.get("streetAddress", "")),
         address_town=str(address.get("addressLocality", "")),
         address_zrea=str(address.get("addressRegion", "")),
@@ -295,7 +346,13 @@ def _ensure_type_list(value) -> set:
 
 def write_listing_csv_row(listing: ListingRecord, csv_writer: csv.DictWriter, csv_file) -> None:
     row_dict = asdict(listing)
-    mapped = {COLUMN_RENAMES[key]: sanitize_csv_value(row_dict.get(key, "")) for key in COLUMN_ORDER}
+    mapped = {}
+    for key in COLUMN_ORDER:
+        value = row_dict.get(key, "")
+        if key == "description":
+            mapped[COLUMN_RENAMES[key]] = "" if value is None else str(value)
+        else:
+            mapped[COLUMN_RENAMES[key]] = sanitize_csv_value(value)
     csv_writer.writerow(mapped)
     csv_file.flush()
 

@@ -215,7 +215,7 @@ def load_parquet(path: Path) -> pd.DataFrame:
 
 def write_parquet(df: pd.DataFrame, path: Path) -> None:
     try:
-        df.to_parquet(path, index=False, compression="zstd")
+        df.to_parquet(path, index=False, compression="snappy")
     except Exception as exc:  # pylint: disable=broad-except
         raise RuntimeError(
             f"Failed to write parquet file {path}: {exc}\n"
@@ -242,93 +242,84 @@ def upsert_gold(
     else:
         history_df = pd.DataFrame(columns=history_columns)
 
+    latest_records = {row["listing_uid"]: row.to_dict() for _, row in latest_df.iterrows()}
+    history_records = history_df.to_dict("records")
+    active_history_index: Dict[str, List[int]] = {}
+    for idx, record in enumerate(history_records):
+        if record.get("is_current"):
+            active_history_index.setdefault(record["listing_uid"], []).append(idx)
+
     if "hash" not in silver.columns:
-        silver_with_hash = silver.copy()
-        silver_with_hash["hash"] = silver.apply(lambda row: compute_hash(row.to_dict()), axis=1)
-    else:
-        silver_with_hash = silver.copy()
+        silver = silver.copy()
+        silver["hash"] = silver.apply(lambda row: compute_hash(row.to_dict()), axis=1)
 
-    silver_with_hash["first_seen"] = date_str
-    silver_with_hash["last_seen"] = date_str
-    silver_with_hash["is_current"] = True
-
-    latest_df = latest_df.reindex(columns=latest_columns)
-    history_df = history_df.reindex(columns=history_columns)
-
-    latest_df = latest_df.set_index("listing_uid", drop=False)
-    history_df = history_df.set_index("listing_uid", drop=False)
-
+    seen_this_run: set[str] = set()
     upserts_latest = 0
     new_history_rows = 0
-    history_appends: List[Dict[str, Any]] = []
 
-    for row in silver_with_hash.to_dict(orient="records"):
+    for row in silver.to_dict("records"):
         listing_uid = row["listing_uid"]
         row = {key: to_python(value) for key, value in row.items()}
-        if listing_uid in latest_df.index:
-            previous = latest_df.loc[listing_uid].to_dict()
+        row.update({"first_seen": date_str, "last_seen": date_str, "is_current": True})
+        seen_this_run.add(listing_uid)
+        previous = latest_records.get(listing_uid)
+
+        if previous:
             if previous.get("hash") == row["hash"]:
-                latest_df.at[listing_uid, "last_seen"] = date_str
+                previous["last_seen"] = date_str
                 continue
 
-            # close existing history row if present
-            if listing_uid in history_df.index:
-                current_active = history_df.loc[[listing_uid]]
-                active_mask = current_active["is_current"] == True  # noqa: E712
-                indices = current_active[active_mask].index
-                for idx in indices:
-                    history_df.at[idx, "valid_to"] = date_str
-                    history_df.at[idx, "is_current"] = False
-            else:
-                previous_history_payload = {col: previous.get(col) for col in SILVER_COLUMNS}
-                previous_history_payload.update({"hash": previous.get("hash"), "valid_to": date_str, "is_current": False})
-                previous_history_payload["listing_uid"] = listing_uid
-                history_appends.append(previous_history_payload)
-
             row["first_seen"] = previous.get("first_seen", date_str)
-            row["last_seen"] = date_str
-            row["is_current"] = True
-            latest_df.loc[listing_uid, latest_columns] = [row.get(col) for col in latest_columns]
+            latest_records[listing_uid] = {**previous, **row}
 
-            history_payload = {col: row.get(col) for col in SILVER_COLUMNS}
-            history_payload.update({"hash": row["hash"], "valid_to": None, "is_current": True})
-            history_payload["listing_uid"] = listing_uid
-            history_appends.append(history_payload)
-            upserts_latest += 1
-            new_history_rows += 1
-        else:
-            latest_df.loc[listing_uid, latest_columns] = [row.get(col) for col in latest_columns]
-            history_payload = {col: row.get(col) for col in SILVER_COLUMNS}
-            history_payload.update({"hash": row["hash"], "valid_to": None, "is_current": True})
-            history_payload["listing_uid"] = listing_uid
-            history_appends.append(history_payload)
-            upserts_latest += 1
-            new_history_rows += 1
-
-    if history_appends:
-        history_new_df = pd.DataFrame(history_appends)
-        history_new_df = history_new_df.reindex(columns=history_columns)
-        if history_df.empty:
-            history_df = history_new_df
-        else:
-            history_df = pd.concat(
-                [history_df.reset_index(drop=True), history_new_df],
-                ignore_index=True,
-                sort=False,
+            for idx in active_history_index.get(listing_uid, []):
+                history_records[idx]["valid_to"] = date_str
+                history_records[idx]["is_current"] = False
+            history_records.append(
+                {
+                    **{col: row.get(col) for col in SILVER_COLUMNS},
+                    "hash": row["hash"],
+                    "valid_to": None,
+                    "is_current": True,
+                    "listing_uid": listing_uid,
+                }
             )
-            history_df = history_df.reindex(columns=history_columns)
+            active_history_index[listing_uid] = [len(history_records) - 1]
+            upserts_latest += 1
+            new_history_rows += 1
+        else:
+            latest_records[listing_uid] = {**{col: None for col in latest_columns}, **row}
+            history_records.append(
+                {
+                    **{col: row.get(col) for col in SILVER_COLUMNS},
+                    "hash": row["hash"],
+                    "valid_to": None,
+                    "is_current": True,
+                    "listing_uid": listing_uid,
+                }
+            )
+            active_history_index[listing_uid] = [len(history_records) - 1]
+            upserts_latest += 1
+            new_history_rows += 1
 
-    latest_df = latest_df.reset_index(drop=True)
-    history_df = history_df.reset_index(drop=True)
+    latest_out = pd.DataFrame(latest_records.values())
+    if latest_out.empty:
+        latest_out = pd.DataFrame(columns=latest_columns)
+    latest_out = latest_out.reindex(columns=latest_columns)
 
-    write_parquet(latest_df, gold_latest_path)
-    write_parquet(history_df, gold_history_path)
+    history_out = pd.DataFrame(history_records)
+    if history_out.empty:
+        history_out = pd.DataFrame(columns=history_columns)
+    history_out = history_out.reindex(columns=history_columns)
+
+    write_parquet(latest_out, gold_latest_path)
+    write_parquet(history_out, gold_history_path)
 
     return {
         "upserts_latest": upserts_latest,
         "new_history_rows": new_history_rows,
-        "latest_count": len(latest_df),
-        "history_count": len(history_df),
+        "latest_count": len(latest_out),
+        "history_count": len(history_out),
     }
 
 

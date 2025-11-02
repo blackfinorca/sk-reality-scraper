@@ -1,21 +1,21 @@
 {
   "date": "2025-10-30",
-  "site": "bazos_sk",
+  "site": "nehnutelnosti_sk",
   "currency": "EUR",
-  "total_listings": 345,
-  "avg_price_eur": 191166.47318611987,
-  "median_price_eur": 176000.0,
-  "avg_price_psm_eur": 3416.4008822965884,
-  "median_price_psm_eur": 3015.0,
+  "total_listings": 393,
+  "avg_price_eur": 198360.31197771587,
+  "median_price_eur": 176900.0,
+  "avg_price_psm_eur": 3333.2728402211324,
+  "median_price_psm_eur": 2940.0,
   "cities": [
     {
       "city": "Slovensko",
-      "count": 31,
-      "avg_price_eur": 230104.73333333334,
-      "median_price_eur": 185000.0,
-      "avg_price_psm_eur": 3474.9333333333334,
-      "median_price_psm_eur": 3306.0,
-      "avg_floor_area_m2": 67.03333333333333
+      "count": 37,
+      "avg_price_eur": 296144.0303030303,
+      "median_price_eur": 245000.0,
+      "avg_price_psm_eur": 2768.7272727272725,
+      "median_price_psm_eur": 2619.0,
+      "avg_floor_area_m2": 112.75
     },
     {
       "city": "Topoľová",
@@ -28,12 +28,12 @@
     },
     {
       "city": "Trnava",
-      "count": 313,
-      "avg_price_eur": 187157.7972027972,
-      "median_price_eur": 175650.0,
-      "avg_price_psm_eur": 3410.498400197674,
-      "median_price_psm_eur": 3000.0,
-      "avg_floor_area_m2": 63.642857142857146
+      "count": 355,
+      "avg_price_eur": 188520.3046153846,
+      "median_price_eur": 173000.0,
+      "avg_price_psm_eur": 3394.195565196763,
+      "median_price_psm_eur": 2991.0,
+      "avg_floor_area_m2": 63.422222222222224
     }
   ]
 }
