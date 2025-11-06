@@ -16,6 +16,7 @@ import logging
 import numpy as np
 import pandas as pd
 import pyarrow as pa
+import pyarrow.dataset as ds
 import pyarrow.parquet as pq
 
 
@@ -35,6 +36,42 @@ SIZE_SCORE_TOL_STRICT = 0.02
 SIZE_SCORE_TOL_LOOSE = 0.03
 PRICE_TOL = 0.05
 RUN_TIMESTAMP = datetime.now(timezone.utc).isoformat()
+
+
+def write_partitioned_dataset(
+    df: pd.DataFrame,
+    base_dir: Path,
+    partition_cols: Sequence[str],
+    prefix: str,
+) -> None:
+    if df.empty:
+        return
+    base_dir = Path(base_dir)
+    base_dir.mkdir(parents=True, exist_ok=True)
+    partition_path = base_dir
+    for col in partition_cols:
+        value = str(df[col].iloc[0])
+        partition_path = partition_path / f"{col}={value}"
+    if partition_path.exists():
+        shutil.rmtree(partition_path)
+
+    table = pa.Table.from_pandas(df, preserve_index=False)
+    partition_fields = []
+    for col in partition_cols:
+        if col in table.schema.names:
+            partition_fields.append(table.schema.field(col))
+        else:
+            partition_fields.append(pa.field(col, pa.string()))
+    partitioning = ds.partitioning(pa.schema(partition_fields), flavor="hive")
+
+    ds.write_dataset(
+        table,
+        base_dir=str(base_dir),
+        format="parquet",
+        partitioning=partitioning,
+        existing_data_behavior="overwrite_or_ignore",
+        basename_template=f"{prefix}-{{i}}.parquet",
+    )
 
 
 @dataclass
@@ -638,6 +675,7 @@ def write_parquet_tables(out_dir: Path, run_date: str, listings: pd.DataFrame, s
             ("provenance_json", pa.string()),
             ("field_conflict_flags", pa.string()),
             ("transaction", pa.string()),
+            ("run_date", pa.string()),
         ]
     )
 
@@ -648,6 +686,7 @@ def write_parquet_tables(out_dir: Path, run_date: str, listings: pd.DataFrame, s
         compression="snappy",
         use_dictionary=False,
     )
+    write_partitioned_dataset(listings, out_dir / "gold_dataset", ["run_date"], prefix="gold")
 
     schema_sources = pa.schema(
         [
@@ -697,6 +736,7 @@ def main() -> None:
 
     raw_df = load_raw(args.input)
     norm_df = normalize(raw_df, run_date)
+    norm_df["run_date"] = run_date
 
     if "lat" not in norm_df.columns:
         norm_df["lat"] = pd.NA
@@ -784,6 +824,7 @@ def main() -> None:
         "provenance_json",
         "field_conflict_flags",
         "transaction",
+        "run_date",
     ]
 
     gold_df = pd.DataFrame(gold_rows)
@@ -792,6 +833,7 @@ def main() -> None:
     for col in listing_columns:
         if col not in gold_df.columns:
             gold_df[col] = None
+    gold_df["run_date"] = run_date
     gold_df = gold_df[listing_columns]
     if not gold_df.empty:
         gold_df["photo_fingerprints"] = gold_df["photo_fingerprints"].apply(
@@ -898,6 +940,7 @@ def main() -> None:
     normalized_export = normalized_export.rename(
         columns={"source": "portal", "photo_tokens": "photo_fingerprints", "room_number": "rooms"}
     )
+    normalized_export["run_date"] = run_date
 
     def _ensure_token_list(tokens: Any) -> List[str]:
         if tokens is None:
@@ -964,11 +1007,13 @@ def main() -> None:
         "building_status",
         "status",
         "transaction",
+        "run_date",
     ]
     for column in normalized_columns:
         if column not in normalized_export.columns:
             normalized_export[column] = pd.NA
     normalized_export = normalized_export[normalized_columns]
+    write_partitioned_dataset(normalized_export, out_dir / "normalized_dataset", ["run_date"], prefix="normalized")
     normalized_export.to_parquet(run_dir / "normalized_sources.parquet", index=False)
 
     report_df = pd.DataFrame(report_rows)

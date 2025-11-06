@@ -29,6 +29,16 @@ PROMPT_TEMPLATE = (
     'summary_short_sk: "<1–2 vety v slovenčine, podľa pravidiel vyššie>"\n'
 )
 
+BATCH_SIZE = 10
+BATCH_PROMPT_HEADER = (
+    "Si stručný sumarizátor realitných ponúk pre investorov. "
+    "Pre každý inzerát nižšie vytvor 1–2 vety so zameraním na investične dôležité informácie "
+    "(izby, výmera, stav, poschodie/výťah, balkón/loggia/terasa/záhrada, parkovanie, pivnica, technika, "
+    "náklady a dostupnosť). Nepoužívaj superlatívy ani vymyslené údaje. "
+    "Výstup musí byť čisté JSON pole, kde každý objekt obsahuje polia \"id\" a \"summary_short_sk\". "
+    "Drž sa formátu JSON, žiadne komentáre ani úvodný text.\n\n"
+)
+
 
 def load_dataframe(path: Path) -> pd.DataFrame:
     if path.suffix.lower() == ".csv":
@@ -70,6 +80,50 @@ def summarise(description: str, client: OpenAI, model: str) -> Optional[str]:
     return text.strip('" ')
 
 
+def summarise_batch(items: List[Dict[str, object]], client: OpenAI, model: str) -> Dict[str, str]:
+    if not items:
+        return {}
+    prompt = build_batch_prompt(
+        [
+            {
+                "listing_id": str(item["listing_id"]),
+                "description": str(item["description"]),
+            }
+            for item in items
+        ]
+    )
+    response = client.responses.create(
+        model=model,
+        input=[{"role": "user", "content": prompt}],
+    )
+    text = response.output[0].content[0].text.strip()  # type: ignore[attr-defined]
+    text = _strip_code_fences(text)
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Failed to parse batch JSON: {exc}") from exc
+
+    if isinstance(data, dict):
+        if "items" in data and isinstance(data["items"], list):
+            entries = data["items"]
+        else:
+            raise ValueError("Batch response JSON does not contain expected 'items' array.")
+    elif isinstance(data, list):
+        entries = data
+    else:
+        raise ValueError("Batch response JSON must be an object or list.")
+
+    results: Dict[str, str] = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        listing_id = entry.get("id") or entry.get("listing_id")
+        summary = entry.get("summary_short_sk") or entry.get("summary")
+        if listing_id and summary:
+            results[str(listing_id)] = str(summary).strip().strip('" ')
+    return results
+
+
 def load_cache(path: Path) -> Dict[str, str]:
     if not path.exists():
         return {}
@@ -93,6 +147,24 @@ def cache_key(description: str) -> str:
     normalized = description.strip()
     digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()
     return digest
+
+def _strip_code_fences(text: str) -> str:
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        stripped = stripped[stripped.find("\n") + 1 :] if "\n" in stripped else stripped.lstrip("`")
+    if stripped.endswith("```"):
+        stripped = stripped[: stripped.rfind("```")]
+    return stripped.strip()
+
+
+def build_batch_prompt(items: List[Dict[str, str]]) -> str:
+    sections = [BATCH_PROMPT_HEADER]
+    for item in items:
+        listing_id = item["listing_id"]
+        description = item["description"].strip()
+        sections.append(f'ID: {listing_id}\nDESCRIPTION: """{description}"""')
+    sections.append("JSON OUTPUT:")
+    return "\n\n".join(sections)
 
 
 def build_source_index(
@@ -205,6 +277,7 @@ def summarise_gold(
         "api_failures": 0,
     }
     missing_details: List[Dict[str, object]] = []
+    pending_items: List[Dict[str, object]] = []
 
     for idx, row in tqdm(gold_df.iterrows(), total=len(gold_df), desc="Summarizing listings", unit="listing"):
         existing_summary = str(row.get(summary_column, "") or "").strip()
@@ -248,18 +321,46 @@ def summarise_gold(
         summary = cache.get(key)
         if summary:
             stats["cache_hits"] += 1
-        else:
-            if client is None or analysis_only:
-                continue
-            summary = summarise(description, client, model)
+            gold_df.at[idx, summary_column] = summary
+            stats["summaries_written"] += 1
+            continue
+
+        if client is None or analysis_only:
+            continue
+
+        pending_items.append(
+            {
+                "df_idx": idx,
+                "listing_id": listing_id,
+                "description": description,
+                "cache_key": key,
+            }
+        )
+
+    while pending_items:
+        chunk = pending_items[:BATCH_SIZE]
+        pending_items = pending_items[BATCH_SIZE:]
+        batch_results: Dict[str, str] = {}
+        if client is not None and not analysis_only:
+            try:
+                batch_results = summarise_batch(chunk, client, model)
+            except Exception as exc:  # pylint: disable=broad-except
+                logging.warning("Batch summarization failed (%s); falling back to single requests.", exc)
+                batch_results = {}
+
+        for item in chunk:
+            listing_id = item["listing_id"]
+            cache_key_value = item["cache_key"]
+            summary = batch_results.get(listing_id)
+            if summary is None and client is not None and not analysis_only:
+                summary = summarise(item["description"], client, model)
             if summary is None:
                 stats["api_failures"] += 1
                 continue
-            cache[key] = summary
+            cache[cache_key_value] = summary
+            gold_df.at[item["df_idx"], summary_column] = summary
             stats["generated"] += 1
-
-        gold_df.at[idx, summary_column] = summary
-        stats["summaries_written"] += 1
+            stats["summaries_written"] += 1
 
     logging.info(
         "Listings: %s | Summaries written: %s | Cache hits: %s | Generated: %s | Missing descriptions: %s | API failures: %s",
