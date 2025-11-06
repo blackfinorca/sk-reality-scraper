@@ -5,7 +5,7 @@ import re
 import time
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Sequence
+from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 from urllib.parse import urljoin
 
 import sys
@@ -25,6 +25,7 @@ from listing_schema import (
     ListingRecord,
     sanitize_csv_value,
 )
+from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
 
 
 DEFAULT_HEADERS = {
@@ -106,7 +107,7 @@ def build_search_url(city: str, transaction: str) -> str:
     return f"https://reality.bazos.sk/{transaction}/byt/"
 
 
-def parse_search_page(html: str, base_url: str) -> List[str]:
+def parse_search_page(html: str, base_url: str) -> Tuple[List[str], Optional[str]]:
     soup = BeautifulSoup(html, "html.parser")
     urls: List[str] = []
     for anchor in soup.select("a.nadpis"):
@@ -129,7 +130,24 @@ def parse_search_page(html: str, base_url: str) -> List[str]:
         if url not in seen:
             seen.add(url)
             unique_urls.append(url)
-    return unique_urls
+    next_url: Optional[str] = None
+    next_keywords = {"ďalšie", "ďalej", "ďalšia", "ďalšie inzeráty", "next", ">", "»", "›"}
+    for anchor in soup.select("a"):
+        href = anchor.get("href")
+        if not href:
+            continue
+        candidate = urljoin(base_url, href)
+        if LISTING_LINK_PATTERN.search(candidate):
+            continue
+        text = anchor.get_text(strip=True).lower()
+        href_lower = href.lower()
+        has_next_hint = any(keyword in text for keyword in next_keywords)
+        has_page_hint = "page=" in href_lower or "strana=" in href_lower or "pagination" in href_lower
+        if has_next_hint or has_page_hint:
+            if candidate != base_url:
+                next_url = candidate
+                break
+    return unique_urls, next_url
 
 
 def extract_listing_id(url: str) -> str:
@@ -317,6 +335,7 @@ def extract_photo_urls(soup: BeautifulSoup, detail_url: str, limit: int = 3) -> 
 
 
 def parse_listing_detail(session: Session, url: str, transaction: str, default_city: str) -> ListingRecord:
+    canonical_city = canonical_city_from_slug(default_city) or default_city
     response = request_with_retry(session, url)
     soup = BeautifulSoup(response.text, "html.parser")
     title_tag = soup.select_one("span.nadpisdetail") or soup.select_one("h1")
@@ -351,10 +370,11 @@ def parse_listing_detail(session: Session, url: str, transaction: str, default_c
         status_attr = infer_status_from_text(description_text)
 
     if not town_attr:
-        town_attr = default_city
+        town_attr = canonical_city
 
     address_zrea_parts = [part for part in [district_attr, region_attr] if part]
     address_zrea = ", ".join(address_zrea_parts)
+    town_attr, address_zrea = normalize_town_for_city(canonical_city, town_attr, address_zrea)
 
     year_of_construction = parse_numeric(year_build_attr) if year_build_attr else None
     year_of_top = parse_numeric(year_top_attr) if year_top_attr else None
@@ -415,35 +435,57 @@ def scrape_listings(city: str, transaction: str, max_pages: Optional[int],
     session = create_session()
     base_url = build_search_url(city, transaction)
     detail_urls: List[str] = []
-    _ = max_pages  # Deprecated: retained for CLI compatibility
+    visited_pages: set[str] = set()
 
     if limit is not None and limit <= 0:
         limit = None
 
-    logging.info("Fetching search page for %s", city or "selected area")
-    try:
-        response = request_with_retry(session, base_url)
-    except HTTPError as exc:
-        logging.error("Search page request failed: %s", exc)
-        session.close()
-        return []
-
-    urls = parse_search_page(response.text, base_url)
-    if not urls:
-        logging.info("No listings found at %s", base_url)
-    for url in urls:
-        if url in detail_urls:
-            continue
-        detail_urls.append(url)
-        if limit and len(detail_urls) >= limit:
+    canonical_city = canonical_city_from_slug(city) or city
+    current_url: Optional[str] = base_url
+    page_index = 0
+    while current_url:
+        if current_url in visited_pages:
+            logging.debug("Already visited %s, stopping pagination loop.", current_url)
+            break
+        if max_pages is not None and page_index >= max_pages:
+            logging.debug("Reached max_pages=%s, stopping pagination.", max_pages)
+            break
+        logging.info("Fetching search page %s: %s", page_index + 1, current_url)
+        try:
+            response = request_with_retry(session, current_url)
+        except HTTPError as exc:
+            logging.error("Search page request failed: %s", exc)
             break
 
+        page_index += 1
+        visited_pages.add(current_url)
+        urls, next_page = parse_search_page(response.text, current_url)
+        if not urls and not next_page:
+            logging.info("No listings found at %s", current_url)
+
+        for url in urls:
+            if url in detail_urls:
+                continue
+            detail_urls.append(url)
+            if limit and len(detail_urls) >= limit:
+                break
+        if limit and len(detail_urls) >= limit:
+            break
+        if next_page and next_page not in visited_pages:
+            current_url = next_page
+        else:
+            current_url = None
+
     listings: List[ListingRecord] = []
-    detail_bar = tqdm(total=len(detail_urls), unit="listing", desc=f"Scraping {city}") if detail_urls else None
+    detail_bar = (
+        tqdm(total=len(detail_urls), unit="listing", desc=f"Scraping {canonical_city}")
+        if detail_urls
+        else None
+    )
     try:
         for url in detail_urls:
             try:
-                listing = parse_listing_detail(session, url, transaction, default_city=city)
+                listing = parse_listing_detail(session, url, transaction, default_city=canonical_city)
             except Exception as exc:  # pylint: disable=broad-except
                 logging.error("Failed to parse %s: %s", url, exc)
                 continue
@@ -485,13 +527,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--transaction", default="predam", help="Transaction path segment (e.g. predam, kupim)")
     parser.add_argument(
         "--csv-output",
-        default="output/bazos_trnava_byty.csv",
-        help="CSV output filename (default: output/bazos_trnava_byty.csv)",
+        default="output/bazos_output.csv",
+        help="CSV output filename (default: output/bazos_output.csv)",
     )
     parser.add_argument(
         "--output",
-        default="output/bazos_trnava_byty.xls",
-        help="XLS output filename (default: output/bazos_trnava_byty.xls)",
+        default="output/bazos_output.xls",
+        help="XLS output filename (default: output/bazos_output.xls)",
     )
     parser.add_argument(
         "--max-pages",

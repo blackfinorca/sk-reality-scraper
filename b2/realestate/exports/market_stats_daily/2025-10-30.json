@@ -1,39 +1,93 @@
 {
   "date": "2025-10-30",
-  "site": "nehnutelnosti_sk",
+  "site": "bazos_sk",
   "currency": "EUR",
-  "total_listings": 393,
-  "avg_price_eur": 198360.31197771587,
-  "median_price_eur": 176900.0,
-  "avg_price_psm_eur": 3333.2728402211324,
-  "median_price_psm_eur": 2940.0,
+  "total_listings": 447,
+  "avg_price_eur": 201342.93781094527,
+  "median_price_eur": 179900.0,
+  "avg_price_psm_eur": 3388.50153659375,
+  "median_price_psm_eur": 3017.0,
   "cities": [
     {
-      "city": "Slovensko",
-      "count": 37,
-      "avg_price_eur": 296144.0303030303,
-      "median_price_eur": 245000.0,
-      "avg_price_psm_eur": 2768.7272727272725,
-      "median_price_psm_eur": 2619.0,
-      "avg_floor_area_m2": 112.75
+      "city": "Dargovských hrdinov",
+      "count": 1,
+      "avg_price_eur": 176990.0,
+      "median_price_eur": 176990.0,
+      "avg_price_psm_eur": 4214.0,
+      "median_price_psm_eur": 4214.0,
+      "avg_floor_area_m2": 42.0
     },
     {
-      "city": "Topoľová",
-      "count": 1,
-      "avg_price_eur": 169500.0,
-      "median_price_eur": 169500.0,
-      "avg_price_psm_eur": 3260.0,
-      "median_price_psm_eur": 3260.0,
-      "avg_floor_area_m2": 52.0
+      "city": "Juh",
+      "count": 3,
+      "avg_price_eur": 221666.66666666666,
+      "median_price_eur": 235000.0,
+      "avg_price_psm_eur": 3935.6666666666665,
+      "median_price_psm_eur": 3864.0,
+      "avg_floor_area_m2": 39.0
+    },
+    {
+      "city": "Kosice",
+      "count": 4,
+      "avg_price_eur": 244975.0,
+      "median_price_eur": 225000.0,
+      "avg_price_psm_eur": 3552.75,
+      "median_price_psm_eur": 3399.5,
+      "avg_floor_area_m2": 87.0
+    },
+    {
+      "city": "Nad jazerom",
+      "count": 3,
+      "avg_price_eur": 234633.33333333334,
+      "median_price_eur": 189900.0,
+      "avg_price_psm_eur": 3403.6666666666665,
+      "median_price_psm_eur": 2789.0,
+      "avg_floor_area_m2": 68.66666666666667
+    },
+    {
+      "city": "Sever",
+      "count": 5,
+      "avg_price_eur": 183780.0,
+      "median_price_eur": 177000.0,
+      "avg_price_psm_eur": 3804.0,
+      "median_price_psm_eur": 4191.0,
+      "avg_floor_area_m2": 49.8
+    },
+    {
+      "city": "Slovensko",
+      "count": 247,
+      "avg_price_eur": 205819.41777777777,
+      "median_price_eur": 179900.0,
+      "avg_price_psm_eur": 3125.3230941704037,
+      "median_price_psm_eur": 2924.0,
+      "avg_floor_area_m2": 69.8688524590164
+    },
+    {
+      "city": "Staré Mesto",
+      "count": 6,
+      "avg_price_eur": 249163.16666666666,
+      "median_price_eur": 267495.0,
+      "avg_price_psm_eur": 4089.1666666666665,
+      "median_price_psm_eur": 3659.5,
+      "avg_floor_area_m2": 59.2
     },
     {
       "city": "Trnava",
-      "count": 355,
-      "avg_price_eur": 188520.3046153846,
-      "median_price_eur": 173000.0,
-      "avg_price_psm_eur": 3394.195565196763,
-      "median_price_psm_eur": 2991.0,
-      "avg_floor_area_m2": 63.422222222222224
+      "count": 171,
+      "avg_price_eur": 191634.68243243243,
+      "median_price_eur": 179900.0,
+      "avg_price_psm_eur": 3707.435408514551,
+      "median_price_psm_eur": 2981.0,
+      "avg_floor_area_m2": 64.47058823529412
+    },
+    {
+      "city": "Západ",
+      "count": 7,
+      "avg_price_eur": 189841.42857142858,
+      "median_price_eur": 209000.0,
+      "avg_price_psm_eur": 4453.857142857143,
+      "median_price_psm_eur": 3796.0,
+      "avg_floor_area_m2": 50.0
     }
   ]
 }

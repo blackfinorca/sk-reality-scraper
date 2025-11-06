@@ -1,4 +1,5 @@
 import argparse
+import sys
 import glob
 import hashlib
 import json
@@ -11,11 +12,19 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
+import logging
 import numpy as np
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+
+CURRENT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = CURRENT_DIR.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from pipelines.util_geo import fill_coordinates
 
 DEFAULT_PRIORITY = ["nehnutelnosti_sk", "reality_sk"]
 MIN_SIZE = 10.0
@@ -64,6 +73,32 @@ def parse_args() -> argparse.Namespace:
         "--source-priority", default=",".join(DEFAULT_PRIORITY), help="Comma list of portal priority"
     )
     parser.add_argument("--prev-run", default=None, help="Previous run directory (optional)")
+    parser.add_argument(
+        "--geo-enabled",
+        action="store_true",
+        help="Geocode missing coordinates for normalized listings before export.",
+    )
+    parser.add_argument(
+        "--geo-cache",
+        default=None,
+        help="Path to geocoding cache JSON (default: data/geocode_cache.json).",
+    )
+    parser.add_argument(
+        "--geo-user-agent",
+        default=None,
+        help="User-Agent header to use for geocoding requests (required when --geo-enabled).",
+    )
+    parser.add_argument(
+        "--geo-country",
+        default="Slovakia",
+        help="Country appended to geocoding queries (default: Slovakia).",
+    )
+    parser.add_argument(
+        "--geo-max-new",
+        type=int,
+        default=None,
+        help="Maximum number of new geocoding API calls per run (default: unlimited).",
+    )
     return parser.parse_args()
 
 
@@ -279,6 +314,21 @@ def normalize(df: pd.DataFrame, run_date: str) -> pd.DataFrame:
         town_ascii = ascii_fold(town or "")
         address_norm = ", ".join(filter(None, [address_ascii, town_ascii]))
 
+        lat = None
+        lng = None
+        lat_raw = row.get("lat")
+        lng_raw = row.get("lng")
+        if lat_raw not in (None, ""):
+            try:
+                lat = float(str(lat_raw).replace(",", "."))
+            except ValueError:
+                lat = None
+        if lng_raw not in (None, ""):
+            try:
+                lng = float(str(lng_raw).replace(",", "."))
+            except ValueError:
+                lng = None
+
         records.append(
             {
                 "row_id": row["row_id"],
@@ -311,6 +361,8 @@ def normalize(df: pd.DataFrame, run_date: str) -> pd.DataFrame:
                 "size_raw": size_raw,
                 "price_raw": price,
                 "source_path": row.get("__source_path"),
+                "lat": lat,
+                "lng": lng,
             }
         )
 
@@ -465,6 +517,11 @@ def build_golden(cluster_df: pd.DataFrame, priority: Sequence[str], run_date: st
     chosen_district = choose_by_priority(collect("district"), priority, allow_blank=True)
     chosen_region = choose_by_priority(collect("region"), priority, allow_blank=True)
 
+    lat_values = [rec.get("lat") for rec in records if rec.get("lat") is not None and not pd.isna(rec.get("lat"))]
+    lng_values = [rec.get("lng") for rec in records if rec.get("lng") is not None and not pd.isna(rec.get("lng"))]
+    chosen_lat = float(np.mean(lat_values)) if lat_values else None
+    chosen_lng = float(np.mean(lng_values)) if lng_values else None
+
     chosen_year_built = choose_by_priority(collect("year_of_construction"), priority)
     chosen_year_top = choose_by_priority(collect("year_of_top"), priority)
     chosen_energ = choose_by_priority(collect("energ_cert"), priority, allow_blank=True) or "unknown"
@@ -494,6 +551,8 @@ def build_golden(cluster_df: pd.DataFrame, priority: Sequence[str], run_date: st
         "provenance_json": None,
         "field_conflict_flags": None,
         "transaction": choose_by_priority(collect("transaction"), priority, allow_blank=True) or "unknown",
+        "lat": chosen_lat,
+        "lng": chosen_lng,
     }
 
     conflict_flags = {field: (field in conflicts) for field in ["size_m2", "price", "room_number", "building_status"]}
@@ -561,6 +620,8 @@ def write_parquet_tables(out_dir: Path, run_date: str, listings: pd.DataFrame, s
             ("address_town", pa.string()),
             ("district", pa.string()),
             ("region", pa.string()),
+            ("lat", pa.float64()),
+            ("lng", pa.float64()),
             ("room_number", pa.int32()),
             ("size_m2", pa.float64()),
             ("price", pa.int64()),
@@ -637,6 +698,30 @@ def main() -> None:
     raw_df = load_raw(args.input)
     norm_df = normalize(raw_df, run_date)
 
+    if "lat" not in norm_df.columns:
+        norm_df["lat"] = pd.NA
+    if "lng" not in norm_df.columns:
+        norm_df["lng"] = pd.NA
+
+    if args.geo_enabled:
+        if not args.geo_user_agent:
+            raise ValueError("Geocoding requires --geo-user-agent.")
+        cache_path = args.geo_cache or "data/geocode_cache.json"
+        cache_path = Path(cache_path)
+        if not cache_path.is_absolute():
+            cache_path = (Path.cwd() / cache_path).resolve()
+        norm_df, geo_stats = fill_coordinates(
+            norm_df,
+            country=args.geo_country,
+            user_agent=args.geo_user_agent,
+            cache_path=str(cache_path),
+            max_new=args.geo_max_new,
+        )
+        logging.info(
+            "Geocoding stats - total: %(total)s, with_coords: %(with_coords)s, geocoded_now: %(geocoded_now)s, cache_hits: %(cache_hits)s, failures: %(failures)s, capped: %(capped)s",
+            geo_stats,
+        )
+
     blocks = block_candidates(norm_df)
     clusters = cluster(norm_df, blocks)
 
@@ -681,6 +766,8 @@ def main() -> None:
         "address_town",
         "district",
         "region",
+        "lat",
+        "lng",
         "room_number",
         "size_m2",
         "price",
@@ -721,6 +808,8 @@ def main() -> None:
         gold_df["size_m2"] = pd.to_numeric(gold_df["size_m2"], errors="coerce")
         gold_df["price_psm"] = pd.to_numeric(gold_df["price_psm"], errors="coerce")
         gold_df["elevator"] = gold_df["elevator"].astype("boolean")
+        gold_df["lat"] = pd.to_numeric(gold_df["lat"], errors="coerce")
+        gold_df["lng"] = pd.to_numeric(gold_df["lng"], errors="coerce")
 
     sources_columns = [
         "listing_id",
@@ -828,9 +917,24 @@ def main() -> None:
 
     normalized_export["photo_fingerprints"] = normalized_export["photo_fingerprints"].apply(_ensure_token_list)
     normalized_export["project_name_norm"] = normalized_export.get("project_name_norm", pd.NA)
-    normalized_export["unit_no"] = pd.NA
-    normalized_export["lat"] = pd.NA
-    normalized_export["lng"] = pd.NA
+    if "unit_no" not in normalized_export.columns:
+        normalized_export["unit_no"] = pd.NA
+    if "lat" not in normalized_export.columns:
+        normalized_export["lat"] = pd.NA
+    if "lng" not in normalized_export.columns:
+        normalized_export["lng"] = pd.NA
+    if "status" not in normalized_export.columns:
+        normalized_export["status"] = normalized_export.get("building_status", pd.NA)
+    if "price" not in normalized_export.columns:
+        normalized_export["price"] = pd.NA
+    if "price_psm" not in normalized_export.columns:
+        normalized_export["price_psm"] = pd.NA
+    if "building_status" not in normalized_export.columns:
+        normalized_export["building_status"] = pd.NA
+    normalized_export["price"] = pd.to_numeric(normalized_export["price"], errors="coerce")
+    normalized_export["price_psm"] = pd.to_numeric(normalized_export["price_psm"], errors="coerce")
+    normalized_export["lat"] = pd.to_numeric(normalized_export["lat"], errors="coerce")
+    normalized_export["lng"] = pd.to_numeric(normalized_export["lng"], errors="coerce")
 
     normalized_columns = [
         "row_id",
@@ -844,6 +948,8 @@ def main() -> None:
         "address_ascii",
         "project_name_norm",
         "size_m2",
+        "price",
+        "price_psm",
         "photo_fingerprints",
         "lat",
         "lng",
@@ -855,6 +961,8 @@ def main() -> None:
         "year_of_construction",
         "year_of_top",
         "energ_cert",
+        "building_status",
+        "status",
         "transaction",
     ]
     for column in normalized_columns:

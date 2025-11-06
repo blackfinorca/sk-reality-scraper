@@ -1,0 +1,75 @@
+{
+  "date": "2025-11-04",
+  "site": "bazos_sk",
+  "currency": "EUR",
+  "total_listings": 727,
+  "avg_price_eur": 199539.95823665895,
+  "median_price_eur": 179900.0,
+  "avg_price_psm_eur": 3310.5652368158803,
+  "median_price_psm_eur": 2994.5,
+  "cities": [
+    {
+      "city": "Kosice",
+      "count": 1,
+      "avg_price_eur": 369900.0,
+      "median_price_eur": 369900.0,
+      "avg_price_psm_eur": 3490.0,
+      "median_price_psm_eur": 3490.0,
+      "avg_floor_area_m2": 106.0
+    },
+    {
+      "city": "Košice",
+      "count": 29,
+      "avg_price_eur": 218043.06896551725,
+      "median_price_eur": 209900.0,
+      "avg_price_psm_eur": 3911.4827586206898,
+      "median_price_psm_eur": 3625.0,
+      "avg_floor_area_m2": 58.77272727272727
+    },
+    {
+      "city": "Nad jazerom",
+      "count": 1,
+      "avg_price_eur": 325000.0,
+      "median_price_eur": 325000.0,
+      "avg_price_psm_eur": 4643.0,
+      "median_price_psm_eur": 4643.0,
+      "avg_floor_area_m2": 70.0
+    },
+    {
+      "city": "Sever",
+      "count": 1,
+      "avg_price_eur": 177000.0,
+      "median_price_eur": 177000.0,
+      "avg_price_psm_eur": 3278.0,
+      "median_price_psm_eur": 3278.0,
+      "avg_floor_area_m2": 54.0
+    },
+    {
+      "city": "Slovensko",
+      "count": 12,
+      "avg_price_eur": 212244.66666666666,
+      "median_price_eur": 209500.0,
+      "avg_price_psm_eur": 2334.45,
+      "median_price_psm_eur": 2566.0,
+      "avg_floor_area_m2": 81.27272727272727
+    },
+    {
+      "city": "Trnava",
+      "count": 679,
+      "avg_price_eur": 197006.14248704663,
+      "median_price_eur": 179000.0,
+      "avg_price_psm_eur": 3279.3829879121463,
+      "median_price_psm_eur": 2940.0,
+      "avg_floor_area_m2": 68.14882943143813
+    },
+    {
+      "city": "Západ",
+      "count": 4,
+      "avg_price_eur": 213000.0,
+      "median_price_eur": 222500.0,
+      "avg_price_psm_eur": 3672.5,
+      "median_price_psm_eur": 3202.0,
+      "avg_floor_area_m2": 55.666666666666664
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "listing_uid": "Jur3rwbLc9q",
+    "title": "2,5 izb byt po kompletnej rekonštrukcii, zariadený",
+    "url": "https://www.nehnutelnosti.sk/detail/Jur3rwbLc9q/2l5-izb-byt-po-kompletnej-rekonstrukciil-zariadeny",
+    "city": "Juh",
+    "region": "okres Košice IV",
+    "rooms": 2.0,
+    "floor_area_m2": null,
+    "price_eur": 255000.0,
+    "price_psm_eur": 3864.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-11-04"
+  },
+  {
+    "listing_uid": "JuMOPtSjxFO",
+    "title": "REZERVOVANÉ - 1,5i byt Miškovecká, po rekonštrukcii + loggia, zariaden",
+    "url": "https://www.nehnutelnosti.sk/detail/JuMOPtSjxFO/rezervovane---1l5i-byt-miskoveckal-po-rekonstrukcii--loggial-zariaden",
+    "city": "Juh",
+    "region": "okres Košice IV",
+    "rooms": 2.0,
+    "floor_area_m2": 39.0,
+    "price_eur": 175000.0,
+    "price_psm_eur": 4487.0,
+    "status": "Novostavba",
+    "energy_cert": "A",
+    "last_seen": "2025-11-04"
+  },
+  {
+    "listing_uid": "JuV_OSmyGRb",
+    "title": "3 izbovy prazsky typ bytu 68m2 a 5m2 logia",
+    "url": "https://www.nehnutelnosti.sk/detail/JuV_OSmyGRb/3-izbovy-prazsky-typ-bytu-68m2-a-5m2-logia",
+    "city": "Juh",
+    "region": "okres Košice IV",
+    "rooms": 3.0,
+    "floor_area_m2": null,
+    "price_eur": 235000.0,
+    "price_psm_eur": 3456.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-11-04"
+  }
+]

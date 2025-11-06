@@ -30,6 +30,7 @@ from listing_schema import (
     ListingRecord,
     sanitize_csv_value,
 )
+from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
 
 
 DEFAULT_HEADERS = {
@@ -243,7 +244,7 @@ def extract_description(soup: BeautifulSoup, json_docs: List[Dict]) -> str:
     return ""
 
 
-def parse_listing_detail(session: Session, url: str, transaction: str) -> ListingRecord:
+def parse_listing_detail(session: Session, url: str, transaction: str, city_slug: str) -> ListingRecord:
     response = request_with_retry(session, url)
     soup = BeautifulSoup(response.text, "html.parser")
     json_docs: List[Dict] = []
@@ -310,6 +311,15 @@ def parse_listing_detail(session: Session, url: str, transaction: str) -> Listin
     photo_url_1, photo_url_2, photo_url_3 = extract_photo_urls(product)
     description = extract_description(soup, json_docs)
 
+    canonical_city = canonical_city_from_slug(city_slug) or city_slug
+    town_value = str(address.get("addressLocality", "")).strip()
+    area_value = str(address.get("addressRegion", "")).strip()
+    if town_value.lower() in {"slovensko", "slovakia", ""}:
+        if canonical_city:
+            town_value = canonical_city
+
+    town_value, area_value = normalize_town_for_city(canonical_city, town_value, area_value)
+
     listing = ListingRecord(
         source="reality_sk",
         transaction=transaction,
@@ -318,8 +328,8 @@ def parse_listing_detail(session: Session, url: str, transaction: str) -> Listin
         property_name=str(product.get("name", "")).strip(),
         description=description,
         address_street=str(address.get("streetAddress", "")),
-        address_town=str(address.get("addressLocality", "")),
-        address_zrea=str(address.get("addressRegion", "")),
+        address_town=town_value,
+        address_zrea=area_value,
         room_number=room_number,
         floor_area=floor_area,
         building_status=building_status,
@@ -361,10 +371,13 @@ def scrape_listings(property_type: str, city: str, transaction: str, max_pages: 
                     delay: float, limit: Optional[int], workers: int,
                     csv_writer: Optional[csv.DictWriter] = None, csv_file=None) -> List[ListingRecord]:
     session = create_session()
+    canonical_city = canonical_city_from_slug(city) or city
     base_url = build_search_url(property_type, city, transaction)
     all_urls: List[str] = []
     page = 1
-    progress_bar = tqdm(total=limit, unit="listing", desc=f"Collecting URLs ({city})") if limit else None
+    progress_bar = (
+        tqdm(total=limit, unit="listing", desc=f"Collecting URLs ({canonical_city})") if limit else None
+    )
 
     try:
         while True:
@@ -395,10 +408,12 @@ def scrape_listings(property_type: str, city: str, transaction: str, max_pages: 
             progress_bar.close()
 
     listings: List[ListingRecord] = []
-    listing_bar = tqdm(total=len(all_urls), unit="listing", desc=f"Scraping {city}") if all_urls else None
+    listing_bar = (
+        tqdm(total=len(all_urls), unit="listing", desc=f"Scraping {canonical_city}") if all_urls else None
+    )
     for url in all_urls:
         try:
-            listing = parse_listing_detail(session, url, transaction)
+            listing = parse_listing_detail(session, url, transaction, canonical_city)
         except Exception as exc:  # pylint: disable=broad-except
             logging.error("Failed to parse %s: %s", url, exc)
             continue
@@ -439,16 +454,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--transaction", default="predaj", help="Transaction type (predaj/prenajom)")
     parser.add_argument(
         "--csv-output",
-        default="output/reality_trnava_byty.csv",
-        help="CSV output filename (default: output/reality_trnava_byty.csv)",
+        default="output/reality_output.csv",
+        help="CSV output filename (default: output/reality_output.csv)",
     )
     parser.add_argument(
         "--output",
-        default="output/reality_trnava_byty.xls",
-        help="XLS output filename (default: output/reality_trnava_byty.xls)",
+        default="output/reality_output.xls",
+        help="XLS output filename (default: output/reality_output.xls)",
     )
     parser.add_argument("--max-pages", type=int, default=None, help="Max search pages to traverse")
-    parser.add_argument("--limit", type=int, default=3, help="Max listings to scrape (default: 3, use 0 for all)")
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Max listings to scrape (default: 0 meaning no limit)",
+    )
     parser.add_argument("--delay", type=float, default=1.0, help="Delay between requests (seconds)")
     parser.add_argument("--workers", type=int, default=1, help="Reserved for future concurrency support")
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")

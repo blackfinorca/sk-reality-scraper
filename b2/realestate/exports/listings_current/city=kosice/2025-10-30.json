@@ -1,0 +1,58 @@
+[
+  {
+    "listing_uid": "JunpprxPZsX",
+    "title": "1,5 izbový byt Kompletná rekonštrukcia",
+    "url": "https://www.nehnutelnosti.sk/detail/JunpprxPZsX/1l5-izbovy-byt-kompletna-rekonstrukcia",
+    "city": "Kosice",
+    "region": "okres Košice I",
+    "rooms": 1.0,
+    "floor_area_m2": null,
+    "price_eur": 160000.0,
+    "price_psm_eur": 4103.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JuWcc8eJTPO",
+    "title": "Znížená cena - Na predaj 3 izbový byt, Wurmova, Košice",
+    "url": "https://www.nehnutelnosti.sk/detail/JuWcc8eJTPO/znizena-cena---na-predaj-3-izbovy-bytl-wurmoval-kosice",
+    "city": "Kosice",
+    "region": "okres Košice II",
+    "rooms": 3.0,
+    "floor_area_m2": 68.0,
+    "price_eur": 225000.0,
+    "price_psm_eur": 3309.0,
+    "status": "",
+    "energy_cert": "nie je",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JuIq3mJicqJ",
+    "title": "Na predaj 3 - izbový byt Košice - KVP",
+    "url": "https://www.nehnutelnosti.sk/detail/JuIq3mJicqJ/na-predaj-3---izbovy-byt-kosice---kvp",
+    "city": "Kosice",
+    "region": "okres Košice II",
+    "rooms": 3.0,
+    "floor_area_m2": null,
+    "price_eur": 225000.0,
+    "price_psm_eur": 3309.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JufCISZLwzt",
+    "title": "Na predaj:3izbový byt na Hlavnej ulici, 106 m2 + parkovacie miesto v cene !",
+    "url": "https://www.nehnutelnosti.sk/detail/JufCISZLwzt/na-predaj3izbovy-byt-na-hlavnej-ulicil-106-m2--parkovacie-miesto-v-cene-",
+    "city": "Kosice",
+    "region": "",
+    "rooms": 3.0,
+    "floor_area_m2": 106.0,
+    "price_eur": 369900.0,
+    "price_psm_eur": 3490.0,
+    "status": "",
+    "energy_cert": "nie je",
+    "last_seen": "2025-10-30"
+  }
+]

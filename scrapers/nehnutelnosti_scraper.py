@@ -30,6 +30,7 @@ from listing_schema import (
     ListingRecord,
     sanitize_csv_value,
 )
+from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
 
 
 LISTING_ID_PATTERN = re.compile(r"/detail/([^/]+)/")
@@ -314,6 +315,8 @@ def derive_address_parts(location: str, attributes: Dict[str, str], default_city
     if street and town and street.lower() == town.lower():
         town = default_city
 
+    town, area = normalize_town_for_city(default_city, town, area)
+
     return street or "", town or "", area or ""
 
 
@@ -399,7 +402,7 @@ def extract_description(soup: BeautifulSoup) -> str:
 
     json_descriptions = iter_json_descriptions()
     if json_descriptions:
-        return json_descriptions[0]
+        return max(json_descriptions, key=len)
 
     selectors = [
         '[itemprop="description"]',
@@ -448,7 +451,7 @@ def parse_listing_detail(listing_id: str, url: str, html: str, city_slug: str, t
     price_area = parse_numeric_value(price_per_m2_text)
 
     location = extract_location(soup)
-    city_name = " ".join(part.capitalize() for part in re.split(r"[-_]", city_slug) if part)
+    city_name = canonical_city_from_slug(city_slug) or city_slug
     address_street, address_town, address_area = derive_address_parts(location, attributes, city_name)
 
     floor_area_value = extract_field(attributes, ("úžitkov", "uzitkov", "podlah", "plocha bytu", "plocha"))
@@ -515,23 +518,21 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
                     csv_writer: Optional[csv.DictWriter] = None, csv_file=None) -> List[Listing]:
     session = create_session()
     base_url = build_base_url(city, transaction)
+    canonical_city = canonical_city_from_slug(city) or city
     all_listings: List[Listing] = []
     seen_ids: set[str] = set()
+    detail_links: List[Tuple[str, str]] = []
     progress_bar: Optional[tqdm] = None
-    reported_total: Optional[int] = None
-    estimated_pages: Optional[int] = None
-    results_per_page: Optional[int] = None
 
     worker_count = max(1, workers)
 
     def handle_listing(listing: Listing) -> None:
         all_listings.append(listing)
-        seen_ids.add(listing.property_id)
         if progress_bar:
             progress_bar.update(1)
         if csv_writer and csv_file:
             write_listing_csv_row(listing, csv_writer, csv_file)
-        logging.info("Scraped %s listings so far.", len(all_listings))
+        logging.debug("Scraped %s listings so far.", len(all_listings))
 
     def fetch_listing_detail_concurrent(listing_id: str, link: str) -> Listing:
         logging.info("Fetching detail for %s", listing_id)
@@ -540,13 +541,14 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
             detail_response = request_with_retry(local_session, link)
         finally:
             local_session.close()
-        listing = parse_listing_detail(listing_id, link, detail_response.text, city, transaction)
+        listing = parse_listing_detail(listing_id, link, detail_response.text, canonical_city, transaction)
         gentle_pause(delay)
         return listing
 
     page = 1
     while True:
         if max_pages and page > max_pages:
+            logging.info("Reached max_pages=%s while collecting links.", max_pages)
             break
 
         params = build_query_params(categories, page)
@@ -558,83 +560,62 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
             if status_code == 404:
                 logging.info("Search page %s returned 404, assuming no more pages.", page)
                 break
+            session.close()
             raise
-        listings, total_count = parse_listing_page(response.text, base_url)
 
-        if reported_total is None and total_count is not None:
-            reported_total = total_count
-            logging.info("Search reports %s total listings.", reported_total)
-            if reported_total == EXPECTED_TOTAL_COUNT:
-                logging.info("Confirmed expected total of %s listings.", EXPECTED_TOTAL_COUNT)
-            else:
-                logging.warning(
-                    "Reported total %s differs from expected %s listings.",
-                    reported_total,
-                    EXPECTED_TOTAL_COUNT,
-                )
-            if progress_bar is None:
-                progress_total = limit if limit else reported_total
-                progress_bar = tqdm(total=progress_total, unit="listing", desc=f"Scraping {city}")
-        elif progress_bar is None and limit:
-            progress_bar = tqdm(total=limit, unit="listing", desc=f"Scraping {city}")
-
-        new_links = [(lid, link) for lid, link in listings if lid not in seen_ids]
-        if progress_bar is None and new_links:
-            progress_total = limit if limit else reported_total
-            progress_bar = tqdm(total=progress_total, unit="listing", desc=f"Scraping {city}")
-        if not new_links:
-            logging.info("No new listings found on page %s, stopping.", page)
-            break
-
-        if results_per_page is None and listings:
-            results_per_page = len(listings)
-            if reported_total and results_per_page:
-                estimated_pages = math.ceil(reported_total / results_per_page)
-
-        if limit:
-            remaining = limit - len(all_listings)
-            if remaining <= 0:
-                logging.info("Reached listing limit (%s).", limit)
-                if progress_bar:
-                    progress_bar.close()
-                return all_listings
-            new_links = new_links[:remaining]
+        listings, _ = parse_listing_page(response.text, base_url)
+        new_links: List[Tuple[str, str]] = []
+        for listing_id, link in listings:
+            if listing_id in seen_ids:
+                continue
+            seen_ids.add(listing_id)
+            new_links.append((listing_id, link))
 
         if not new_links:
-            logging.info("No listings left to fetch after applying limit.")
+            logging.info("No new listings found on page %s, stopping link collection.", page)
             break
 
-        if worker_count == 1:
-            for listing_id, link in new_links:
-                logging.info("Fetching detail for %s", listing_id)
-                detail_response = request_with_retry(session, link)
-                listing = parse_listing_detail(listing_id, link, detail_response.text, city, transaction)
-                handle_listing(listing)
-                gentle_pause(delay)
-        else:
-            indexed_links = list(enumerate(new_links))
-            results: Dict[int, Listing] = {}
-            with ThreadPoolExecutor(max_workers=worker_count) as executor:
-                future_to_idx = {
-                    executor.submit(fetch_listing_detail_concurrent, listing_id, link): idx
-                    for idx, (listing_id, link) in indexed_links
-                }
-                for future in as_completed(future_to_idx):
-                    idx = future_to_idx[future]
-                    listing = future.result()
-                    results[idx] = listing
-            for idx in sorted(results):
-                handle_listing(results[idx])
+        detail_links.extend(new_links)
+        if limit and len(detail_links) >= limit:
+            detail_links = detail_links[:limit]
+            logging.info("Reached listing limit (%s) while collecting links.", limit)
+            break
 
         page += 1
-        if estimated_pages and page > estimated_pages:
-            logging.info("Reached estimated last page (%s).", estimated_pages)
-            break
         gentle_pause(delay)
 
-    if progress_bar:
-        progress_bar.close()
-    logging.info("Finished scraping %s listings.", len(all_listings))
+    if not detail_links:
+        session.close()
+        logging.warning("No listings collected for %s.", canonical_city)
+        return []
+
+    progress_bar = tqdm(total=len(detail_links), unit="listing", desc=f"Scraping {canonical_city}")
+
+    if worker_count == 1:
+        for listing_id, link in detail_links:
+            logging.info("Fetching detail for %s", listing_id)
+            detail_response = request_with_retry(session, link)
+            listing = parse_listing_detail(listing_id, link, detail_response.text, canonical_city, transaction)
+            gentle_pause(delay)
+            handle_listing(listing)
+    else:
+        with ThreadPoolExecutor(max_workers=worker_count) as executor:
+            future_to_listing = {
+                executor.submit(fetch_listing_detail_concurrent, listing_id, link): listing_id
+                for listing_id, link in detail_links
+            }
+            for future in as_completed(future_to_listing):
+                listing_id = future_to_listing[future]
+                try:
+                    listing = future.result()
+                except Exception as exc:  # pylint: disable=broad-except
+                    logging.error("Failed to fetch listing %s: %s", listing_id, exc)
+                    continue
+                handle_listing(listing)
+
+    progress_bar.close()
+    session.close()
+    logging.info("Finished scraping %s listings from Nehnutelnosti.sk.", len(all_listings))
     return all_listings
 
 
@@ -679,13 +660,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        default="output/nehnutelnosti_trnava_byty.xls",
-        help="Output XLS filename (default: output/nehnutelnosti_trnava_byty.xls)",
+        default="output/nehnutelnosti_output.xls",
+        help="Output XLS filename (default: output/nehnutelnosti_output.xls)",
     )
     parser.add_argument(
         "--csv-output",
-        default="output/nehnutelnosti_trnava_byty.csv",
-        help="Output CSV filename for incremental saves (default: output/nehnutelnosti_trnava_byty.csv)",
+        default="output/nehnutelnosti_output.csv",
+        help="Output CSV filename for incremental saves (default: output/nehnutelnosti_output.csv)",
     )
     parser.add_argument(
         "--max-pages",
@@ -696,8 +677,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--limit",
         type=int,
-        default=3,
-        help="Maximum number of listings to scrape (default: 3, use 0 for all).",
+        default=0,
+        help="Maximum number of listings to scrape (default: 0 meaning no limit).",
     )
     parser.add_argument(
         "--delay",

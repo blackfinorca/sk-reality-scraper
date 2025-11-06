@@ -1,0 +1,72 @@
+[
+  {
+    "listing_uid": "JuF764ZKqIU",
+    "title": "1+kk byt v žiadanom developerskom projekte Watsonova v Košiciach",
+    "url": "https://www.nehnutelnosti.sk/detail/JuF764ZKqIU/1kk-byt-v-ziadanom-developerskom-projekte-watsonova-v-kosiciach",
+    "city": "Sever",
+    "region": "okres Košice I",
+    "rooms": 1.0,
+    "floor_area_m2": 34.0,
+    "price_eur": 148000.0,
+    "price_psm_eur": 4385.0,
+    "status": "Novostavba",
+    "energy_cert": "V príprave",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "Jub-E-Or-L_",
+    "title": "1 IZBOVÝ BYT - 38 m2 - KISDYHO - KOŠICE - SEVER - DOHODA !",
+    "url": "https://www.nehnutelnosti.sk/detail/Jub-E-Or-L_/1-izbovy-byt---38-m2---kisdyho---kosice---sever---dohoda-",
+    "city": "Sever",
+    "region": "okres Košice I",
+    "rooms": 1.0,
+    "floor_area_m2": 38.0,
+    "price_eur": 160000.0,
+    "price_psm_eur": 4211.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JuSnbMmRp6X",
+    "title": "3 izb. TEHLOVÝ BYT, Hlinkova ul., Košice Sever, loggia.",
+    "url": "https://www.nehnutelnosti.sk/detail/JuSnbMmRp6X/3-izb-tehlovy-bytl-hlinkova-ull-kosice-severl-loggia",
+    "city": "Sever",
+    "region": "okres Košice I",
+    "rooms": 3.0,
+    "floor_area_m2": 66.0,
+    "price_eur": 195000.0,
+    "price_psm_eur": 2955.0,
+    "status": "Novostavba",
+    "energy_cert": "V príprave",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JugJm__rdub",
+    "title": "Na PREDAJ nový 3i byt na ul Hlinková v tichej časti",
+    "url": "https://www.nehnutelnosti.sk/detail/JugJm__rdub/na-predaj-novy-3i-byt-na-ul-hlinkova-v-tichej-casti",
+    "city": "Sever",
+    "region": "okres Košice I",
+    "rooms": 3.0,
+    "floor_area_m2": 57.0,
+    "price_eur": 238900.0,
+    "price_psm_eur": 4191.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JutvyE7egut",
+    "title": "2-izbový byt na predaj na Severe",
+    "url": "https://www.nehnutelnosti.sk/detail/JutvyE7egut/2-izbovy-byt-na-predaj-na-severe",
+    "city": "Sever",
+    "region": "okres Košice I",
+    "rooms": 2.0,
+    "floor_area_m2": 54.0,
+    "price_eur": 177000.0,
+    "price_psm_eur": 3278.0,
+    "status": "",
+    "energy_cert": "nie je",
+    "last_seen": "2025-10-30"
+  }
+]

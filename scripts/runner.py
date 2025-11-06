@@ -23,22 +23,22 @@ DEFAULT_SOURCE_PRIORITY = ["nehnutelnosti_sk", "reality_sk", "bazos_sk"]
 DEFAULT_CONFIG = {
     "nehnutelnosti": {
         "enabled": True,
-        "city": ["trnava"],
+        "city": ["trnava", "kosice"],
         "transaction": "predaj",
         "categories": "11,12,300001",
-        "csv_output": "output/nehnutelnosti_trnava_byty.csv",
-        "xls_output": "output/nehnutelnosti_trnava_byty.xls",
+        "csv_output": "output/nehnutelnosti_output.csv",
+        "xls_output": "output/nehnutelnosti_output.xls",
         "max_pages": None,
-        "limit": 500,
-        "delay": 1.2,
-        "workers": 1,
+        "limit": None,
+        "delay": 1,
+        "workers": 4,
         "verbose": False,
     },
     "etl": {
         "enabled": True,
         "date": "2025-10-30",
         "site": "nehnutelnosti_sk",
-        "csv_path": "output/nehnutelnosti_trnava_byty.csv",
+        "csv_path": "output/nehnutelnosti_output.csv",
         "bucket": "b2://realestate",
         "currency": "EUR",
     },
@@ -47,10 +47,10 @@ DEFAULT_CONFIG = {
         "property_type": "byty",
         "city": ["trnava"],
         "transaction": "predaj",
-        "csv_output": "output/reality_trnava_byty.csv",
-        "xls_output": "output/reality_trnava_byty.xls",
+        "csv_output": "output/reality_output.csv",
+        "xls_output": "output/reality_output.xls",
         "max_pages": None,
-        "limit": 500,
+        "limit": None,
         "delay": 1.0,
         "workers": 1,
         "verbose": False,
@@ -59,16 +59,16 @@ DEFAULT_CONFIG = {
         "enabled": True,
         "city": "Trnava",
         "transaction": "predam",
-        "csv_output": "output/bazos_trnava_byty.csv",
-        "xls_output": "output/bazos_trnava_byty.xls",
+        "csv_output": "output/bazos_output.csv",
+        "xls_output": "output/bazos_output.xls",
         "max_pages": None,
-        "limit": 500,
+        "limit": None,
         "delay": 1.5,
         "verbose": False,
     },
     "normalizer": {
         "enabled": True,
-        "input": "./output/*byty.csv",
+        "input": "./output/*.csv",
         "out_dir": "./parquet_runs",
         "source_priority": list(DEFAULT_SOURCE_PRIORITY),
         "prev_run": None,
@@ -129,11 +129,14 @@ def build_nehnutelnosti_command(config: Dict[str, object]) -> List[str]:
 
 
 def build_etl_command(config: Dict[str, object]) -> List[str]:
+    date_value = config.get("date")
+    if not date_value:
+        date_value = datetime.now().strftime("%Y-%m-%d")
     cmd = [
         sys.executable,
         str(PROJECT_ROOT / "pipelines" / "etl.py"),
         "--date",
-        str(config["date"]),
+        str(date_value),
         "--site",
         str(config["site"]),
         "--csv-path",
@@ -380,6 +383,34 @@ def load_arguments() -> argparse.Namespace:
     parser.add_argument("--skip-nehnutelnosti", action="store_true", help="Skip Nehnutelnosti.sk scraping.")
     parser.add_argument("--skip-reality", action="store_true", help="Skip Reality.sk scraping.")
     parser.add_argument("--skip-bazos", action="store_true", help="Skip Bazos.sk scraping.")
+    parser.add_argument(
+        "--all-cities",
+        help="Apply the same city filter to every scraper (comma-separated list).",
+    )
+    parser.add_argument(
+        "--all-transaction",
+        help="Apply the same transaction type to every scraper.",
+    )
+    parser.add_argument(
+        "--all-max-pages",
+        type=int,
+        help="Apply the same max pages limit to every scraper.",
+    )
+    parser.add_argument(
+        "--all-limit",
+        type=int,
+        help="Apply the same listings limit to every scraper.",
+    )
+    parser.add_argument(
+        "--all-delay",
+        type=float,
+        help="Apply the same request delay to every scraper.",
+    )
+    parser.add_argument(
+        "--all-verbose",
+        action="store_true",
+        help="Enable verbose logging for every scraper.",
+    )
     parser.add_argument("--cities", help="Override Nehnutelnosti.sk city slugs (comma-separated).")
     parser.add_argument("--reality-cities", help="Override Reality.sk city slugs (comma-separated).")
     parser.add_argument("--bazos-city", help="Override Bazos.sk city filter.")
@@ -412,9 +443,39 @@ def main() -> None:
     reality_cfg = copy.deepcopy(DEFAULT_CONFIG["reality"])
     bazos_cfg = copy.deepcopy(DEFAULT_CONFIG["bazos"])
     etl_cfg = copy.deepcopy(DEFAULT_CONFIG["etl"])
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    etl_cfg["date"] = today_str
     norm_cfg = copy.deepcopy(DEFAULT_CONFIG["normalizer"])
     geo_cfg = copy.deepcopy(DEFAULT_CONFIG["geo_locator"])
     summarizer_cfg = copy.deepcopy(DEFAULT_CONFIG["summarizer"])
+
+    if args.all_cities:
+        shared_cities = [slug.strip() for slug in args.all_cities.split(",") if slug.strip()]
+        if shared_cities:
+            nehn_cfg["city"] = shared_cities
+            reality_cfg["city"] = shared_cities
+            bazos_cfg["city"] = ",".join(shared_cities)
+    if args.all_transaction:
+        transaction_value = str(args.all_transaction)
+        nehn_cfg["transaction"] = transaction_value
+        reality_cfg["transaction"] = transaction_value
+        bazos_cfg["transaction"] = transaction_value
+    if args.all_max_pages is not None:
+        nehn_cfg["max_pages"] = args.all_max_pages
+        reality_cfg["max_pages"] = args.all_max_pages
+        bazos_cfg["max_pages"] = args.all_max_pages
+    if args.all_limit is not None:
+        nehn_cfg["limit"] = args.all_limit
+        reality_cfg["limit"] = args.all_limit
+        bazos_cfg["limit"] = args.all_limit
+    if args.all_delay is not None:
+        nehn_cfg["delay"] = args.all_delay
+        reality_cfg["delay"] = args.all_delay
+        bazos_cfg["delay"] = args.all_delay
+    if args.all_verbose:
+        nehn_cfg["verbose"] = True
+        reality_cfg["verbose"] = True
+        bazos_cfg["verbose"] = True
 
     if args.config_date:
         etl_cfg["date"] = args.config_date
@@ -516,6 +577,7 @@ def main() -> None:
             job_cfg["site"] = job.get("site", job_cfg.get("site"))
             if args.config_site:
                 job_cfg["site"] = args.config_site
+            job_cfg["date"] = job_cfg.get("date") or today_str
             csv_path = Path(job_cfg["csv_path"])
             if not csv_path.is_absolute():
                 job_cfg["csv_path"] = str(project_root / csv_path)
@@ -525,7 +587,7 @@ def main() -> None:
     gold_latest_path: Optional[Path] = None
 
     if run_normalizer:
-        norm_cfg["input"] = str(project_root / "output" / "*byty.csv")
+        norm_cfg["input"] = str(project_root / "output" / "*.csv")
         norm_cfg["run_date"] = datetime.now().strftime("%Y-%m-%d")
         norm_command = [
             sys.executable,
@@ -542,6 +604,17 @@ def main() -> None:
         prev_run = norm_cfg.get("prev_run")
         if prev_run:
             norm_command.extend(["--prev-run", prev_run])
+        if geo_cfg.get("enabled", True) and geo_cfg.get("user_agent"):
+            norm_command.append("--geo-enabled")
+            norm_command.extend(["--geo-user-agent", str(geo_cfg["user_agent"])])
+            norm_command.extend(["--geo-country", str(geo_cfg.get("country", "Slovakia"))])
+            geo_cache = Path(geo_cfg.get("cache", "data/geocode_cache.json"))
+            if not geo_cache.is_absolute():
+                geo_cache = project_root / geo_cache
+            norm_command.extend(["--geo-cache", str(geo_cache)])
+            max_new = geo_cfg.get("max_new")
+            if max_new is not None:
+                norm_command.extend(["--geo-max-new", str(max_new)])
         run_command("normalizer", norm_command, project_root)
         gold_latest_path = run_deduplicate_pipeline(
             project_root=project_root,

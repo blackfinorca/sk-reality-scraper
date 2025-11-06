@@ -12,7 +12,7 @@ import re
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
 
 import pandas as pd
 
@@ -48,7 +48,7 @@ except ImportError:  # pragma: no cover - exercised only when dependency missing
 logger = logging.getLogger(__name__)
 
 _PREV_SOURCES_CACHE: Dict[int, Dict[Tuple[str, str], Dict[str, Any]]] = {}
-_PREV_GOLD_CACHE: Dict[int, Dict[str, List[str]]] = {}
+_PREV_GOLD_CACHE: Dict[int, Dict[str, Dict[str, Any]]] = {}
 
 # Allow a small bucket neighbourhood so ±3% size differences survive rounding.
 _SIZE_BUCKET_OFFSETS = (-2, -1, 0, 1, 2)
@@ -190,13 +190,16 @@ def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return radius * c
 
 
-def union_list(uf: UnionFind, ids: List[int]) -> int:
-    """Union every item in ids into the same component."""
+def union_list(uf: UnionFind, ids: List[int], can_union: Optional[Callable[[int, int], bool]] = None) -> int:
+    """Union every item in ids into the same component respecting optional guard."""
     if len(ids) < 2:
         return 0
     merges = 0
-    pivot = ids[0]
-    for other in ids[1:]:
+    ordered = sorted(ids)
+    pivot = ordered[0]
+    for other in ordered[1:]:
+        if can_union and not can_union(pivot, other):
+            continue
         if uf.union(pivot, other):
             merges += 1
     return merges
@@ -305,6 +308,20 @@ def _dedupe_preserve_order(tokens: Iterable[str]) -> List[str]:
         seen.add(token)
         ordered.append(token)
     return ordered
+
+
+def _numeric_value(value: Any) -> Optional[float]:
+    """Return numeric value as float or None."""
+    if value is None:
+        return None
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    if pd.isna(value):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def _timestamp_value(ts: Any) -> float:
@@ -489,6 +506,42 @@ def build_golden_row(
                 size_m2 = float(size_choice["value"])
                 record_provenance("size_m2", size_choice.get("record"), "priority")
 
+    def sort_candidates(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        def key(item: Dict[str, Any]) -> Tuple[float, int, int]:
+            record = item.get("record") or {}
+            return (
+                -_timestamp_value(item.get("updated_at")),
+                _priority_index(source_priority, item.get("portal")),
+                record.get("row_id", 0),
+            )
+
+        return sorted(items, key=key)
+
+    price_candidates = [
+        {
+            "value": _numeric_value(rec.get("price")),
+            "portal": rec.get("portal"),
+            "source_url": rec.get("source_url"),
+            "updated_at": rec.get("_updated_at_ts"),
+            "record": rec,
+        }
+        for rec in records
+        if _numeric_value(rec.get("price")) is not None
+    ]
+    price = None
+    if price_candidates:
+        ordered_prices = sort_candidates(price_candidates)
+        price_choice = ordered_prices[0]
+        price = float(price_choice["value"]) if price_choice["value"] is not None else None
+        record_provenance("price", price_choice.get("record"), "latest")
+        baseline = price if price is not None else None
+        if baseline and any(
+            abs(candidate["value"] - baseline) / max(abs(baseline), 1.0) > 0.05
+            for candidate in ordered_prices
+            if candidate["value"] is not None
+        ):
+            conflicts["price_disagree"] = True
+
     room_values = [
         rec.get("rooms")
         for rec in records
@@ -672,6 +725,30 @@ def build_golden_row(
     updated_at = primary.get("updated_at")
     record_provenance("updated_at", primary, "primary_recent")
 
+    status_candidates = [
+        {
+            "value": _optional_value(rec.get("status")),
+            "portal": rec.get("portal"),
+            "source_url": rec.get("source_url"),
+            "updated_at": rec.get("_updated_at_ts"),
+            "record": rec,
+        }
+        for rec in records
+        if _optional_value(rec.get("status")) is not None
+    ]
+    status = None
+    if status_candidates:
+        ordered_status = sort_candidates(status_candidates)
+        status_choice = ordered_status[0]
+        status = status_choice["value"]
+        record_provenance("status", status_choice.get("record"), "latest")
+        if len({item["value"] for item in ordered_status if item["value"] is not None}) > 1:
+            conflicts["status_disagree"] = True
+
+    price_psm = None
+    if price is not None and size_m2 is not None and not math.isnan(size_m2) and size_m2 != 0:
+        price_psm = price / size_m2
+
     golden_row = {
         "address_norm": address_norm,
         "address_ascii": address_ascii,
@@ -680,6 +757,8 @@ def build_golden_row(
         "unit_no": unit_no,
         "size_m2": size_m2,
         "rooms": rooms,
+        "price": price,
+        "price_psm": price_psm,
         "floor": floor,
         "floors_total": floors_total,
         "elevator": elevator,
@@ -688,6 +767,7 @@ def build_golden_row(
         "lat": lat,
         "lng": lng,
         "updated_at": updated_at,
+        "status": status,
         "primary_portal": primary.get("portal"),
         "primary_source_url": primary.get("source_url"),
         "photo_fingerprints": photo_tokens,
@@ -715,18 +795,26 @@ def _prev_sources_lookup(prev_sources: pd.DataFrame) -> Dict[Tuple[str, str], Di
     return mapping
 
 
-def _prev_gold_lookup(prev_gold: pd.DataFrame) -> Dict[str, List[str]]:
+def _prev_gold_lookup(prev_gold: pd.DataFrame) -> Dict[str, Dict[str, Any]]:
     cache_key = id(prev_gold)
     if cache_key in _PREV_GOLD_CACHE:
         return _PREV_GOLD_CACHE[cache_key]
-    mapping: Dict[str, List[str]] = {}
+    mapping: Dict[str, Dict[str, Any]] = {}
     for row in prev_gold.itertuples(index=False):
         listing_id = getattr(row, "listing_id", None)
         if listing_id is None:
             continue
         tokens_raw = getattr(row, "photo_fingerprints", None)
         tokens = _ensure_token_list(tokens_raw)
-        mapping[str(listing_id)] = tokens
+        price_raw = getattr(row, "price", None) if hasattr(row, "price") else None
+        price_value = _numeric_value(price_raw)
+        status_raw = getattr(row, "status", None) if hasattr(row, "status") else None
+        status_value = _optional_value(status_raw)
+        mapping[str(listing_id)] = {
+            "photo_fingerprints": tokens,
+            "price": price_value,
+            "status": status_value,
+        }
     _PREV_GOLD_CACHE[cache_key] = mapping
     return mapping
 
@@ -769,21 +857,36 @@ def build_history_row(
     listing_id: str,
     run_date: str,
     new_tokens: List[str],
+    new_price: Optional[float],
+    new_status: Optional[str],
     prev_gold: Optional[pd.DataFrame],
 ) -> Dict[str, Any]:
     """Return per-run history snapshot for a listing."""
-    prev_tokens_map: Dict[str, List[str]] = {}
+    prev_lookup: Dict[str, Dict[str, Any]] = {}
     if prev_gold is not None:
-        prev_tokens_map = _prev_gold_lookup(prev_gold)
-    prev_tokens = set(prev_tokens_map.get(listing_id, []))
+        prev_lookup = _prev_gold_lookup(prev_gold)
+    prev_entry = prev_lookup.get(listing_id, {})
+    prev_tokens = set(prev_entry.get("photo_fingerprints", []))
     new_token_set = set(new_tokens)
-    photo_changed = bool(prev_tokens_map and prev_tokens != new_token_set)
+    photo_changed = bool(prev_lookup and prev_tokens != new_token_set)
+    prev_price = prev_entry.get("price")
+    prev_status = prev_entry.get("status")
+    price_value = None if new_price is None or (isinstance(new_price, float) and math.isnan(new_price)) else new_price
+    price_delta = None
+    if price_value is not None and prev_price is not None:
+        price_delta = price_value - prev_price
+    status_clean = _optional_value(new_status)
+    status_changed = False
+    if prev_status is not None and status_clean is not None:
+        status_changed = prev_status != status_clean
     return {
         "listing_id": listing_id,
         "run_date": run_date,
         "photo_changed": photo_changed,
-        "price": pd.NA,
-        "status": pd.NA,
+        "price": price_value if price_value is not None else pd.NA,
+        "status": status_clean if status_clean is not None else pd.NA,
+        "price_delta": price_delta if price_delta is not None else pd.NA,
+        "status_changed": status_changed if prev_status is not None and status_clean is not None else False,
     }
 
 
@@ -819,6 +922,18 @@ def _prepare_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         lambda v: math.floor(v * 1000) if v is not None and not math.isnan(v) else None
     )
     df["_updated_at_ts"] = pd.to_datetime(df.get("updated_at"), errors="coerce", utc=False)
+    if "price" in df.columns:
+        df["price"] = pd.to_numeric(df.get("price"), errors="coerce")
+    else:
+        df["price"] = pd.NA
+    if "price_psm" in df.columns:
+        df["price_psm"] = pd.to_numeric(df.get("price_psm"), errors="coerce")
+    else:
+        df["price_psm"] = pd.NA
+    if "status" in df.columns:
+        df["status"] = df["status"].apply(_optional_value)
+    else:
+        df["status"] = pd.NA
     return df
 
 
@@ -832,6 +947,8 @@ def _empty_gold_df() -> pd.DataFrame:
             "project_name_norm": pd.Series(dtype="string"),
             "unit_no": pd.Series(dtype="string"),
             "size_m2": pd.Series(dtype="float64"),
+            "price": pd.Series(dtype="float64"),
+            "price_psm": pd.Series(dtype="float64"),
             "rooms": pd.Series(dtype="float64"),
             "floor": pd.Series(dtype="float64"),
             "floors_total": pd.Series(dtype="float64"),
@@ -841,6 +958,7 @@ def _empty_gold_df() -> pd.DataFrame:
             "lat": pd.Series(dtype="float64"),
             "lng": pd.Series(dtype="float64"),
             "updated_at": pd.Series(dtype="string"),
+            "status": pd.Series(dtype="string"),
             "primary_portal": pd.Series(dtype="string"),
             "primary_source_url": pd.Series(dtype="string"),
             "photo_fingerprints": pd.Series(dtype="object"),
@@ -875,6 +993,8 @@ def _empty_history_df() -> pd.DataFrame:
             "photo_changed": pd.Series(dtype="boolean"),
             "price": pd.Series(dtype="float64"),
             "status": pd.Series(dtype="string"),
+            "price_delta": pd.Series(dtype="float64"),
+            "status_changed": pd.Series(dtype="boolean"),
         }
     )
 
@@ -900,14 +1020,22 @@ def deduplicate_and_merge(
     logger.info("Deduplicating %s normalized listings.", len(df))
 
     working_df = _prepare_dataframe(df)
+    working_df["_portal_priority"] = working_df["portal"].apply(lambda p: _priority_index(source_priority, p))
+    working_df = working_df.sort_values(["_portal_priority", "row_id"]).reset_index(drop=True)
+    working_df["row_id"] = range(len(working_df))
     records = working_df.to_dict("records")
+    priority_lookup = working_df["_portal_priority"].tolist()
+
+    def can_union(idx: int, other: int) -> bool:
+        return priority_lookup[idx] <= priority_lookup[other]
+
     uf = UnionFind(len(working_df))
     merge_counts = {rule: 0 for rule in ("P1", "A1", "A2", "I1", "G1", "B1")}
 
     # Rule P1: photo fingerprint overlap.
     photo_index = build_photo_index(working_df)
     for ids in photo_index.values():
-        merge_counts["P1"] += union_list(uf, ids)
+        merge_counts["P1"] += union_list(uf, ids, can_union=can_union)
 
     # Rule A1: exact address match within size tolerance.
     addr_buckets = build_addr_buckets(working_df)
@@ -934,6 +1062,8 @@ def deduplicate_and_merge(
                 if size_b is None or math.isnan(size_b):
                     continue
                 if not jaccard_size_close(size_a, size_b):
+                    continue
+                if not can_union(idx, other):
                     continue
                 if uf.union(idx, other):
                     merge_counts["A1"] += 1
@@ -968,6 +1098,8 @@ def deduplicate_and_merge(
                 if not jaccard_size_close(size_a, size_b):
                     continue
                 if token_set_ratio(ascii_key, ascii_other) >= 90:
+                    if not can_union(idx, other):
+                        continue
                     if uf.union(idx, other):
                         merge_counts["A2"] += 1
 
@@ -987,7 +1119,7 @@ def deduplicate_and_merge(
         }
         if len(portals) < 2:
             continue
-        merge_counts["I1"] += union_list(uf, rows)
+        merge_counts["I1"] += union_list(uf, rows, can_union=can_union)
 
     # Rule G1: geo proximity within 60m, same town, size tolerance.
     geo_cells = build_geo_cells(working_df)
@@ -1027,6 +1159,8 @@ def deduplicate_and_merge(
                 if lat_b is None or lng_b is None:
                     continue
                 if haversine_m(lat, lng, lat_b, lng_b) <= 60.0:
+                    if not can_union(idx, other):
+                        continue
                     if uf.union(idx, other):
                         merge_counts["G1"] += 1
 
@@ -1059,8 +1193,12 @@ def deduplicate_and_merge(
                         if size_b is None or math.isnan(size_b):
                             continue
                         if jaccard_size_close(size_a, size_b):
+                            if not can_union(idx_in_bucket, other):
+                                continue
                             if uf.union(idx_in_bucket, other):
                                 merge_counts["B1"] += 1
+
+    working_df = working_df.drop(columns=["_portal_priority"])
 
     clusters = uf.groups()
     logger.info(
@@ -1086,6 +1224,8 @@ def deduplicate_and_merge(
                 golden_row["listing_id"],
                 run_date,
                 golden_row["photo_fingerprints"],
+                golden_row.get("price"),
+                golden_row.get("status"),
                 prev_gold,
             )
         )
@@ -1101,6 +1241,18 @@ def deduplicate_and_merge(
         gold_listings["photo_fingerprints"] = gold_listings["photo_fingerprints"].apply(
             lambda vals: list(vals) if isinstance(vals, (list, tuple)) else []
         )
+        gold_listings["price"] = pd.to_numeric(gold_listings.get("price"), errors="coerce").astype("Int64")
+        gold_listings["price_psm"] = pd.to_numeric(gold_listings.get("price_psm"), errors="coerce")
+        gold_listings["status"] = gold_listings["status"].apply(_optional_value).astype("string")
+
+    if not gold_listing_history.empty:
+        gold_listing_history["photo_changed"] = gold_listing_history["photo_changed"].astype(bool)
+        gold_listing_history["price"] = pd.to_numeric(gold_listing_history.get("price"), errors="coerce").astype("Int64")
+        gold_listing_history["price_delta"] = pd.to_numeric(
+            gold_listing_history.get("price_delta"), errors="coerce"
+        )
+        gold_listing_history["status_changed"] = gold_listing_history["status_changed"].fillna(False).astype(bool)
+        gold_listing_history["status"] = gold_listing_history["status"].apply(_optional_value).astype("string")
 
     return gold_listings, gold_listing_sources, gold_listing_history
 

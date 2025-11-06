@@ -1,0 +1,44 @@
+[
+  {
+    "listing_uid": "JuSHMb8jJx0",
+    "title": "3-izbový byt s loggiou, Košice – Nad Jazerom",
+    "url": "https://www.nehnutelnosti.sk/detail/JuSHMb8jJx0/3-izbovy-byt-s-loggioul-kosice--nad-jazerom",
+    "city": "Nad jazerom",
+    "region": "okres Košice IV",
+    "rooms": 3.0,
+    "floor_area_m2": 68.0,
+    "price_eur": 189900.0,
+    "price_psm_eur": 2789.0,
+    "status": "Novostavba",
+    "energy_cert": "nie je",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JumK8P1dngJ",
+    "title": "Veľlmi pekný 3 izb. byt, 68 m2 + loggia, čiasť. rek., Gagarinovo námestie, NAD JAZEROM",
+    "url": "https://www.nehnutelnosti.sk/detail/JumK8P1dngJ/vellmi-pekny-3-izb-bytl-68-m2--loggial-ciast-rekl-gagarinovo-namestiel-nad-jazerom",
+    "city": "Nad jazerom",
+    "region": "okres Košice IV",
+    "rooms": 3.0,
+    "floor_area_m2": 68.0,
+    "price_eur": 189000.0,
+    "price_psm_eur": 2779.0,
+    "status": "Novostavba",
+    "energy_cert": "nie je",
+    "last_seen": "2025-10-30"
+  },
+  {
+    "listing_uid": "JuuNhwcjGGH",
+    "title": "NOVOSTAVBA 3 IZBOVÝ DOM, Rybárska ul., IBV Pri jazere, pozemok 323 m2",
+    "url": "https://www.nehnutelnosti.sk/detail/JuuNhwcjGGH/novostavba-3-izbovy-doml-rybarska-ull-ibv-pri-jazerel-pozemok-323-m2",
+    "city": "Nad jazerom",
+    "region": "okres Košice IV",
+    "rooms": 3.0,
+    "floor_area_m2": 70.0,
+    "price_eur": 325000.0,
+    "price_psm_eur": 4643.0,
+    "status": "Novostavba",
+    "energy_cert": "A",
+    "last_seen": "2025-10-30"
+  }
+]
