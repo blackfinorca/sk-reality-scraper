@@ -4,3 +4,12 @@
 - `runner.py` orchestrates scrapers, ETL, and normalizer steps with CLI overrides, enabling flexible pipeline runs.
 - `etl.py` turns raw CSV listings into silver tables, builds stable IDs and hashes, writes parquet history, and produces city-level JSON exports.
 - `normalizer.py` consolidates multi-source listings, deduplicates with union-find clustering, standardizes attributes, and writes partitioned parquet snapshots.
+
+
+TODO:
+- top quickfilter on top of the map to choose the budget
+- costs calculator for the flat
+    - matching the areas or geo proximity with sale/rent and compare
+    - ai helper to read through the descriptions and extract costing
+- morgage calculator
+

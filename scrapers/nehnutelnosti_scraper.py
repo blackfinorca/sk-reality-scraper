@@ -17,8 +17,6 @@ import requests
 from bs4 import BeautifulSoup
 from requests import Response, Session
 from requests.exceptions import HTTPError
-from tqdm import tqdm
-
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -31,6 +29,7 @@ from listing_schema import (
     sanitize_csv_value,
 )
 from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
+from scrapers.progress import PercentProgress
 
 
 LISTING_ID_PATTERN = re.compile(r"/detail/([^/]+)/")
@@ -522,16 +521,18 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
     all_listings: List[Listing] = []
     seen_ids: set[str] = set()
     detail_links: List[Tuple[str, str]] = []
-    progress_bar: Optional[tqdm] = None
-
     worker_count = max(1, workers)
+    progress = PercentProgress(f"Nehnuteľnosti.sk · {canonical_city}")
+    processed_count = 0
+    detail_target = 0
 
     def handle_listing(listing: Listing) -> None:
+        nonlocal processed_count
         all_listings.append(listing)
-        if progress_bar:
-            progress_bar.update(1)
+        processed_count += 1
         if csv_writer and csv_file:
             write_listing_csv_row(listing, csv_writer, csv_file)
+        progress.update_phase(processed_count, detail_target, 20, 100)
         logging.debug("Scraped %s listings so far.", len(all_listings))
 
     def fetch_listing_detail_concurrent(listing_id: str, link: str) -> Listing:
@@ -546,78 +547,79 @@ def scrape_listings(city: str, transaction: str, categories: Sequence[str], max_
         return listing
 
     page = 1
-    while True:
-        if max_pages and page > max_pages:
-            logging.info("Reached max_pages=%s while collecting links.", max_pages)
-            break
-
-        params = build_query_params(categories, page)
-        logging.info("Fetching search page %s", page)
-        try:
-            response = request_with_retry(session, base_url, params=params)
-        except HTTPError as exc:
-            status_code = exc.response.status_code if exc.response is not None else None
-            if status_code == 404:
-                logging.info("Search page %s returned 404, assuming no more pages.", page)
+    try:
+        while True:
+            if max_pages and page > max_pages:
+                logging.info("Reached max_pages=%s while collecting links.", max_pages)
                 break
-            session.close()
-            raise
 
-        listings, _ = parse_listing_page(response.text, base_url)
-        new_links: List[Tuple[str, str]] = []
-        for listing_id, link in listings:
-            if listing_id in seen_ids:
-                continue
-            seen_ids.add(listing_id)
-            new_links.append((listing_id, link))
+            params = build_query_params(categories, page)
+            logging.info("Fetching search page %s", page)
+            try:
+                response = request_with_retry(session, base_url, params=params)
+            except HTTPError as exc:
+                status_code = exc.response.status_code if exc.response is not None else None
+                if status_code == 404:
+                    logging.info("Search page %s returned 404, assuming no more pages.", page)
+                    break
+                raise
 
-        if not new_links:
-            logging.info("No new listings found on page %s, stopping link collection.", page)
-            break
-
-        detail_links.extend(new_links)
-        if limit and len(detail_links) >= limit:
-            detail_links = detail_links[:limit]
-            logging.info("Reached listing limit (%s) while collecting links.", limit)
-            break
-
-        page += 1
-        gentle_pause(delay)
-
-    if not detail_links:
-        session.close()
-        logging.warning("No listings collected for %s.", canonical_city)
-        return []
-
-    progress_bar = tqdm(total=len(detail_links), unit="listing", desc=f"Scraping {canonical_city}")
-
-    if worker_count == 1:
-        for listing_id, link in detail_links:
-            logging.info("Fetching detail for %s", listing_id)
-            detail_response = request_with_retry(session, link)
-            listing = parse_listing_detail(listing_id, link, detail_response.text, canonical_city, transaction)
-            gentle_pause(delay)
-            handle_listing(listing)
-    else:
-        with ThreadPoolExecutor(max_workers=worker_count) as executor:
-            future_to_listing = {
-                executor.submit(fetch_listing_detail_concurrent, listing_id, link): listing_id
-                for listing_id, link in detail_links
-            }
-            for future in as_completed(future_to_listing):
-                listing_id = future_to_listing[future]
-                try:
-                    listing = future.result()
-                except Exception as exc:  # pylint: disable=broad-except
-                    logging.error("Failed to fetch listing %s: %s", listing_id, exc)
+            listings, _ = parse_listing_page(response.text, base_url)
+            new_links: List[Tuple[str, str]] = []
+            for listing_id, link in listings:
+                if listing_id in seen_ids:
                     continue
+                seen_ids.add(listing_id)
+                new_links.append((listing_id, link))
+
+            if not new_links:
+                logging.info("No new listings found on page %s, stopping link collection.", page)
+                break
+
+            detail_links.extend(new_links)
+            progress.set_postfix(f"URL: {len(detail_links)}")
+            if limit and len(detail_links) >= limit:
+                detail_links = detail_links[:limit]
+                logging.info("Reached listing limit (%s) while collecting links.", limit)
+                break
+
+            page += 1
+            gentle_pause(delay)
+
+        if not detail_links:
+            logging.warning("No listings collected for %s.", canonical_city)
+            return []
+
+        detail_target = len(detail_links)
+        progress.advance_to(20)
+
+        if worker_count == 1:
+            for listing_id, link in detail_links:
+                logging.info("Fetching detail for %s", listing_id)
+                detail_response = request_with_retry(session, link)
+                listing = parse_listing_detail(listing_id, link, detail_response.text, canonical_city, transaction)
+                gentle_pause(delay)
                 handle_listing(listing)
+        else:
+            with ThreadPoolExecutor(max_workers=worker_count) as executor:
+                future_to_listing = {
+                    executor.submit(fetch_listing_detail_concurrent, listing_id, link): listing_id
+                    for listing_id, link in detail_links
+                }
+                for future in as_completed(future_to_listing):
+                    listing_id = future_to_listing[future]
+                    try:
+                        listing = future.result()
+                    except Exception as exc:  # pylint: disable=broad-except
+                        logging.error("Failed to fetch listing %s: %s", listing_id, exc)
+                        continue
+                    handle_listing(listing)
 
-    progress_bar.close()
-    session.close()
-    logging.info("Finished scraping %s listings from Nehnutelnosti.sk.", len(all_listings))
-    return all_listings
-
+        logging.info("Finished scraping %s listings from Nehnutelnosti.sk.", len(all_listings))
+        return all_listings
+    finally:
+        session.close()
+        progress.close()
 
 def listings_to_dataframe(listings: Sequence[Listing]) -> pd.DataFrame:
     rows = [asdict(listing) for listing in listings]

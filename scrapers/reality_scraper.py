@@ -6,8 +6,10 @@ import math
 import re
 import time
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
 from pathlib import Path
+from queue import Queue
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 from urllib.parse import urlencode, urlparse
 
@@ -21,7 +23,6 @@ import requests
 from bs4 import BeautifulSoup
 from requests import Response, Session
 from requests.exceptions import HTTPError
-from tqdm import tqdm
 
 from listing_schema import (
     COLUMN_ORDER,
@@ -31,6 +32,7 @@ from listing_schema import (
     sanitize_csv_value,
 )
 from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
+from scrapers.progress import PercentProgress
 
 
 DEFAULT_HEADERS = {
@@ -69,6 +71,30 @@ def create_session() -> Session:
     session.headers.update(DEFAULT_HEADERS)
     session.timeout = 30  # type: ignore[attr-defined]
     return session
+
+
+class SessionPool:
+    """Simple reusable session pool so concurrent workers avoid recreating TCP connections."""
+
+    def __init__(self, size: int) -> None:
+        pool_size = max(1, size)
+        self._queue: Queue[Session] = Queue()
+        self._sessions: List[Session] = []
+        for _ in range(pool_size):
+            sess = create_session()
+            self._sessions.append(sess)
+            self._queue.put(sess)
+
+    def acquire(self) -> Session:
+        return self._queue.get()
+
+    def release(self, session: Session) -> None:
+        self._queue.put(session)
+
+    def close(self) -> None:
+        while self._sessions:
+            session = self._sessions.pop()
+            session.close()
 
 
 def request_with_retry(session: Session, url: str, params: Optional[Dict[str, str]] = None,
@@ -373,15 +399,15 @@ def scrape_listings(property_type: str, city: str, transaction: str, max_pages: 
     session = create_session()
     canonical_city = canonical_city_from_slug(city) or city
     base_url = build_search_url(property_type, city, transaction)
-    all_urls: List[str] = []
+    progress = PercentProgress(f"Reality.sk · {canonical_city}")
+    progress.set_postfix("Zbieram URL")
+    collected_links: List[str] = []
     page = 1
-    progress_bar = (
-        tqdm(total=limit, unit="listing", desc=f"Collecting URLs ({canonical_city})") if limit else None
-    )
 
     try:
         while True:
             if max_pages and page > max_pages:
+                logging.info("Reached max_pages=%s while collecting URLs.", max_pages)
                 break
             params = {"page": str(page)} if page > 1 else None
             logging.info("Fetching search page %s", page)
@@ -391,42 +417,73 @@ def scrape_listings(property_type: str, city: str, transaction: str, max_pages: 
                 logging.info("No listings found on page %s, stopping.", page)
                 break
             for url in urls:
-                if url not in all_urls:
-                    all_urls.append(url)
-                    if progress_bar:
-                        progress_bar.update(1)
-                    if limit and len(all_urls) >= limit:
-                        break
-            if limit and len(all_urls) >= limit:
+                if url in collected_links:
+                    continue
+                collected_links.append(url)
+                progress.set_postfix(f"URL: {len(collected_links)}")
+                if limit and len(collected_links) >= limit:
+                    break
+            if limit and len(collected_links) >= limit:
                 break
             page += 1
-            if limit is None and len(urls) == 0:
-                break
-            time.sleep(delay)
-    finally:
-        if progress_bar:
-            progress_bar.close()
+            if delay:
+                time.sleep(delay)
 
-    listings: List[ListingRecord] = []
-    listing_bar = (
-        tqdm(total=len(all_urls), unit="listing", desc=f"Scraping {canonical_city}") if all_urls else None
-    )
-    for url in all_urls:
+        if not collected_links:
+            logging.warning("No listings collected for %s.", canonical_city)
+            return []
+
+        progress.advance_to(20)
+        listings: List[ListingRecord] = []
+        total_links = len(collected_links)
+        processed = 0
+
+        def handle_listing(listing: ListingRecord) -> None:
+            nonlocal processed
+            listings.append(listing)
+            processed += 1
+            if csv_writer and csv_file:
+                write_listing_csv_row(listing, csv_writer, csv_file)
+            progress.update_phase(processed, total_links, 20, 100)
+
+        worker_count = max(1, min(workers, total_links))
+        session_pool = SessionPool(worker_count)
+
+        def fetch_listing_detail(url: str) -> Optional[ListingRecord]:
+            session_obj = session_pool.acquire()
+            try:
+                return parse_listing_detail(session_obj, url, transaction, canonical_city)
+            except Exception as exc:  # pylint: disable=broad-except
+                logging.error("Failed to parse %s: %s", url, exc)
+                return None
+            finally:
+                session_pool.release(session_obj)
+
+        should_throttle = delay > 0 and worker_count == 1
+
         try:
-            listing = parse_listing_detail(session, url, transaction, canonical_city)
-        except Exception as exc:  # pylint: disable=broad-except
-            logging.error("Failed to parse %s: %s", url, exc)
-            continue
-        listings.append(listing)
-        if csv_writer and csv_file:
-            write_listing_csv_row(listing, csv_writer, csv_file)
-        if listing_bar:
-            listing_bar.update(1)
-        time.sleep(delay)
-    if listing_bar:
-        listing_bar.close()
-    logging.info("Finished scraping %s listings.", len(listings))
-    return listings
+            if worker_count == 1:
+                for url in collected_links:
+                    listing = fetch_listing_detail(url)
+                    if listing:
+                        handle_listing(listing)
+                    if should_throttle:
+                        time.sleep(delay)
+            else:
+                with ThreadPoolExecutor(max_workers=worker_count) as executor:
+                    futures = [executor.submit(fetch_listing_detail, url) for url in collected_links]
+                    for future in as_completed(futures):
+                        listing = future.result()
+                        if listing:
+                            handle_listing(listing)
+        finally:
+            session_pool.close()
+
+        logging.info("Finished scraping %s listings.", len(listings))
+        return listings
+    finally:
+        session.close()
+        progress.close()
 
 
 def listings_to_dataframe(listings: Sequence[ListingRecord]):

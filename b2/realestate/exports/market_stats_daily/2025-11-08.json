@@ -1,0 +1,66 @@
+{
+  "date": "2025-11-08",
+  "site": "bazos_sk",
+  "currency": "EUR",
+  "total_listings": 1836,
+  "avg_price_eur": 161849.24380952382,
+  "median_price_eur": 175500.0,
+  "avg_price_psm_eur": 2744.204962326474,
+  "median_price_psm_eur": 2971.0,
+  "cities": [
+    {
+      "city": "Džungľa",
+      "count": 1,
+      "avg_price_eur": 442223.0,
+      "median_price_eur": 442223.0,
+      "avg_price_psm_eur": 358.0,
+      "median_price_psm_eur": 358.0,
+      "avg_floor_area_m2": 1234.0
+    },
+    {
+      "city": "Košice",
+      "count": 889,
+      "avg_price_eur": 159685.74505238648,
+      "median_price_eur": 175900.0,
+      "avg_price_psm_eur": 2805.7665311745122,
+      "median_price_psm_eur": 3142.5,
+      "avg_floor_area_m2": 65.84262701363073
+    },
+    {
+      "city": "Slovensko",
+      "count": 11,
+      "avg_price_eur": 212150.25,
+      "median_price_eur": 197750.0,
+      "avg_price_psm_eur": 2305.50625,
+      "median_price_psm_eur": 2642.0,
+      "avg_floor_area_m2": 81.1
+    },
+    {
+      "city": "Topoľová",
+      "count": 1,
+      "avg_price_eur": 169500.0,
+      "median_price_eur": 169500.0,
+      "avg_price_psm_eur": 3260.0,
+      "median_price_psm_eur": 3260.0,
+      "avg_floor_area_m2": 52.0
+    },
+    {
+      "city": "Trnava",
+      "count": 912,
+      "avg_price_eur": 161746.01608187135,
+      "median_price_eur": 174990.0,
+      "avg_price_psm_eur": 2650.092087597092,
+      "median_price_psm_eur": 2767.0,
+      "avg_floor_area_m2": 80.1006289308176
+    },
+    {
+      "city": "Vyšné Opátske",
+      "count": 22,
+      "avg_price_eur": 218150.18181818182,
+      "median_price_eur": 213447.0,
+      "avg_price_psm_eur": 3372.090909090909,
+      "median_price_psm_eur": 3333.0,
+      "avg_floor_area_m2": 69.18181818181819
+    }
+  ]
+}

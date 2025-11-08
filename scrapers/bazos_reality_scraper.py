@@ -3,6 +3,7 @@ import csv
 import logging
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
@@ -16,7 +17,6 @@ import requests
 from bs4 import BeautifulSoup
 from requests import Response, Session
 from requests.exceptions import HTTPError
-from tqdm import tqdm
 
 from listing_schema import (
     COLUMN_ORDER,
@@ -26,6 +26,7 @@ from listing_schema import (
     sanitize_csv_value,
 )
 from scrapers.city_aliases import canonical_city_from_slug, normalize_town_for_city
+from scrapers.progress import PercentProgress
 
 
 DEFAULT_HEADERS = {
@@ -430,7 +431,7 @@ def write_listing_csv_row(listing: ListingRecord, csv_writer: csv.DictWriter, cs
 
 
 def scrape_listings(city: str, transaction: str, max_pages: Optional[int],
-                    delay: float, limit: Optional[int],
+                    delay: float, limit: Optional[int], workers: int,
                     csv_writer: Optional[csv.DictWriter] = None, csv_file=None) -> List[ListingRecord]:
     session = create_session()
     base_url = build_search_url(city, transaction)
@@ -443,65 +444,94 @@ def scrape_listings(city: str, transaction: str, max_pages: Optional[int],
     canonical_city = canonical_city_from_slug(city) or city
     current_url: Optional[str] = base_url
     page_index = 0
-    while current_url:
-        if current_url in visited_pages:
-            logging.debug("Already visited %s, stopping pagination loop.", current_url)
-            break
-        if max_pages is not None and page_index >= max_pages:
-            logging.debug("Reached max_pages=%s, stopping pagination.", max_pages)
-            break
-        logging.info("Fetching search page %s: %s", page_index + 1, current_url)
-        try:
-            response = request_with_retry(session, current_url)
-        except HTTPError as exc:
-            logging.error("Search page request failed: %s", exc)
-            break
-
-        page_index += 1
-        visited_pages.add(current_url)
-        urls, next_page = parse_search_page(response.text, current_url)
-        if not urls and not next_page:
-            logging.info("No listings found at %s", current_url)
-
-        for url in urls:
-            if url in detail_urls:
-                continue
-            detail_urls.append(url)
-            if limit and len(detail_urls) >= limit:
-                break
-        if limit and len(detail_urls) >= limit:
-            break
-        if next_page and next_page not in visited_pages:
-            current_url = next_page
-        else:
-            current_url = None
+    progress = PercentProgress(f"Bazos.sk · {canonical_city}")
+    processed = 0
+    total_expected = 0
 
     listings: List[ListingRecord] = []
-    detail_bar = (
-        tqdm(total=len(detail_urls), unit="listing", desc=f"Scraping {canonical_city}")
-        if detail_urls
-        else None
-    )
-    try:
-        for url in detail_urls:
-            try:
-                listing = parse_listing_detail(session, url, transaction, default_city=canonical_city)
-            except Exception as exc:  # pylint: disable=broad-except
-                logging.error("Failed to parse %s: %s", url, exc)
-                continue
-            listings.append(listing)
-            if csv_writer and csv_file:
-                write_listing_csv_row(listing, csv_writer, csv_file)
-            if detail_bar:
-                detail_bar.update(1)
-            time.sleep(delay)
-    finally:
-        if detail_bar:
-            detail_bar.close()
-        session.close()
-    logging.info("Finished scraping %s listings from Bazos.sk.", len(listings))
-    return listings
 
+    def handle_listing(listing: ListingRecord) -> None:
+        nonlocal processed
+        listings.append(listing)
+        processed += 1
+        if csv_writer and csv_file:
+            write_listing_csv_row(listing, csv_writer, csv_file)
+        progress.update_phase(processed, total_expected, 20, 100)
+
+    worker_count = max(1, workers)
+
+    def fetch_listing_detail(url: str) -> Optional[ListingRecord]:
+        local_session = create_session()
+        try:
+            return parse_listing_detail(local_session, url, transaction, default_city=canonical_city)
+        except Exception as exc:  # pylint: disable=broad-except
+            logging.error("Failed to parse %s: %s", url, exc)
+            return None
+        finally:
+            local_session.close()
+
+    try:
+        while current_url:
+            if current_url in visited_pages:
+                logging.debug("Already visited %s, stopping pagination loop.", current_url)
+                break
+            if max_pages is not None and page_index >= max_pages:
+                logging.debug("Reached max_pages=%s, stopping pagination.", max_pages)
+                break
+            logging.info("Fetching search page %s: %s", page_index + 1, current_url)
+            try:
+                response = request_with_retry(session, current_url)
+            except HTTPError as exc:
+                logging.error("Search page request failed: %s", exc)
+                break
+
+            page_index += 1
+            visited_pages.add(current_url)
+            urls, next_page = parse_search_page(response.text, current_url)
+            if not urls and not next_page:
+                logging.info("No listings found at %s", current_url)
+
+            for url in urls:
+                if url in detail_urls:
+                    continue
+                detail_urls.append(url)
+                progress.set_postfix(f"URL: {len(detail_urls)}")
+                if limit and len(detail_urls) >= limit:
+                    break
+            if limit and len(detail_urls) >= limit:
+                break
+            if next_page and next_page not in visited_pages:
+                current_url = next_page
+            else:
+                current_url = None
+
+        if not detail_urls:
+            logging.warning("No listings collected for %s.", canonical_city)
+            return []
+
+        total_expected = len(detail_urls)
+        progress.advance_to(20)
+
+        if worker_count == 1:
+            for url in detail_urls:
+                listing = fetch_listing_detail(url)
+                if listing:
+                    handle_listing(listing)
+                if delay:
+                    time.sleep(delay)
+        else:
+            with ThreadPoolExecutor(max_workers=worker_count) as executor:
+                future_to_url = {executor.submit(fetch_listing_detail, url): url for url in detail_urls}
+                for future in as_completed(future_to_url):
+                    listing = future.result()
+                    if listing:
+                        handle_listing(listing)
+
+        logging.info("Finished scraping %s listings from Bazos.sk.", len(listings))
+        return listings
+    finally:
+        session.close()
+        progress.close()
 
 def listings_to_dataframe(listings: Sequence[ListingRecord]):
     import pandas as pd  # Delay heavy import until needed
@@ -541,8 +571,14 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Deprecated; the scraper now fetches a single filtered search page.",
     )
-    parser.add_argument("--limit", type=int, default=30, help="Max listings to scrape (default: 30, use 0 for all)")
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Max listings to scrape (default: 0 meaning no limit)",
+    )
     parser.add_argument("--delay", type=float, default=1.5, help="Delay between requests in seconds")
+    parser.add_argument("--workers", type=int, default=1, help="Number of concurrent detail fetchers (default: 1)")
     parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
     return parser.parse_args()
 
@@ -569,6 +605,7 @@ def main() -> None:
             max_pages=args.max_pages,
             delay=args.delay,
             limit=listing_limit,
+            workers=args.workers,
             csv_writer=csv_writer,
             csv_file=csv_file,
         )

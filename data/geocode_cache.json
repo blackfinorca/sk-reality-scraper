@@ -1563,5 +1563,645 @@
     "lat": 48.7362219,
     "lng": 21.2703577,
     "ts": "2025-11-05T15:32:25Z"
+  },
+  "starohájska|trnava|slovakia": {
+    "lat": 48.3795296,
+    "lng": 17.5961685,
+    "ts": "2025-11-07T01:37:21Z"
+  },
+  "štefánikova 112/22|trnava|slovakia": {
+    "lat": 48.380825,
+    "lng": 17.5846452,
+    "ts": "2025-11-07T01:37:22Z"
+  },
+  "hospodárska 15|trnava|slovakia": {
+    "lat": 48.3731383,
+    "lng": 17.5830321,
+    "ts": "2025-11-07T01:37:23Z"
+  },
+  "československej armády|košice|slovakia": {
+    "lat": 48.7263754,
+    "lng": 21.2502579,
+    "ts": "2025-11-07T01:37:44Z"
+  },
+  "húskova 65|košice|slovakia": {
+    "lat": 48.7186851,
+    "lng": 21.2099131,
+    "ts": "2025-11-07T01:37:45Z"
+  },
+  "štítová|košice|slovakia": {
+    "lat": 48.7259708,
+    "lng": 21.2406954,
+    "ts": "2025-11-07T01:37:46Z"
+  },
+  "galaktická|košice|slovakia": {
+    "lat": 48.6754709,
+    "lng": 21.2999599,
+    "ts": "2025-11-07T01:37:48Z"
+  },
+  "kustrova|košice|slovakia": {
+    "lat": 48.7362237,
+    "lng": 21.2546717,
+    "ts": "2025-11-07T01:37:49Z"
+  },
+  "ondavská|košice|slovakia": {
+    "lat": 48.7194612,
+    "lng": 21.2448752,
+    "ts": "2025-11-07T01:37:50Z"
+  },
+  "košice-šaca|košice|slovakia": {
+    "lat": 48.6318242,
+    "lng": 21.1712124,
+    "ts": "2025-11-07T01:37:51Z"
+  },
+  "kuzmányho|košice|slovakia": {
+    "lat": 48.718897,
+    "lng": 21.2501878,
+    "ts": "2025-11-07T01:37:52Z"
+  },
+  "železiarenská|košice|slovakia": {
+    "lat": 48.627089,
+    "lng": 21.1730724,
+    "ts": "2025-11-07T01:37:53Z"
+  },
+  "výstavby|košice|slovakia": {
+    "lat": 48.7191249,
+    "lng": 21.2305827,
+    "ts": "2025-11-07T01:37:54Z"
+  },
+  "charkovská|košice|slovakia": {
+    "lat": 48.7353643,
+    "lng": 21.2898016,
+    "ts": "2025-11-07T01:37:55Z"
+  },
+  "hlavné námestie|košice|slovakia": {
+    "lat": 48.7205547,
+    "lng": 21.2578246,
+    "ts": "2025-11-07T01:37:57Z"
+  },
+  "na grunte|košice|slovakia": {
+    "lat": 48.712114,
+    "lng": 21.2065977,
+    "ts": "2025-11-07T01:37:58Z"
+  },
+  "jenisejská|košice|slovakia": {
+    "lat": 48.6863551,
+    "lng": 21.2911082,
+    "ts": "2025-11-07T01:37:59Z"
+  },
+  "strážovská|košice|slovakia": {
+    "lat": 48.7248885,
+    "lng": 21.2374116,
+    "ts": "2025-11-07T01:38:00Z"
+  },
+  "bauerova|košice|slovakia": {
+    "lat": 48.7131843,
+    "lng": 21.2124981,
+    "ts": "2025-11-07T01:38:02Z"
+  },
+  "berlínska 2468|košice|slovakia": {
+    "lat": 48.7571162,
+    "lng": 21.269402,
+    "ts": "2025-11-07T01:38:03Z"
+  },
+  "čárskeho|košice|slovakia": {
+    "lat": 48.7381735,
+    "lng": 21.2544886,
+    "ts": "2025-11-07T01:38:04Z"
+  },
+  "idanská|košice|slovakia": {
+    "lat": 48.7124634,
+    "lng": 21.2439761,
+    "ts": "2025-11-07T01:38:05Z"
+  },
+  "košice-ťahanovce|košice|slovakia": {
+    "lat": 48.7545152,
+    "lng": 21.2584875,
+    "ts": "2025-11-07T01:38:06Z"
+  },
+  "hanojská|košice|slovakia": {
+    "lat": 48.7603689,
+    "lng": 21.2707731,
+    "ts": "2025-11-07T01:38:07Z"
+  },
+  "cottbuská|košice|slovakia": {
+    "lat": 48.7141052,
+    "lng": 21.2167068,
+    "ts": "2025-11-07T01:38:08Z"
+  },
+  "nám. oceliarov|košice|slovakia": {
+    "lat": 48.6355216,
+    "lng": 21.1711852,
+    "ts": "2025-11-07T01:38:09Z"
+  },
+  "thurzova|košice|slovakia": {
+    "lat": 48.7275891,
+    "lng": 21.2649703,
+    "ts": "2025-11-07T01:38:10Z"
+  },
+  "vodná|košice|slovakia": {
+    "lat": 48.7247013,
+    "lng": 21.2594768,
+    "ts": "2025-11-07T01:38:11Z"
+  },
+  "myslavská|košice|slovakia": {
+    "lat": 48.6991211,
+    "lng": 21.2248168,
+    "ts": "2025-11-07T01:38:13Z"
+  },
+  "baštová|košice|slovakia": {
+    "lat": 48.7236884,
+    "lng": 21.2534868,
+    "ts": "2025-11-07T01:38:14Z"
+  },
+  "rovníková|košice|slovakia": {
+    "lat": 48.6810967,
+    "lng": 21.2970578,
+    "ts": "2025-11-07T01:38:15Z"
+  },
+  "na hore|košice|slovakia": {
+    "lat": 48.7261211,
+    "lng": 21.2892747,
+    "ts": "2025-11-07T01:38:16Z"
+  },
+  "zbrojničná|košice|slovakia": {
+    "lat": 48.7250881,
+    "lng": 21.2547101,
+    "ts": "2025-11-07T01:38:17Z"
+  },
+  "európska trieda|košice|slovakia": {
+    "lat": 48.7559847,
+    "lng": 21.2658987,
+    "ts": "2025-11-07T01:38:18Z"
+  },
+  "ipeľská|košice|slovakia": {
+    "lat": 48.7234513,
+    "lng": 21.2300689,
+    "ts": "2025-11-07T01:38:19Z"
+  },
+  "pod hájmi|košice|slovakia": {
+    "lat": 48.6894181,
+    "lng": 21.1989366,
+    "ts": "2025-11-07T01:38:20Z"
+  },
+  "plávkova|košice|slovakia": {
+    "lat": 48.6913107,
+    "lng": 21.1977044,
+    "ts": "2025-11-07T01:38:21Z"
+  },
+  "poľovnícka|košice|slovakia": {
+    "lat": 48.7161729,
+    "lng": 21.2372022,
+    "ts": "2025-11-07T01:38:22Z"
+  },
+  "tr snp|košice|slovakia": {
+    "lat": 48.7173369,
+    "lng": 21.2347247,
+    "ts": "2025-11-07T01:38:23Z"
+  },
+  "kurská 17|košice|slovakia": {
+    "lat": 48.7415993,
+    "lng": 21.2753395,
+    "ts": "2025-11-07T01:38:24Z"
+  },
+  "inžinierska|košice|slovakia": {
+    "lat": 48.716809,
+    "lng": 21.2391567,
+    "ts": "2025-11-07T01:38:25Z"
+  },
+  "uherová|košice|slovakia": {
+    "lat": 48.7123656,
+    "lng": 21.2287837,
+    "ts": "2025-11-07T01:38:26Z"
+  },
+  "obrancov mieru|košice|slovakia": {
+    "lat": 48.7354647,
+    "lng": 21.248073,
+    "ts": "2025-11-07T01:38:27Z"
+  },
+  "študentská 14|košice|slovakia": {
+    "lat": 48.7369858,
+    "lng": 21.2562472,
+    "ts": "2025-11-07T01:38:28Z"
+  },
+  "slovenskej jednoty 40|košice|slovakia": {
+    "lat": 48.7321138,
+    "lng": 21.2583919,
+    "ts": "2025-11-07T01:38:30Z"
+  },
+  "mäsiarska|košice|slovakia": {
+    "lat": 48.7238141,
+    "lng": 21.2543002,
+    "ts": "2025-11-07T01:38:31Z"
+  },
+  "krosnianska|košice|slovakia": {
+    "lat": 48.7378061,
+    "lng": 21.2865833,
+    "ts": "2025-11-07T01:38:32Z"
+  },
+  "park mládeže|košice|slovakia": {
+    "lat": 48.7406316,
+    "lng": 21.2526805,
+    "ts": "2025-11-07T01:38:33Z"
+  },
+  "baštovanského|košice|slovakia": {
+    "lat": 48.736535,
+    "lng": 21.2812034,
+    "ts": "2025-11-07T01:38:34Z"
+  },
+  "žriedlová|košice|slovakia": {
+    "lat": 48.7192537,
+    "lng": 21.24656,
+    "ts": "2025-11-07T01:38:35Z"
+  },
+  "lorinčík|košice|slovakia": {
+    "lat": 48.6886069,
+    "lng": 21.1921169,
+    "ts": "2025-11-07T01:38:36Z"
+  },
+  "korýtková 3|džungľa|slovakia": {
+    "lat": 48.7379587,
+    "lng": 21.2677523,
+    "ts": "2025-11-07T01:38:37Z"
+  },
+  "baltická|košice|slovakia": {
+    "lat": 48.6981814,
+    "lng": 21.2831478,
+    "ts": "2025-11-07T01:38:39Z"
+  },
+  "cukrovarská 10169|trnava|slovakia": {
+    "lat": 48.2833478,
+    "lng": 17.7343874,
+    "ts": "2025-11-08T08:32:51Z"
+  },
+  "odbojárska 40|trnava|slovakia": {
+    "lat": 48.3607995,
+    "lng": 17.5797016,
+    "ts": "2025-11-08T08:32:53Z"
+  },
+  "hospodárska i 28|trnava|slovakia": {
+    "lat": 48.3799238,
+    "lng": 17.5808012,
+    "ts": "2025-11-08T08:32:56Z"
+  },
+  "hospodárska i|trnava|slovakia": {
+    "lat": 48.4375,
+    "lng": 17.6166587,
+    "ts": "2025-11-08T08:32:57Z"
+  },
+  "bedřicha smetanu 7|trnava|slovakia": {
+    "lat": 48.3676789,
+    "lng": 17.5751364,
+    "ts": "2025-11-08T08:32:59Z"
+  },
+  "tekela|trnava|slovakia": {
+    "lat": 48.3798658,
+    "lng": 17.601954,
+    "ts": "2025-11-08T08:33:00Z"
+  },
+  "b. smetanu|trnava|slovakia": {
+    "lat": 48.366687,
+    "lng": 17.5736725,
+    "ts": "2025-11-08T08:33:01Z"
+  },
+  "g. dusíka|trnava|slovakia": {
+    "lat": 48.3703036,
+    "lng": 17.5711513,
+    "ts": "2025-11-08T08:33:02Z"
+  },
+  "kapitulská|trnava|slovakia": {
+    "lat": 48.378151,
+    "lng": 17.5917567,
+    "ts": "2025-11-08T08:33:03Z"
+  },
+  "šafárikova 2835|trnava|slovakia": {
+    "lat": 48.3751388,
+    "lng": 17.5709554,
+    "ts": "2025-11-08T08:33:05Z"
+  },
+  "paulínska|trnava|slovakia": {
+    "lat": 48.3754211,
+    "lng": 17.5890608,
+    "ts": "2025-11-08T08:33:07Z"
+  },
+  "šafárikova|trnava|slovakia": {
+    "lat": 48.3766421,
+    "lng": 17.5717677,
+    "ts": "2025-11-08T08:33:09Z"
+  },
+  "bulharská|trnava|slovakia": {
+    "lat": 48.3656572,
+    "lng": 17.5937885,
+    "ts": "2025-11-08T08:33:10Z"
+  },
+  "kvetná|trnava|slovakia": {
+    "lat": 48.378564,
+    "lng": 17.5767637,
+    "ts": "2025-11-08T08:33:12Z"
+  },
+  "michalská|trnava|slovakia": {
+    "lat": 48.3806701,
+    "lng": 17.5917015,
+    "ts": "2025-11-08T08:33:13Z"
+  },
+  "veselá|trnava|slovakia": {
+    "lat": 48.3764976,
+    "lng": 17.590029,
+    "ts": "2025-11-08T08:33:15Z"
+  },
+  "stavebná|trnava|slovakia": {
+    "lat": 48.3919279,
+    "lng": 17.5988436,
+    "ts": "2025-11-08T08:33:16Z"
+  },
+  "dolné bašty|trnava|slovakia": {
+    "lat": 48.3740082,
+    "lng": 17.588026,
+    "ts": "2025-11-08T08:33:17Z"
+  },
+  "slovanská|trnava|slovakia": {
+    "lat": 48.3588622,
+    "lng": 17.5871998,
+    "ts": "2025-11-08T08:33:18Z"
+  },
+  "jána hollého|trnava|slovakia": {
+    "lat": 48.3794397,
+    "lng": 17.5887329,
+    "ts": "2025-11-08T08:33:19Z"
+  },
+  "ľ.podjavorinskej|trnava|slovakia": {
+    "lat": 48.4284556,
+    "lng": 17.7714919,
+    "ts": "2025-11-08T08:33:20Z"
+  },
+  "hospodárska 4|trnava|slovakia": {
+    "lat": 48.3718993,
+    "lng": 17.5844055,
+    "ts": "2025-11-08T08:33:21Z"
+  },
+  "vajanského 39|trnava|slovakia": {
+    "lat": 48.3760966,
+    "lng": 17.5848724,
+    "ts": "2025-11-08T08:33:22Z"
+  },
+  "hospodárska 90|trnava|slovakia": {
+    "lat": 48.3815894,
+    "lng": 17.5780267,
+    "ts": "2025-11-08T08:33:23Z"
+  },
+  "bottova|trnava|slovakia": {
+    "lat": 48.374961,
+    "lng": 17.5714737,
+    "ts": "2025-11-08T08:33:24Z"
+  },
+  "terézie vansovej|trnava|slovakia": {
+    "lat": 48.3774164,
+    "lng": 17.5682927,
+    "ts": "2025-11-08T08:33:26Z"
+  },
+  "gejzu dusíka 2813|trnava|slovakia": {
+    "lat": 48.3705172,
+    "lng": 17.5726467,
+    "ts": "2025-11-08T08:33:27Z"
+  },
+  "paulínska 19|trnava|slovakia": {
+    "lat": 48.3754193,
+    "lng": 17.5893293,
+    "ts": "2025-11-08T08:33:28Z"
+  },
+  "parková 13|trnava|slovakia": {
+    "lat": 48.3711158,
+    "lng": 17.5796878,
+    "ts": "2025-11-08T08:33:29Z"
+  },
+  "sladovnícka 15|trnava|slovakia": {
+    "lat": 48.3707266,
+    "lng": 17.5966806,
+    "ts": "2025-11-08T08:33:30Z"
+  },
+  "partizánska|košice|slovakia": {
+    "lat": 48.7150641,
+    "lng": 21.2646736,
+    "ts": "2025-11-08T08:33:31Z"
+  },
+  "pokroku|košice|slovakia": {
+    "lat": 48.719325,
+    "lng": 21.2289887,
+    "ts": "2025-11-08T08:33:32Z"
+  },
+  "palárikova 16|košice|slovakia": {
+    "lat": 48.7158577,
+    "lng": 21.2652494,
+    "ts": "2025-11-08T08:33:33Z"
+  },
+  "kukučínova|košice|slovakia": {
+    "lat": 48.7135523,
+    "lng": 21.2505897,
+    "ts": "2025-11-08T08:33:34Z"
+  },
+  "topoľová|košice|slovakia": {
+    "lat": 48.7097149,
+    "lng": 21.2559386,
+    "ts": "2025-11-08T08:33:35Z"
+  },
+  "park angelinum|košice|slovakia": {
+    "lat": 48.7291228,
+    "lng": 21.2498151,
+    "ts": "2025-11-08T08:33:36Z"
+  },
+  "czambelova|košice|slovakia": {
+    "lat": 48.7309329,
+    "lng": 21.2526102,
+    "ts": "2025-11-08T08:33:37Z"
+  },
+  "piešťanská|košice|slovakia": {
+    "lat": 48.7087107,
+    "lng": 21.2220014,
+    "ts": "2025-11-08T08:33:38Z"
+  },
+  "berlínska|košice|slovakia": {
+    "lat": 48.7564207,
+    "lng": 21.2693126,
+    "ts": "2025-11-08T08:33:39Z"
+  },
+  "požiarnická|košice|slovakia": {
+    "lat": 48.7132645,
+    "lng": 21.2613411,
+    "ts": "2025-11-08T08:33:40Z"
+  },
+  "pribinova|košice|slovakia": {
+    "lat": 48.7176131,
+    "lng": 21.2586152,
+    "ts": "2025-11-08T08:33:41Z"
+  },
+  "maurerová|košice|slovakia": {
+    "lat": 48.7274856,
+    "lng": 21.285021,
+    "ts": "2025-11-08T08:33:42Z"
+  },
+  "suľovská|košice|slovakia": {
+    "lat": 48.7253482,
+    "lng": 21.2392521,
+    "ts": "2025-11-08T08:33:43Z"
+  },
+  "na hore 1|košice|slovakia": {
+    "lat": 48.7251016,
+    "lng": 21.2882984,
+    "ts": "2025-11-08T08:33:44Z"
+  },
+  "pod šiancom|košice|slovakia": {
+    "lat": 48.742562,
+    "lng": 21.254613,
+    "ts": "2025-11-08T08:33:45Z"
+  },
+  "jazmínová|košice|slovakia": {
+    "lat": 48.7084962,
+    "lng": 21.2386215,
+    "ts": "2025-11-08T08:33:46Z"
+  },
+  "fibichova|košice|slovakia": {
+    "lat": 48.7170688,
+    "lng": 21.2670214,
+    "ts": "2025-11-08T08:33:47Z"
+  },
+  "fejova|košice|slovakia": {
+    "lat": 48.7160932,
+    "lng": 21.2591424,
+    "ts": "2025-11-08T08:33:48Z"
+  },
+  "rampová|džungľa|slovakia": {
+    "lat": 48.7359894,
+    "lng": 21.2714942,
+    "ts": "2025-11-08T08:33:49Z"
+  },
+  "bajzova|košice|slovakia": {
+    "lat": 48.7190642,
+    "lng": 21.2687186,
+    "ts": "2025-11-08T08:33:51Z"
+  },
+  "hríbová|košice|slovakia": {
+    "lat": 48.6900886,
+    "lng": 21.1991885,
+    "ts": "2025-11-08T08:33:51Z"
+  },
+  "cédrová|košice|slovakia": {
+    "lat": 48.7155776,
+    "lng": 21.2934201,
+    "ts": "2025-11-08T08:33:52Z"
+  },
+  "baštová 6|košice|slovakia": {
+    "lat": 48.7236565,
+    "lng": 21.2532466,
+    "ts": "2025-11-08T08:33:53Z"
+  },
+  "považská 8|košice|slovakia": {
+    "lat": 48.7199315,
+    "lng": 21.238571,
+    "ts": "2025-11-08T08:33:54Z"
+  },
+  "stierova|košice|slovakia": {
+    "lat": 48.7083807,
+    "lng": 21.2151011,
+    "ts": "2025-11-08T08:33:56Z"
+  },
+  "južná trieda 40|košice|slovakia": {
+    "lat": 48.7075696,
+    "lng": 21.2621248,
+    "ts": "2025-11-08T08:33:57Z"
+  },
+  "inovecká|košice|slovakia": {
+    "lat": 48.7207276,
+    "lng": 21.2417327,
+    "ts": "2025-11-08T08:33:57Z"
+  },
+  "poľná|košice|slovakia": {
+    "lat": 48.731442,
+    "lng": 21.3025363,
+    "ts": "2025-11-08T08:33:59Z"
+  },
+  "jesenského|košice|slovakia": {
+    "lat": 48.7259202,
+    "lng": 21.2604282,
+    "ts": "2025-11-08T08:33:59Z"
+  },
+  "novomeského|košice|slovakia": {
+    "lat": 48.7240592,
+    "lng": 21.2450681,
+    "ts": "2025-11-08T08:34:01Z"
+  },
+  "sputnikova|košice|slovakia": {
+    "lat": 48.6792119,
+    "lng": 21.2978384,
+    "ts": "2025-11-08T08:34:02Z"
+  },
+  "ružová|košice|slovakia": {
+    "lat": 48.7129772,
+    "lng": 21.2432997,
+    "ts": "2025-11-08T08:34:03Z"
+  },
+  "timonova|košice|slovakia": {
+    "lat": 48.7182127,
+    "lng": 21.2558381,
+    "ts": "2025-11-08T08:34:03Z"
+  },
+  "tomášikova|košice|slovakia": {
+    "lat": 48.7340909,
+    "lng": 21.2499475,
+    "ts": "2025-11-08T08:34:04Z"
+  },
+  "čiernomorská|košice|slovakia": {
+    "lat": 48.6939884,
+    "lng": 21.282135,
+    "ts": "2025-11-08T08:34:05Z"
+  },
+  "mäsiarska 3|košice|slovakia": {
+    "lat": 48.7202545,
+    "lng": 21.2562553,
+    "ts": "2025-11-08T08:34:07Z"
+  },
+  "štúrova 50|košice|slovakia": {
+    "lat": 48.7161996,
+    "lng": 21.2500973,
+    "ts": "2025-11-08T08:34:08Z"
+  },
+  "urbánkova|košice|slovakia": {
+    "lat": 48.7405681,
+    "lng": 21.2404422,
+    "ts": "2025-11-08T08:34:09Z"
+  },
+  "obrancov mieru 11|košice|slovakia": {
+    "lat": 48.7360444,
+    "lng": 21.248747,
+    "ts": "2025-11-08T08:34:10Z"
+  },
+  "staré mesto|košice|slovakia": {
+    "lat": 48.7206148,
+    "lng": 21.2578294,
+    "ts": "2025-11-08T08:34:12Z"
+  },
+  "haviarska|košice|slovakia": {
+    "lat": 48.7301693,
+    "lng": 21.2596665,
+    "ts": "2025-11-08T08:34:13Z"
+  },
+  "škultétyho 2|košice|slovakia": {
+    "lat": 48.7199514,
+    "lng": 21.2489483,
+    "ts": "2025-11-08T08:34:14Z"
+  },
+  "zupková|košice|slovakia": {
+    "lat": 48.7352233,
+    "lng": 21.2858928,
+    "ts": "2025-11-08T08:34:15Z"
+  },
+  "námestie osloboditeľov|košice|slovakia": {
+    "lat": 48.7173602,
+    "lng": 21.2636668,
+    "ts": "2025-11-08T08:34:16Z"
+  },
+  "prešovská cesta|košice|slovakia": {
+    "lat": 48.7440665,
+    "lng": 21.2709987,
+    "ts": "2025-11-08T08:34:17Z"
   }
 }

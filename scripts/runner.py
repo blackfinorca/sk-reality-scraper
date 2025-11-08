@@ -1,13 +1,15 @@
 import argparse
 import copy
+import json
 import logging
 import os
 import shutil
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional
+from time import perf_counter
+from typing import Dict, List, Optional, Sequence, Union
 
 import pandas as pd
 
@@ -19,11 +21,26 @@ from pipelines.deduplicate import deduplicate_and_merge
 
 DEFAULT_SOURCE_PRIORITY = ["nehnutelnosti_sk", "reality_sk", "bazos_sk"]
 
+RUN_TIMINGS: Dict[str, float] = {}
+PIPELINE_START: Optional[float] = None
+
+SCRAPER_SHARED_DEFAULTS = {
+    # Set any of these keys to apply the same default across every scraper.
+    # Leave as None to keep the individual scraper defaults below.
+    "city": ["trnava", "kosice"],  # e.g. ["trnava", "kosice"] or "trnava,kosice"
+    "transaction": "predaj",  # e.g. "predaj"
+    "max_pages": None,
+    "limit": None,
+    "delay": 1,
+    "workers": 5,
+    "verbose": None,
+}
+
 
 DEFAULT_CONFIG = {
     "nehnutelnosti": {
         "enabled": True,
-        "city": ["trnava", "kosice"],
+        "city": ["trnava"],
         "transaction": "predaj",
         "categories": "11,12,300001",
         "csv_output": "output/nehnutelnosti_output.csv",
@@ -52,7 +69,7 @@ DEFAULT_CONFIG = {
         "max_pages": None,
         "limit": None,
         "delay": 1.0,
-        "workers": 1,
+        "workers": 4,
         "verbose": False,
     },
     "bazos": {
@@ -64,6 +81,7 @@ DEFAULT_CONFIG = {
         "max_pages": None,
         "limit": None,
         "delay": 1.5,
+        "workers": 1,
         "verbose": False,
     },
     "normalizer": {
@@ -93,6 +111,102 @@ DEFAULT_CONFIG = {
         "in_place": True,
     },
 }
+
+
+def _normalize_city_list(value: Optional[Union[str, Sequence[str]]]) -> List[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        items = [slug.strip() for slug in value.split(",")]
+    else:
+        items = [str(slug).strip() for slug in value]
+    return [slug for slug in items if slug]
+
+
+TRANSACTION_ALIASES = {
+    "sale": "predaj",
+    "sell": "predaj",
+    "predaj": "predaj",
+    "rent": "prenajom",
+    "lease": "prenajom",
+    "prenajom": "prenajom",
+}
+
+
+def normalize_transaction_value(value: Optional[str]) -> Optional[str]:
+    if value is None:
+        return None
+    cleaned = str(value).strip().lower()
+    if not cleaned:
+        return None
+    return TRANSACTION_ALIASES.get(cleaned, cleaned)
+
+
+def with_transaction_suffix(path_value: str, transaction: str) -> str:
+    slug = (transaction or "").strip().lower()
+    if not slug:
+        return path_value
+    path = Path(path_value)
+    stem = path.stem
+    suffix = path.suffix
+    if stem.endswith(f"_{slug}"):
+        return str(path)
+    new_name = f"{stem}_{slug}{suffix}"
+    return str(path.with_name(new_name))
+
+
+def apply_shared_defaults(nehn_cfg: Dict[str, object], reality_cfg: Dict[str, object], bazos_cfg: Dict[str, object]) -> None:
+    """Apply shared scraper defaults before any CLI overrides."""
+
+    shared = SCRAPER_SHARED_DEFAULTS
+    if not shared:
+        return
+
+    cities = _normalize_city_list(shared.get("city"))
+    if cities:
+        nehn_cfg["city"] = cities
+        reality_cfg["city"] = cities
+        bazos_cfg["city"] = ",".join(cities) if len(cities) > 1 else cities[0]
+
+    for key in ("transaction", "max_pages", "limit", "delay", "workers", "verbose"):
+        value = shared.get(key)
+        if value is None:
+            continue
+        if key == "transaction":
+            normalized = normalize_transaction_value(value)
+            if normalized:
+                value = normalized
+        if key == "workers":
+            value = max(1, int(value))
+        for cfg in (nehn_cfg, reality_cfg, bazos_cfg):
+            cfg[key] = value
+
+
+def apply_transaction_specific_outputs(config: Dict[str, object], keys: Sequence[str]) -> None:
+    transaction = normalize_transaction_value(config.get("transaction"))
+    if not transaction:
+        return
+    for key in keys:
+        path_value = config.get(key)
+        if not path_value:
+            continue
+        config[key] = with_transaction_suffix(str(path_value), transaction)
+
+
+def save_timings(run_date: str, transaction: Optional[str]) -> None:
+    if PIPELINE_START is not None:
+        RUN_TIMINGS.setdefault("total_pipeline", perf_counter() - PIPELINE_START)
+    output_dir = PROJECT_ROOT / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "run_date": run_date,
+        "transaction": transaction,
+        "timings_seconds": RUN_TIMINGS,
+    }
+    timing_path = output_dir / "run_timings.json"
+    with timing_path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2)
 
 
 def build_nehnutelnosti_command(config: Dict[str, object]) -> List[str]:
@@ -204,6 +318,10 @@ def build_bazos_command(config: Dict[str, object]) -> List[str]:
     limit = config.get("limit")
     if limit is not None:
         cmd.extend(["--limit", str(limit)])
+
+    workers = config.get("workers")
+    if workers is not None:
+        cmd.extend(["--workers", str(workers)])
 
     if config.get("verbose"):
         cmd.append("--verbose")
@@ -372,7 +490,10 @@ def run_summarizer(gold_path: Path, config: Dict[str, object], project_root: Pat
 
 def run_command(label: str, command: List[str], cwd: Path) -> None:
     logging.info("Running %s command: %s", label, " ".join(command))
+    start = perf_counter()
     result = subprocess.run(command, cwd=cwd, check=False)
+    duration = perf_counter() - start
+    RUN_TIMINGS[label] = RUN_TIMINGS.get(label, 0.0) + duration
     if result.returncode != 0:
         raise RuntimeError(f"{label} command failed with exit code {result.returncode}")
 
@@ -414,16 +535,29 @@ def load_arguments() -> argparse.Namespace:
     parser.add_argument("--cities", help="Override Nehnutelnosti.sk city slugs (comma-separated).")
     parser.add_argument("--reality-cities", help="Override Reality.sk city slugs (comma-separated).")
     parser.add_argument("--bazos-city", help="Override Bazos.sk city filter.")
+    parser.add_argument(
+        "--scraper-city",
+        help="Apply the same comma-separated city list to every scraper (uses first city for Bazos).",
+    )
+    parser.add_argument(
+        "--scraper-transaction",
+        help="Apply the same transaction value (e.g. predaj/prenajom) to every scraper.",
+    )
+    parser.add_argument(
+        "--scraper-max-pages",
+        type=int,
+        help="Apply the same max-pages limit to every scraper.",
+    )
     parser.add_argument("--skip-etl", action="store_true", help="Skip running the ETL.")
     parser.add_argument("--skip-normalizer", action="store_true", help="Skip running the normalizer pipeline.")
     parser.add_argument("--config-date", help="Override ETL date (YYYY-MM-DD).")
     parser.add_argument("--config-site", help="Override ETL site.")
     parser.add_argument("--config-bucket", help="Override ETL bucket.")
     parser.add_argument("--config-csv", help="Override ETL CSV path.")
-    parser.add_argument("--scraper-limit", type=int, help="Override scraper limit.")
-    parser.add_argument("--scraper-workers", type=int, help="Override scraper worker count.")
-    parser.add_argument("--scraper-delay", type=float, help="Override scraper delay.")
-    parser.add_argument("--scraper-verbose", action="store_true", help="Enable scraper verbose mode.")
+    parser.add_argument("--scraper-limit", type=int, help="Apply the same listing limit to every scraper.")
+    parser.add_argument("--scraper-workers", type=int, help="Apply the same worker count to every scraper.")
+    parser.add_argument("--scraper-delay", type=float, help="Apply the same delay to every scraper.")
+    parser.add_argument("--scraper-verbose", action="store_true", help="Enable verbose logging for every scraper.")
     parser.add_argument("--reality-limit", type=int, help="Override Reality.sk scraper limit.")
     parser.add_argument("--reality-delay", type=float, help="Override Reality.sk scraper delay.")
     parser.add_argument("--reality-verbose", action="store_true", help="Enable Reality.sk scraper verbose mode.")
@@ -436,8 +570,11 @@ def load_arguments() -> argparse.Namespace:
 
 
 def main() -> None:
+    global PIPELINE_START
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     args = load_arguments()
+    PIPELINE_START = perf_counter()
+    pipeline_transaction: Optional[str] = None
 
     nehn_cfg = copy.deepcopy(DEFAULT_CONFIG["nehnutelnosti"])
     reality_cfg = copy.deepcopy(DEFAULT_CONFIG["reality"])
@@ -448,6 +585,7 @@ def main() -> None:
     norm_cfg = copy.deepcopy(DEFAULT_CONFIG["normalizer"])
     geo_cfg = copy.deepcopy(DEFAULT_CONFIG["geo_locator"])
     summarizer_cfg = copy.deepcopy(DEFAULT_CONFIG["summarizer"])
+    apply_shared_defaults(nehn_cfg, reality_cfg, bazos_cfg)
 
     if args.all_cities:
         shared_cities = [slug.strip() for slug in args.all_cities.split(",") if slug.strip()]
@@ -456,10 +594,11 @@ def main() -> None:
             reality_cfg["city"] = shared_cities
             bazos_cfg["city"] = ",".join(shared_cities)
     if args.all_transaction:
-        transaction_value = str(args.all_transaction)
-        nehn_cfg["transaction"] = transaction_value
-        reality_cfg["transaction"] = transaction_value
-        bazos_cfg["transaction"] = transaction_value
+        transaction_value = normalize_transaction_value(args.all_transaction)
+        if transaction_value:
+            nehn_cfg["transaction"] = transaction_value
+            reality_cfg["transaction"] = transaction_value
+            bazos_cfg["transaction"] = transaction_value
     if args.all_max_pages is not None:
         nehn_cfg["max_pages"] = args.all_max_pages
         reality_cfg["max_pages"] = args.all_max_pages
@@ -489,15 +628,6 @@ def main() -> None:
 
     if args.cities:
         nehn_cfg["city"] = [slug.strip() for slug in args.cities.split(",") if slug.strip()]
-    if args.scraper_limit is not None:
-        nehn_cfg["limit"] = args.scraper_limit
-    if args.scraper_workers is not None:
-        nehn_cfg["workers"] = args.scraper_workers
-    if args.scraper_delay is not None:
-        nehn_cfg["delay"] = args.scraper_delay
-    if args.scraper_verbose:
-        nehn_cfg["verbose"] = True
-
     if args.reality_cities:
         reality_cfg["city"] = [slug.strip() for slug in args.reality_cities.split(",") if slug.strip()]
     if args.reality_limit is not None:
@@ -516,125 +646,168 @@ def main() -> None:
     if args.bazos_verbose:
         bazos_cfg["verbose"] = True
 
-    if args.skip_normalizer:
-        norm_cfg["enabled"] = False
-    if args.skip_geo:
-        geo_cfg["enabled"] = False
-    if args.skip_summarizer:
-        summarizer_cfg["enabled"] = False
-    skip_nehn = args.skip_scraper or args.skip_nehnutelnosti
-    skip_reality = args.skip_scraper or args.skip_reality
-    skip_bazos = args.skip_scraper or args.skip_bazos
+    def _apply_shared_cities(raw_value: Optional[str]) -> None:
+        if not raw_value:
+            return
+        cities = [slug.strip() for slug in raw_value.split(",") if slug.strip()]
+        if not cities:
+            return
+        nehn_cfg["city"] = cities
+        reality_cfg["city"] = cities
+        bazos_cfg["city"] = ",".join(cities) if len(cities) > 1 else cities[0]
 
-    run_nehn = nehn_cfg["enabled"] and not skip_nehn
-    run_reality = reality_cfg["enabled"] and not skip_reality
-    run_bazos = bazos_cfg["enabled"] and not skip_bazos
-    run_etl = etl_cfg["enabled"] and not args.skip_etl
-    run_normalizer = norm_cfg["enabled"] and not args.skip_normalizer
+    def _apply_shared_value(key: str, value, configs: Sequence[Dict[str, object]]) -> None:
+        for cfg in configs:
+            cfg[key] = value
 
-    project_root = PROJECT_ROOT
-    default_out_dir = norm_cfg.get("out_dir", "parquet_runs")
-    norm_cfg["out_dir"] = str((project_root / default_out_dir).resolve())
+    if args.scraper_city:
+        _apply_shared_cities(args.scraper_city)
+    if args.scraper_transaction:
+        transaction_value = normalize_transaction_value(args.scraper_transaction)
+        if transaction_value:
+            _apply_shared_value(
+                "transaction",
+                transaction_value,
+                (nehn_cfg, reality_cfg, bazos_cfg),
+            )
+    if args.scraper_max_pages is not None:
+        _apply_shared_value("max_pages", args.scraper_max_pages, (nehn_cfg, reality_cfg, bazos_cfg))
+    if args.scraper_limit is not None:
+        _apply_shared_value("limit", args.scraper_limit, (nehn_cfg, reality_cfg, bazos_cfg))
+    if args.scraper_delay is not None:
+        _apply_shared_value("delay", args.scraper_delay, (nehn_cfg, reality_cfg, bazos_cfg))
+    if args.scraper_workers is not None:
+        _apply_shared_value("workers", max(1, args.scraper_workers), (nehn_cfg, reality_cfg, bazos_cfg))
+    if args.scraper_verbose:
+        _apply_shared_value("verbose", True, (nehn_cfg, reality_cfg, bazos_cfg))
 
-    if run_nehn and (not nehn_cfg.get("city")):
-        raise ValueError("At least one city must be specified for Nehnutelnosti.sk scraping.")
-    if run_reality and (not reality_cfg.get("city")):
-        raise ValueError("At least one city must be specified for Reality.sk scraping.")
-    if run_bazos and (not bazos_cfg.get("city")):
-        raise ValueError("City must be specified for Bazos.sk scraping.")
+    apply_transaction_specific_outputs(nehn_cfg, ("csv_output", "xls_output"))
+    apply_transaction_specific_outputs(reality_cfg, ("csv_output", "xls_output"))
+    apply_transaction_specific_outputs(bazos_cfg, ("csv_output", "xls_output"))
+    pipeline_transaction = normalize_transaction_value(nehn_cfg.get("transaction"))
 
-    if run_nehn:
-        nehn_cmd = build_nehnutelnosti_command(nehn_cfg)
-        run_command("nehnutelnosti.sk scraper", nehn_cmd, project_root)
-        etl_cfg["csv_path"] = nehn_cfg["csv_output"]
+    try:
+        if args.skip_normalizer:
+            norm_cfg["enabled"] = False
+        if args.skip_geo:
+            geo_cfg["enabled"] = False
+        if args.skip_summarizer:
+            summarizer_cfg["enabled"] = False
+        skip_nehn = args.skip_scraper or args.skip_nehnutelnosti
+        skip_reality = args.skip_scraper or args.skip_reality
+        skip_bazos = args.skip_scraper or args.skip_bazos
 
-    if run_reality:
-        reality_cmd = build_reality_command(reality_cfg)
-        run_command("reality.sk scraper", reality_cmd, project_root)
-    if run_bazos:
-        bazos_cmd = build_bazos_command(bazos_cfg)
-        run_command("bazos.sk scraper", bazos_cmd, project_root)
-    scraped_csvs = []
-    if run_nehn:
-        scraped_csvs.append(nehn_cfg["csv_output"])
-    if run_reality:
-        scraped_csvs.append(reality_cfg["csv_output"])
-    if run_bazos:
-        scraped_csvs.append(bazos_cfg["csv_output"])
+        run_nehn = nehn_cfg["enabled"] and not skip_nehn
+        run_reality = reality_cfg["enabled"] and not skip_reality
+        run_bazos = bazos_cfg["enabled"] and not skip_bazos
+        run_etl = etl_cfg["enabled"] and not args.skip_etl
+        run_normalizer = norm_cfg["enabled"] and not args.skip_normalizer
 
-    etl_jobs = []
-    if run_nehn:
-        etl_jobs.append({"csv_path": nehn_cfg["csv_output"], "site": "nehnutelnosti_sk"})
-    if run_reality:
-        etl_jobs.append({"csv_path": reality_cfg["csv_output"], "site": "reality_sk"})
-    if run_bazos:
-        etl_jobs.append({"csv_path": bazos_cfg["csv_output"], "site": "bazos_sk"})
+        project_root = PROJECT_ROOT
+        default_out_dir = norm_cfg.get("out_dir", "parquet_runs")
+        norm_cfg["out_dir"] = str((project_root / default_out_dir).resolve())
 
-    if run_etl:
-        for job in etl_jobs or [{"csv_path": etl_cfg["csv_path"], "site": etl_cfg.get("site", "unknown")}]:
-            job_cfg = copy.deepcopy(etl_cfg)
-            job_cfg["csv_path"] = job["csv_path"]
-            job_cfg["site"] = job.get("site", job_cfg.get("site"))
-            if args.config_site:
-                job_cfg["site"] = args.config_site
-            job_cfg["date"] = job_cfg.get("date") or today_str
-            csv_path = Path(job_cfg["csv_path"])
-            if not csv_path.is_absolute():
-                job_cfg["csv_path"] = str(project_root / csv_path)
-            etl_cmd = build_etl_command(job_cfg)
-            run_command(f"etl ({job_cfg['site']})", etl_cmd, project_root)
+        if run_nehn and (not nehn_cfg.get("city")):
+            raise ValueError("At least one city must be specified for Nehnutelnosti.sk scraping.")
+        if run_reality and (not reality_cfg.get("city")):
+            raise ValueError("At least one city must be specified for Reality.sk scraping.")
+        if run_bazos and (not bazos_cfg.get("city")):
+            raise ValueError("City must be specified for Bazos.sk scraping.")
 
-    gold_latest_path: Optional[Path] = None
+        if run_nehn:
+            nehn_cmd = build_nehnutelnosti_command(nehn_cfg)
+            run_command("nehnutelnosti.sk scraper", nehn_cmd, project_root)
+            etl_cfg["csv_path"] = nehn_cfg["csv_output"]
 
-    if run_normalizer:
-        norm_cfg["input"] = str(project_root / "output" / "*.csv")
-        norm_cfg["run_date"] = datetime.now().strftime("%Y-%m-%d")
-        norm_command = [
-            sys.executable,
-            str(PROJECT_ROOT / "pipelines" / "normalizer.py"),
-            "--input",
-            norm_cfg["input"],
-            "--out-dir",
-            norm_cfg["out_dir"],
-            "--run-date",
-            norm_cfg["run_date"],
-            "--source-priority",
-            ",".join(norm_cfg.get("source_priority", DEFAULT_SOURCE_PRIORITY)),
-        ]
-        prev_run = norm_cfg.get("prev_run")
-        if prev_run:
-            norm_command.extend(["--prev-run", prev_run])
-        if geo_cfg.get("enabled", True) and geo_cfg.get("user_agent"):
-            norm_command.append("--geo-enabled")
-            norm_command.extend(["--geo-user-agent", str(geo_cfg["user_agent"])])
-            norm_command.extend(["--geo-country", str(geo_cfg.get("country", "Slovakia"))])
-            geo_cache = Path(geo_cfg.get("cache", "data/geocode_cache.json"))
-            if not geo_cache.is_absolute():
-                geo_cache = project_root / geo_cache
-            norm_command.extend(["--geo-cache", str(geo_cache)])
-            max_new = geo_cfg.get("max_new")
-            if max_new is not None:
-                norm_command.extend(["--geo-max-new", str(max_new)])
-        run_command("normalizer", norm_command, project_root)
-        gold_latest_path = run_deduplicate_pipeline(
-            project_root=project_root,
-            norm_out_dir=Path(norm_cfg["out_dir"]),
-            run_date=norm_cfg["run_date"],
-            source_priority=norm_cfg.get("source_priority", DEFAULT_SOURCE_PRIORITY),
-        )
+        if run_reality:
+            reality_cmd = build_reality_command(reality_cfg)
+            run_command("reality.sk scraper", reality_cmd, project_root)
+        if run_bazos:
+            bazos_cmd = build_bazos_command(bazos_cfg)
+            run_command("bazos.sk scraper", bazos_cmd, project_root)
+        scraped_csvs = []
+        if run_nehn:
+            scraped_csvs.append(nehn_cfg["csv_output"])
+        if run_reality:
+            scraped_csvs.append(reality_cfg["csv_output"])
+        if run_bazos:
+            scraped_csvs.append(bazos_cfg["csv_output"])
 
-    if gold_latest_path is None:
-        default_gold = project_root / "dedupe_runs" / "latest" / "gold_listings.parquet"
-        if default_gold.exists():
-            gold_latest_path = default_gold
+        etl_jobs = []
+        if run_nehn:
+            etl_jobs.append({"csv_path": nehn_cfg["csv_output"], "site": "nehnutelnosti_sk"})
+        if run_reality:
+            etl_jobs.append({"csv_path": reality_cfg["csv_output"], "site": "reality_sk"})
+        if run_bazos:
+            etl_jobs.append({"csv_path": bazos_cfg["csv_output"], "site": "bazos_sk"})
 
-    if gold_latest_path and gold_latest_path.exists():
-        run_geo_locator(gold_latest_path, geo_cfg, project_root)
-        run_summarizer(gold_latest_path, summarizer_cfg, project_root)
-    else:
-        logging.info("Skipping geo locator and summarizer; gold listings parquet not available.")
+        if run_etl:
+            for job in etl_jobs or [{"csv_path": etl_cfg["csv_path"], "site": etl_cfg.get("site", "unknown")}]:
+                job_cfg = copy.deepcopy(etl_cfg)
+                job_cfg["csv_path"] = job["csv_path"]
+                job_cfg["site"] = job.get("site", job_cfg.get("site"))
+                if args.config_site:
+                    job_cfg["site"] = args.config_site
+                job_cfg["date"] = job_cfg.get("date") or today_str
+                csv_path = Path(job_cfg["csv_path"])
+                if not csv_path.is_absolute():
+                    job_cfg["csv_path"] = str(project_root / csv_path)
+                etl_cmd = build_etl_command(job_cfg)
+                run_command(f"etl ({job_cfg['site']})", etl_cmd, project_root)
 
-    logging.info("Runner completed.")
+        gold_latest_path: Optional[Path] = None
+
+        if run_normalizer:
+            norm_cfg["input"] = str(project_root / "output" / "*.csv")
+            norm_cfg["run_date"] = datetime.now().strftime("%Y-%m-%d")
+            norm_command = [
+                sys.executable,
+                str(PROJECT_ROOT / "pipelines" / "normalizer.py"),
+                "--input",
+                norm_cfg["input"],
+                "--out-dir",
+                norm_cfg["out_dir"],
+                "--run-date",
+                norm_cfg["run_date"],
+                "--source-priority",
+                ",".join(norm_cfg.get("source_priority", DEFAULT_SOURCE_PRIORITY)),
+            ]
+            prev_run = norm_cfg.get("prev_run")
+            if prev_run:
+                norm_command.extend(["--prev-run", prev_run])
+            if geo_cfg.get("enabled", True) and geo_cfg.get("user_agent"):
+                norm_command.append("--geo-enabled")
+                norm_command.extend(["--geo-user-agent", str(geo_cfg["user_agent"])])
+                norm_command.extend(["--geo-country", str(geo_cfg.get("country", "Slovakia"))])
+                geo_cache = Path(geo_cfg.get("cache", "data/geocode_cache.json"))
+                if not geo_cache.is_absolute():
+                    geo_cache = project_root / geo_cache
+                norm_command.extend(["--geo-cache", str(geo_cache)])
+                max_new = geo_cfg.get("max_new")
+                if max_new is not None:
+                    norm_command.extend(["--geo-max-new", str(max_new)])
+            run_command("normalizer", norm_command, project_root)
+            gold_latest_path = run_deduplicate_pipeline(
+                project_root=project_root,
+                norm_out_dir=Path(norm_cfg["out_dir"]),
+                run_date=norm_cfg["run_date"],
+                source_priority=norm_cfg.get("source_priority", DEFAULT_SOURCE_PRIORITY),
+            )
+
+        if gold_latest_path is None:
+            default_gold = project_root / "dedupe_runs" / "latest" / "gold_listings.parquet"
+            if default_gold.exists():
+                gold_latest_path = default_gold
+
+        if gold_latest_path and gold_latest_path.exists():
+            run_geo_locator(gold_latest_path, geo_cfg, project_root)
+            run_summarizer(gold_latest_path, summarizer_cfg, project_root)
+        else:
+            logging.info("Skipping geo locator and summarizer; gold listings parquet not available.")
+
+        logging.info("Runner completed.")
+    finally:
+        save_timings(today_str, pipeline_transaction)
 
 
 if __name__ == "__main__":

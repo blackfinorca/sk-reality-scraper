@@ -1,11 +1,15 @@
-pyton scripts/runner.py
+python scripts/runner.py
 
 --skip-scraper, --skip-nehnutelnosti, --skip-reality, --skip-bazos
 --all-cities, --all-transaction, --all-max-pages, --all-limit, --all-delay, --all-verbose
 --cities, --reality-cities, --bazos-city
 --skip-etl, --skip-normalizer
 --config-date, --config-site, --config-bucket, --config-csv
---scraper-limit, --scraper-workers, --scraper-delay, --scraper-verbose
+--scraper-city, --scraper-transaction, --scraper-max-pages, --scraper-limit, --scraper-workers, --scraper-delay, --scraper-verbose
 --reality-limit, --reality-delay, --reality-verbose
 --bazos-limit, --bazos-delay, --bazos-verbose
 --skip-geo, --skip-summarizer
+
+shell wraper to run sale and rent:
+python scripts/runner.py --scraper-transaction prenajom "$@"
+python scripts/runner.py --scraper-transaction predaj "$@"

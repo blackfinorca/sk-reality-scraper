@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>slovakinvest-pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            border: "var(--color-border)",
+            input: "var(--color-input)",
+            ring: "var(--color-ring)",
+            background: "var(--color-background)",
+            foreground: "var(--color-foreground)",
+            primary: {
+              DEFAULT: "var(--color-primary)",
+              foreground: "var(--color-primary-foreground)",
+            },
+            secondary: {
+              DEFAULT: "var(--color-secondary)",
+              foreground: "var(--color-secondary-foreground)",
+            },
+            destructive: {
+              DEFAULT: "var(--color-destructive)",
+              foreground: "var(--color-destructive-foreground)",
+            },
+            muted: {
+              DEFAULT: "var(--color-muted)",
+              foreground: "var(--color-muted-foreground)",
+            },
+            accent: {
+              DEFAULT: "var(--color-accent)",
+              foreground: "var(--color-accent-foreground)",
+            },
+            popover: {
+              DEFAULT: "var(--color-popover)",
+              foreground: "var(--color-popover-foreground)",
+            },
+            card: {
+              DEFAULT: "var(--color-card)",
+              foreground: "var(--color-card-foreground)",
+            },
+            success: {
+              DEFAULT: "var(--color-success)",
+              foreground: "var(--color-success-foreground)",
+            },
+            warning: {
+              DEFAULT: "var(--color-warning)",
+              foreground: "var(--color-warning-foreground)",
+            },
+            error: {
+              DEFAULT: "var(--color-error)",
+              foreground: "var(--color-error-foreground)",
+            },
+          },
+          borderRadius: {
+            lg: "var(--radius)",
+            md: "calc(var(--radius) - 2px)",
+            sm: "calc(var(--radius) - 4px)",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+            data: ["JetBrains Mono", "monospace"],
+          },
+          boxShadow: {
+            "elevation-1": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+            "elevation-2": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+            "elevation-3": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            "elevation-4": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+          },
+          animation: {
+            "accordion-down": "accordion-down 0.2s ease-out",
+            "accordion-up": "accordion-up 0.2s ease-out",
+            "fade-in": "fade-in 0.2s ease-out",
+            "slide-in": "slide-in 0.3s ease-out",
+          },
+          keyframes: {
+            "accordion-down": {
+              from: { height: "0" },
+              to: { height: "var(--radix-accordion-content-height)" },
+            },
+            "accordion-up": {
+              from: { height: "var(--radix-accordion-content-height)" },
+              to: { height: "0" },
+            },
+            "fade-in": {
+              from: { opacity: "0" },
+              to: { opacity: "1" },
+            },
+            "slide-in": {
+              from: { transform: "translateY(-10px)", opacity: "0" },
+              to: { transform: "translateY(0)", opacity: "1" },
+            },
+          },
+        },
+      },
+      plugins: [],
+    };
+  </script>
+  <style>
+    :root {
+      --color-background: #f2f2f4;
+      --color-foreground: #111318;
+      --color-border: #dbdde3;
+      --color-input: rgba(255, 255, 255, 0.9);
+      --color-ring: rgba(17, 24, 39, 0.75);
+      --color-card: rgba(255, 255, 255, 0.92);
+      --color-card-foreground: #111318;
+      --color-popover: rgba(255, 255, 255, 0.95);
+      --color-popover-foreground: #111318;
+      --color-muted: rgba(17, 24, 39, 0.05);
+      --color-muted-foreground: #5e6370;
+      --color-primary: #1f2933;
+      --color-primary-strong: #0f1116;
+      --color-primary-foreground: #f5f5f5;
+      --radius: 1rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-color: var(--color-border);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), rgba(242,242,244,0.85)) fixed;
+      color: var(--color-foreground);
+    }
+
+    .font-data {
+      font-family: "JetBrains Mono", monospace;
+    }
+  </style>
+  
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fslovakinve4520back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+  </head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div class="dhiwise-code" id="root"></div>
+  <script type="module" src="/src/index.jsx"></script>
+</body>
+
+</html>

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import logging
 from collections import OrderedDict
 from dataclasses import dataclass
@@ -20,6 +21,7 @@ import pandas as pd
 DEFAULT_OUTPUT_DIR = Path("output")
 DEFAULT_PARQUET_DIR = Path("parquet_runs")
 DEFAULT_DEDUPE_DIR = Path("dedupe_runs")
+DEFAULT_TIMINGS_FILE = DEFAULT_OUTPUT_DIR / "run_timings.json"
 
 
 @dataclass
@@ -55,6 +57,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_DEDUPE_DIR,
         help="Deduplicate output directory containing run=YYYY-MM-DD folders.",
+    )
+    parser.add_argument(
+        "--timings-file",
+        type=Path,
+        default=DEFAULT_TIMINGS_FILE,
+        help="JSON file produced by scripts/runner.py containing task durations.",
     )
     parser.add_argument(
         "--verbose",
@@ -126,37 +134,46 @@ def load_parquet_counts(parquet_path: Path, column: Optional[str] = None) -> Cou
     return CountSnapshot(total=int(df.shape[0]), breakdown={})
 
 
+CITY_ALIAS_MAP = {
+    "vyšné opátske": "Košice",
+    "vyšne opatske": "Košice",
+    "topoľová": "Košice",
+    "topolova": "Košice",
+}
+CITY_SKIP_SET = {"unknown", "džungľa", "dzungla"}
+
+
+def _normalize_city(name: str) -> Optional[str]:
+    cleaned = name.strip()
+    key = cleaned.lower()
+    if key in CITY_SKIP_SET:
+        return None
+    if key in CITY_ALIAS_MAP:
+        return CITY_ALIAS_MAP[key]
+    return cleaned or None
+
+
+TRANSACTION_ORDER = ["predaj", "prenajom", "unknown"]
+
+
 def compute_city_transaction_stats(parquet_path: Path) -> pd.DataFrame:
     if not parquet_path.exists():
         raise FileNotFoundError(f"Parquet file {parquet_path} not found.")
 
-    df = pd.read_parquet(parquet_path, columns=["address_town", "transaction"])
+    df = pd.read_parquet(parquet_path, columns=["address_town"])
     if df.empty:
         return pd.DataFrame(columns=["address_town", "transaction", "count"])
 
-    df["address_town"] = (
-        df["address_town"]
-        .fillna("unknown")
-        .astype(str)
-        .str.strip()
-        .replace("", "unknown")
-    )
-    df["transaction"] = (
-        df["transaction"]
-        .fillna("unknown")
-        .astype(str)
-        .str.strip()
-        .str.lower()
-    )
-    transaction_labels = {
-        "sale": "predaj",
-        "predaj": "predaj",
-        "predam": "predaj",
-        "rent": "prenajom",
-        "lease": "prenajom",
-        "unknown": "unknown",
-    }
-    df["transaction"] = df["transaction"].map(lambda x: transaction_labels.get(x, x))
+    df["address_town"] = df["address_town"].fillna("").astype(str).apply(_normalize_city)
+    df = df.dropna(subset=["address_town"])
+
+    # Infer transaction from directory name, file name suffix, or fallback to unknown.
+    inferred = parquet_path.parent.name.split("transaction=")[-1]
+    inferred = inferred if "transaction=" in parquet_path.parent.name else parquet_path.stem.split("_")[-1]
+    inferred = inferred.lower()
+    if inferred not in TRANSACTION_ORDER:
+        inferred = "unknown"
+    df["transaction"] = inferred
 
     grouped = (
         df.groupby(["address_town", "transaction"], dropna=False)
@@ -190,6 +207,72 @@ def compute_ratios(scraped: CountSnapshot, normalized: CountSnapshot, gold_sourc
     return ratios
 
 
+def print_transaction_summary(label: str, df: pd.DataFrame) -> None:
+    if df.empty:
+        print(f"\n{label}\n" + "-" * len(label))
+        print("  No data.")
+        return
+    grouped = df.groupby("transaction")["count"].sum()
+    print(f"\n{label}")
+    print("-" * len(label))
+    for txn in TRANSACTION_ORDER + [cat for cat in grouped.index if cat not in TRANSACTION_ORDER]:
+        if txn not in grouped:
+            continue
+        print(f"  {txn}: {grouped[txn]:,}")
+
+
+def load_timings(path: Path) -> Optional[Dict[str, object]]:
+    if not path.exists():
+        logging.info("Timings file %s not found; skipping duration summary.", path)
+        return None
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except json.JSONDecodeError as exc:
+        logging.warning("Failed to parse timings file %s: %s", path, exc)
+        return None
+    timings = data.get("timings_seconds")
+    if not isinstance(timings, dict):
+        logging.warning("Timings file %s missing 'timings_seconds'; skipping.", path)
+        return None
+    return {
+        "generated_at": data.get("generated_at"),
+        "run_date": data.get("run_date"),
+        "transaction": data.get("transaction"),
+        "timings": {str(k): float(v) for k, v in timings.items()},
+    }
+
+
+def print_timings(timing_info: Optional[Dict[str, object]]) -> None:
+    if not timing_info:
+        return
+    timings = timing_info.get("timings", {})
+    if not timings:
+        return
+    print("\nTask durations")
+    print("--------------")
+    meta_parts = []
+    if timing_info.get("run_date"):
+        meta_parts.append(f"run={timing_info['run_date']}")
+    if timing_info.get("transaction"):
+        meta_parts.append(f"transaction={timing_info['transaction']}")
+    if timing_info.get("generated_at"):
+        meta_parts.append(f"generated={timing_info['generated_at']}")
+    if meta_parts:
+        print("  " + ", ".join(meta_parts))
+    order = [key for key in timings.keys() if key != "total_pipeline"]
+    if "total_pipeline" in timings:
+        order.append("total_pipeline")
+    for key in order:
+        seconds = timings[key]
+        minutes, secs = divmod(seconds, 60)
+        if minutes >= 1:
+            display = f"{int(minutes)}m {secs:.1f}s"
+        else:
+            display = f"{secs:.1f}s"
+        print(f"  {key}: {display}")
+
+
 def main() -> None:
     args = parse_args()
     setup_logging(args.verbose)
@@ -211,6 +294,7 @@ def main() -> None:
     gold_listings_snapshot = load_parquet_counts(gold_listings_path, column="primary_portal")
 
     city_stats_df = compute_city_transaction_stats(normalized_path)
+    print_transaction_summary("Listings by transaction", city_stats_df)
 
     ratios = compute_ratios(scraped_snapshot, normalized_snapshot, gold_sources_snapshot, gold_listings_snapshot)
 
@@ -236,6 +320,9 @@ def main() -> None:
             print(f"{label}: n/a")
         else:
             print(f"{label}: {value:.2%}")
+
+    timing_info = load_timings(args.timings_file)
+    print_timings(timing_info)
 
 
 if __name__ == "__main__":
