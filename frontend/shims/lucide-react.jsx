@@ -57,6 +57,8 @@ export const Eye = createIcon("Eye");
 export const RotateCcw = createIcon("RotateCcw");
 export const Calculator = createIcon("Calculator");
 export const HelpCircle = createIcon("HelpCircle");
+export const Maximize = createIcon("Maximize");
+export const Minimize = createIcon("Minimize");
 
 const exported = {
   MapPin,
@@ -87,6 +89,8 @@ const exported = {
   RotateCcw,
   Calculator,
   HelpCircle,
+  Maximize,
+  Minimize,
 };
 
 export default exported;
