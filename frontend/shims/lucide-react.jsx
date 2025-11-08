@@ -59,6 +59,9 @@ export const Calculator = createIcon("Calculator");
 export const HelpCircle = createIcon("HelpCircle");
 export const Maximize = createIcon("Maximize");
 export const Minimize = createIcon("Minimize");
+export const Plus = createIcon("Plus");
+export const Minus = createIcon("Minus");
+export const ExternalLink = createIcon("ExternalLink");
 
 const exported = {
   MapPin,
@@ -91,6 +94,9 @@ const exported = {
   HelpCircle,
   Maximize,
   Minimize,
+  Plus,
+  Minus,
+  ExternalLink,
 };
 
 export default exported;

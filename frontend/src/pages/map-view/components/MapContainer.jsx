@@ -162,6 +162,9 @@ const MapContainer = ({
     return "#E53E3E";
   };
 
+  const tooltipRef = useRef(null);
+  const [tooltipProperty, setTooltipProperty] = useState(null);
+
   const renderMarkers = useCallback(() => {
     const map = mapRef.current;
     const layer = markersLayerRef.current;
@@ -186,15 +189,16 @@ const MapContainer = ({
         fillOpacity: 0.85,
       });
 
-      marker.on("click", () => {
+      marker.on("click", (event) => {
         flyToLocation(lat, lng, Math.max(map.getZoom(), 13));
         onPropertySelect(property);
+        setTooltipProperty({
+          property,
+          lat,
+          lng,
+          point: map.latLngToContainerPoint(event.latlng),
+        });
       });
-
-      marker.bindTooltip(
-        `${property?.title || "Neznáma ponuka"}<br/>€${property?.price?.toLocaleString("sk-SK") || "N/A"}`,
-        { direction: "top" }
-      );
 
       marker.addTo(layer);
     });
@@ -205,6 +209,35 @@ const MapContainer = ({
   useEffect(() => {
     renderMarkers();
   }, [renderMarkers]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    const L = leafletRef.current;
+    if (!map || !L || !tooltipProperty) return undefined;
+
+    const updatePosition = () => {
+      setTooltipProperty((prev) => {
+        if (!prev) return prev;
+        const point = map.latLngToContainerPoint(L.latLng(prev.lat, prev.lng));
+        return { ...prev, point };
+      });
+    };
+
+    map.on("move", updatePosition);
+    map.on("zoom", updatePosition);
+    updatePosition();
+
+    return () => {
+      map.off("move", updatePosition);
+      map.off("zoom", updatePosition);
+    };
+  }, [tooltipProperty]);
+
+  useEffect(() => {
+    if (!selectedProperty) {
+      setTooltipProperty(null);
+    }
+  }, [selectedProperty]);
 
   useEffect(() => {
     if (typeof document === "undefined") return undefined;
@@ -260,14 +293,35 @@ const MapContainer = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%)]" />
       </div>
 
-      <div className="absolute top-4 left-4 right-4 z-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="rounded-2xl bg-white/90 px-4 py-2 shadow-lg backdrop-blur">
+      <div className="absolute top-4 left-4 right-4 z-50 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pointer-events-none">
+        <div className="rounded-2xl bg-white/90 px-4 py-2 shadow-lg backdrop-blur pointer-events-auto">
           <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Na mape</p>
           <p className="text-xl font-semibold text-slate-900">{visibleCount} aktívnych listingov</p>
         </div>
       </div>
 
       <div ref={mapNodeRef} className="w-full h-full min-h-[520px]" />
+
+      {tooltipProperty && (
+        <div
+          className="absolute z-40 pointer-events-none"
+          style={{
+            left: tooltipProperty.point.x,
+            top: tooltipProperty.point.y - 60,
+            transform: "translate(-50%, -100%)",
+          }}
+        >
+          <div className="rounded-2xl bg-white/95 border border-slate-200 shadow-lg px-4 py-3 min-w-[180px]">
+            <p className="text-sm font-semibold text-slate-900">
+              €{tooltipProperty.property.price?.toLocaleString("sk-SK") || "—"}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              {tooltipProperty.property.area ? `${tooltipProperty.property.area} m²` : "–"} •{" "}
+              {tooltipProperty.property.rooms || tooltipProperty.property.bedrooms || "0"} izby
+            </p>
+          </div>
+        </div>
+      )}
 
       {stateMessage && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/90 backdrop-blur">
@@ -289,7 +343,7 @@ const MapContainer = ({
         </div>
       )}
 
-      <div className="absolute bottom-4 left-4 rounded-2xl bg-white/90 backdrop-blur shadow-lg border border-white/70 p-4">
+      <div className="absolute bottom-4 left-4 z-50 rounded-2xl bg-white/90 backdrop-blur shadow-lg border border-white/70 p-4 pointer-events-auto">
         <p className="text-xs uppercase tracking-[0.35em] text-slate-400 mb-2">Investičné skóre</p>
         <div className="space-y-1">
           <div className="flex items-center space-x-2">
@@ -306,7 +360,8 @@ const MapContainer = ({
           </div>
         </div>
       </div>
-      <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
+      <div className="absolute bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+        <div className="flex flex-col gap-2 pointer-events-auto">
         <button
           className="h-10 w-10 rounded-full bg-white text-slate-700 shadow hover:text-blue-600 transition flex items-center justify-center border border-slate-200/80"
           onClick={() => mapRef.current?.zoomIn()}
@@ -328,6 +383,7 @@ const MapContainer = ({
         >
           <Icon name={isFullscreen ? "Minimize" : "Maximize"} size={15} />
         </button>
+        </div>
       </div>
     </div>
   );

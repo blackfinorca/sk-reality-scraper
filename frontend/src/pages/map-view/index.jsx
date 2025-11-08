@@ -3,6 +3,7 @@ import NavigationHeader from '../../components/ui/NavigationHeader';
 import MapContainer from './components/MapContainer';
 import FilterControls from './components/FilterControls';
 import PropertyListPanel from './components/PropertyListPanel';
+import PropertyDetailPanel from './components/PropertyDetailPanel';
 import PropertyDetailModal from './components/PropertyDetailModal';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
@@ -46,13 +47,29 @@ const MapView = () => {
         throw new Error(`Server vrátil stav ${response.status}`);
       }
       const payload = await response.json();
-      const next =
+      const raw =
         Array.isArray(payload?.data)
           ? payload.data
           : Array.isArray(payload)
             ? payload
             : [];
-      setProperties(next);
+      const filteredSales = raw.filter((item) => {
+        const url = (item?.primary_source_url || item?.url || "").toLowerCase();
+        const title = (item?.title || "").toLowerCase();
+        const summary = (item?.summary || "").toLowerCase();
+        const rentHints = ["prenajom", "prenájom", "prenajímame", "prenajmeme", "prenájmu"];
+        const saleHints = ["predaj", "predáva", "predám", "na predaj"];
+        const hasRentKeyword =
+          rentHints.some((hint) => url.includes(hint) || title.includes(hint) || summary.includes(hint)) ||
+          ["primary_portal", "portal"].some((field) =>
+            item?.[field]?.toLowerCase().includes("rent")
+          );
+        if (hasRentKeyword) return false;
+        const hasSaleKeyword = saleHints.some((hint) => title.includes(hint) || summary.includes(hint));
+        if (hasSaleKeyword) return true;
+        return true;
+      });
+      setProperties(filteredSales);
       setSourceMeta(payload?.meta || null);
     } catch (err) {
       setLoadError(err?.message || "Nepodarilo sa načítať dáta");
@@ -252,15 +269,22 @@ const MapView = () => {
 
         <div ref={mapSectionRef} className="mt-6 grid gap-6 lg:grid-cols-[420px,1fr]">
           <div className="hidden lg:block">
-            <PropertyListPanel
-              properties={properties}
-              selectedProperty={selectedProperty}
-              onPropertySelect={handlePropertySelect}
-              filters={filters}
-              isLoading={isLoading}
-              error={loadError}
-              onRetry={loadProperties}
-            />
+            {selectedProperty ? (
+              <PropertyDetailPanel
+                property={selectedProperty}
+                onBack={() => setSelectedProperty(null)}
+              />
+            ) : (
+              <PropertyListPanel
+                properties={properties}
+                selectedProperty={selectedProperty}
+                onPropertySelect={handlePropertySelect}
+                filters={filters}
+                isLoading={isLoading}
+                error={loadError}
+                onRetry={loadProperties}
+              />
+            )}
           </div>
 
           <div className="min-h-[520px]">
@@ -277,7 +301,13 @@ const MapView = () => {
           </div>
         </div>
 
-        <div className="lg:hidden mt-6">
+        <div className="lg:hidden mt-6 space-y-4">
+          {selectedProperty && (
+            <PropertyDetailPanel
+              property={selectedProperty}
+              onBack={() => setSelectedProperty(null)}
+            />
+          )}
           {activeView === "list" && (
             <PropertyListPanel
               properties={properties}

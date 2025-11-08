@@ -7,7 +7,8 @@
 
 
 TODO:
-- top quickfilter on top of the map to choose the budget
+- top quickfilter on top of the map to choose the budget - DONE
+- Investicne skore
 - costs calculator for the flat
     - matching the areas or geo proximity with sale/rent and compare
     - ai helper to read through the descriptions and extract costing

@@ -33,6 +33,120 @@ const cache = {
   meta: null,
 };
 
+const PHOTO_SNAPSHOT_FILES = [
+  path.resolve(PROJECT_ROOT, "output/nehnutelnosti_output_predaj.csv"),
+  path.resolve(PROJECT_ROOT, "output/nehnutelnosti_output.csv"),
+  path.resolve(PROJECT_ROOT, "output/nehnutelnosti_output_prenajom.csv"),
+  path.resolve(PROJECT_ROOT, "output/reality_output_predaj.csv"),
+  path.resolve(PROJECT_ROOT, "output/reality_output.csv"),
+  path.resolve(PROJECT_ROOT, "output/reality_output_prenajom.csv"),
+  path.resolve(PROJECT_ROOT, "output/bazos_output_predaj.csv"),
+  path.resolve(PROJECT_ROOT, "output/bazos_output.csv"),
+  path.resolve(PROJECT_ROOT, "output/bazos_output_prenajom.csv"),
+];
+
+const propertyPhotosById = buildPropertyPhotoLookup();
+const tokenPhotoLookup = buildTokenPhotoLookup();
+
+function buildPropertyPhotoLookup() {
+  const map = new Map();
+
+  for (const file of PHOTO_SNAPSHOT_FILES) {
+    if (!fs.existsSync(file)) continue;
+    const content = fs.readFileSync(file, "utf8").split(/\r?\n/);
+    if (!content.length) continue;
+
+    const headers = parseCsvLine(content.shift());
+    const idIndex = headers.indexOf("property_id");
+    const linkIndex = headers.indexOf("link");
+    if (idIndex === -1 && linkIndex === -1) continue;
+    const photoIndexes = headers
+      .map((name, idx) => (name.startsWith("photo_url") ? idx : -1))
+      .filter((idx) => idx >= 0);
+    if (!photoIndexes.length) continue;
+
+    for (const line of content) {
+      if (!line.trim()) continue;
+      const cells = parseCsvLine(line);
+      const propertyId = idIndex !== -1 ? cells[idIndex] : null;
+      const urls = photoIndexes
+        .map((idx) => cells[idx])
+        .filter((value) => value && value.startsWith("http"));
+      if (!urls.length) continue;
+
+      const link = linkIndex !== -1 ? cells[linkIndex] : null;
+      const portalId = extractPortalId(link);
+
+      addPhotoMapping(map, propertyId, urls);
+      addPhotoMapping(map, link, urls);
+      addPhotoMapping(map, portalId, urls);
+    }
+  }
+
+  return map;
+}
+
+function buildTokenPhotoLookup() {
+  const lookup = new Map();
+  const fingerprintRegex = /\/([A-Za-z0-9_-]+)_fss/i;
+  const urlRegex = /https?:\/\/[^\s,"']+_fss\?[^\s,"']+/gi;
+
+  for (const file of PHOTO_SNAPSHOT_FILES) {
+    if (!fs.existsSync(file)) continue;
+    const content = fs.readFileSync(file, "utf8");
+    const matches = content.match(urlRegex);
+    if (!matches) continue;
+    for (const url of matches) {
+      const match = url.match(fingerprintRegex);
+      if (!match) continue;
+      const token = match[1];
+      if (!lookup.has(token)) {
+        lookup.set(token, url);
+      }
+    }
+  }
+  return lookup;
+}
+
+function parseCsvLine(line) {
+  const cells = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    if (char === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        current += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === "," && !inQuotes) {
+      cells.push(current);
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+  cells.push(current);
+  return cells;
+}
+
+function addPhotoMapping(map, key, urls) {
+  if (!key) return;
+  const normalized = key.trim();
+  if (!normalized || map.has(normalized)) return;
+  map.set(normalized, urls);
+}
+
+function extractPortalId(url) {
+  if (!url) return null;
+  const detailMatch = url.match(/detail\/([^/?]+)/i);
+  if (detailMatch) return detailMatch[1];
+  const parts = url.split("/").filter(Boolean);
+  return parts.length ? parts[parts.length - 1].split("?")[0] : null;
+}
+
 function resolveParquetPath() {
   const envPath = process.env.GOLD_PARQUET_PATH;
   if (envPath) {
@@ -155,6 +269,29 @@ function normalizeRecord(record) {
 
   const summary = record.summary_short_sk || null;
 
+  const primaryUrl = record.primary_source_url || record.url || "";
+  const portalId = extractPortalId(primaryUrl);
+
+  const photosByListing =
+    propertyPhotosById.get(listingId) ||
+    propertyPhotosById.get(primaryUrl) ||
+    propertyPhotosById.get(portalId) ||
+    [];
+  const photosByToken = (record.photo_fingerprints || [])
+    .map((token) => (token ? tokenPhotoLookup.get(token) : null))
+    .filter(Boolean);
+
+  let images = pickImages(listingId);
+  let hasScrapedPhotos = false;
+
+  if (photosByListing.length > 0) {
+    images = photosByListing;
+    hasScrapedPhotos = true;
+  } else if (photosByToken.length > 0) {
+    images = photosByToken;
+    hasScrapedPhotos = true;
+  }
+
   const amenities = [
     record.status ? `Status: ${record.status}` : null,
     record.energ_cert ? `Energetická trieda ${record.energ_cert}` : null,
@@ -191,8 +328,9 @@ function normalizeRecord(record) {
     portal: record.primary_portal,
     summary,
     description: summary,
+    hasScrapedPhotos,
     amenities,
-    images: record.images && record.images.length ? record.images : pickImages(listingId),
+    images,
     imageAlts: [],
     sourceUpdatedAt: record.updated_at,
   };

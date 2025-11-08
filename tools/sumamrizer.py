@@ -17,10 +17,10 @@ from tqdm import tqdm
 
 PROMPT_TEMPLATE = (
     'Si stručný sumarizátor realitných ponúk pre investorov. Použi LEN text z poľa DESCRIPTION.\n'
-    "Cieľ: vyprodukuj 1–2 krátke vety v slovenčine s investične dôležitými faktami.\n\n"
+    "Cieľ: vyprodukuj 2-3 krátke vety v slovenčine s investične dôležitými faktami.\n\n"
     "Pravidlá:\n"
     "- Ak údaj v DESCRIPTION nie je, NEUVÁDZAJ ho. Nič nevymýšľaj, žiadne superlatívy.\n"
-    "- VÝSTUP = 1–2 vety, spolu ≤ 35 slov. Žiadne ceny, odkazy, kontakty.\n"
+    "- VÝSTUP = 12-3 vety, spolu ≤ 35 slov. Žiadne ceny, odkazy, kontakty.\n"
     "- Uprednostni: počet izieb, výmera (m²), stav (novostavba/kompletná/čiastočná rekonštrukcia/bez nutnej), poschodie + výťah, vonkajší priestor (balkón/loggia/terasa/záhrada), parkovanie, pivnica/komora/technická miestnosť, vykurovanie/klíma/rekuperácia/podlahové kúrenie, mesačné náklady/poplatky, pešia dostupnosť/čas k centru/MHD/žst, špecifiká projektu/lokality a nieco co je zaujimave pre investorov.\n"
     "- Jazyk vecný a úsporný; Pouzi cele vety ak sa neda, informácie môžeš oddeliť bodkočiarkami.\n\n"
     "FORMÁT:\n"

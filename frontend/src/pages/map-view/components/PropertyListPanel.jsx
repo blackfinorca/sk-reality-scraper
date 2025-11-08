@@ -85,12 +85,16 @@ export default function PropertyListPanel({
                 active ? "border-blue-300 shadow-lg" : "border-white"
               }`}
             >
-              <div className="relative overflow-hidden rounded-2xl">
+            <div className="relative overflow-hidden rounded-2xl">
+              {property.hasScrapedPhotos ? (
                 <Image
                   src={property.images?.[0]}
                   alt={property.imageAlts?.[0]}
                   className="h-48 w-full object-cover"
                 />
+              ) : (
+                <div className="h-48 w-full bg-slate-200 animate-pulse" />
+              )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
                   <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
@@ -161,8 +165,8 @@ export default function PropertyListPanel({
     <div className="h-full rounded-3xl border border-white/70 bg-white/95 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.1)]">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Kurátor</p>
-          <h2 className="text-lg font-semibold text-slate-900">Investičný shortlist</h2>
+          <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Investičný shortlist</p>
+          <h2 className="text-lg font-semibold text-slate-900">Top nehnuteľnosti</h2>
         </div>
         <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
           {filtered.length} výsledkov
