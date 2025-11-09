@@ -1,0 +1,1442 @@
+{
+  "78b8b0990d8e507441a5e6f11809161130509702": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "14080285b165a621668e8927abb39f1e2303fcee": {
+    "price": null,
+    "price_area": 86,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "b736a495266976fe8ab13d2f76ca470e4868d1e3": {
+    "price": null,
+    "price_area": 60,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "6508baa93b35c7387f5249d8cdd0e31c74892b1f": {
+    "price": null,
+    "price_area": 56.05,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "f035fdb263dccb7ccebf9f8746e5c11586193e89": {
+    "price": null,
+    "price_area": 95,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "916daed40728e65c412eac3c02013a100978ff48": {
+    "price": 190000,
+    "price_area": null,
+    "floor_area": 50,
+    "room_number": 2
+  },
+  "46c2c238d4961ea71c55bbb7b31685662bc7913b": {
+    "price": 219900,
+    "price_area": null,
+    "floor_area": 69,
+    "room_number": 3
+  },
+  "fa98779981eedeb1290faf70e05b8d6034cf1935": {
+    "price": 198700,
+    "price_area": null,
+    "floor_area": 71.55,
+    "room_number": 3
+  },
+  "7a9728bee25b512bf7db9b28c91e91968e434835": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "922e1576b56b7c0859601bdd0a3a65336e9a3665": {
+    "price": 147900,
+    "price_area": 5288.57,
+    "floor_area": 28,
+    "room_number": 1
+  },
+  "5f117af81a466a9cd05974d40f7a5d8395511ed8": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 4
+  },
+  "49636a45b7fbfd3cb3ff3c2d5652ed1c38f032c2": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "58db413649a498d81e1e4810a2f0ca5c61277590": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "bb56b4ca3583b38a6e76863ec637424857ef9a68": {
+    "price": 275000,
+    "price_area": 3196.51,
+    "floor_area": 86,
+    "room_number": 3
+  },
+  "6da4db7f40d0910d250bab48127f33b3f7203823": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 74,
+    "room_number": 3
+  },
+  "03d097145129f0d20bf27a05249887921e793d83": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "24e42f7e21ad79258bc303b4f8b4704453096282": {
+    "price": 198700,
+    "price_area": null,
+    "floor_area": 71.55,
+    "room_number": 3
+  },
+  "b4f8e393ec51ce7346885a094115b9596ee91cf2": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "bc0490887dfa88dde771976e1b93efba4ffddd01": {
+    "price": 225000,
+    "price_area": null,
+    "floor_area": 55.8,
+    "room_number": 2
+  },
+  "33f1f0a632b77d3d44ffad64e7668eb6afafb604": {
+    "price": 126900,
+    "price_area": null,
+    "floor_area": 54.16,
+    "room_number": 2
+  },
+  "1260e93d0b4304a82901d1ea67c88a31d43f058e": {
+    "price": 189900,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 3
+  },
+  "7cc866f3e6740288a2055d81f033cb9d1ebddfa9": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 72,
+    "room_number": 3
+  },
+  "45e96470e47652e59be60d5a564361ad98023af1": {
+    "price": null,
+    "price_area": 105000,
+    "floor_area": null,
+    "room_number": null
+  },
+  "cdba5e332669af5a259ec5a5da139ddb698d80ed": {
+    "price": 224999,
+    "price_area": null,
+    "floor_area": 84.6,
+    "room_number": 4
+  },
+  "90297fe774e1e897265a5b54cd0ee4019e9ef4d1": {
+    "price": 126900,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 2
+  },
+  "edee176a53d61c4cadd6dfc24e6b2388f95f3ed4": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 54.62,
+    "room_number": 3
+  },
+  "642e3dc9c235be94162aad5eb8f521b5f568ec3a": {
+    "price": 99990,
+    "price_area": null,
+    "floor_area": 32,
+    "room_number": 1
+  },
+  "ba8ab4b90e62571c5003052675ed43d534be9722": {
+    "price": 225000,
+    "price_area": null,
+    "floor_area": 55.8,
+    "room_number": 2
+  },
+  "6d9f1a6e47d09fab3be91cf52a18748ce94faf76": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "8b0657ef65c2f4618dbc259ca06087d16c86c6c2": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "03259f1c69d0d7f6732a72ec7c942541497cd742": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 65,
+    "room_number": 3
+  },
+  "5891b104b206e3a5b0bbb8d2fe045b4139eec647": {
+    "price": 195000,
+    "price_area": null,
+    "floor_area": 81,
+    "room_number": 2
+  },
+  "bb412a236c8b1b2a61cc0f991d78ed77afca64cf": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "8767ab1d0a870e8aa09aad5bf3d2f859ab5493b2": {
+    "price": 166900,
+    "price_area": 2311.4,
+    "floor_area": 72.22,
+    "room_number": 3
+  },
+  "b515a7cb4fbf1d8b30254f2c09897d5404b6b113": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "9e42c21956c476c0109cb19262b9be45c3a56533": {
+    "price": 126900,
+    "price_area": 2186.09,
+    "floor_area": 54.16,
+    "room_number": 2
+  },
+  "30146a361765be91e237db72c07adb924a07d47d": {
+    "price": 198700,
+    "price_area": 2575.71,
+    "floor_area": 77,
+    "room_number": 3
+  },
+  "ddb6ab3eaa9710785ec51eb0b045d810605245f3": {
+    "price": 90000,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "a0e582da6153875c0c6b495c51604098f2dcdcbe": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": null
+  },
+  "506f67bd11d85a8cfe067d9464a1685960d195ad": {
+    "price": 127000,
+    "price_area": 2154.83,
+    "floor_area": 58.81,
+    "room_number": 2
+  },
+  "d70dfb84ad996b3c13afded0826fba46d4936f7d": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 80.49,
+    "room_number": 3
+  },
+  "73bdf242e94947ebbb9bba34c90f04018f6780cd": {
+    "price": 179900,
+    "price_area": null,
+    "floor_area": 78.48,
+    "room_number": 3
+  },
+  "9109419b21a1e27cf30c5156a2ba1289b8e82cb0": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 70,
+    "room_number": 3
+  },
+  "6ff76ce6e8ad5dab4affdfd8bef07120e2661a18": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "01ec6c01fa23b9de333b63923b0231c6b818a482": {
+    "price": 259900,
+    "price_area": null,
+    "floor_area": 69.54,
+    "room_number": 3
+  },
+  "1d6885da1f0f68dad580931f049a468950bbc5e8": {
+    "price": 199900,
+    "price_area": null,
+    "floor_area": 72,
+    "room_number": 3
+  },
+  "b261154eda2341dfd76061332090a71ffc860f2c": {
+    "price": 169000,
+    "price_area": null,
+    "floor_area": 53.23,
+    "room_number": 2
+  },
+  "3c34279660b0f811112fe7bd785ddb7c73e15e04": {
+    "price": 219000,
+    "price_area": null,
+    "floor_area": 56.39,
+    "room_number": 2
+  },
+  "d4ea46b4a0b16a59662a9e8fc89d3b1ca9e93485": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "1ff1592f98c94aea77d58bc84ae1f3bc7ada2461": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 124.77,
+    "room_number": 4
+  },
+  "05ab199002f91022735c0bd7a5ed5a31a003e2d0": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 69,
+    "room_number": 3
+  },
+  "7b50677249701c702f4e02ae5592c0d7e3a5a749": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 124.2,
+    "room_number": 3
+  },
+  "2153eef98d6f1dc41423267997810fb88df98758": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 77.11,
+    "room_number": 3
+  },
+  "62bb000807f2a65e1c8e66e7fba592bb27d0edaf": {
+    "price": 169000,
+    "price_area": null,
+    "floor_area": 53.23,
+    "room_number": 2
+  },
+  "d574d51ddc8e4d0ddde1456119d2a4f5d91a84f3": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 59.41,
+    "room_number": 2
+  },
+  "02ffc38859491ebd92147ae1810bb048e93fdf60": {
+    "price": 179900,
+    "price_area": null,
+    "floor_area": 78.48,
+    "room_number": 3
+  },
+  "f4cd38cb31bc408b32fa816a90c798116789d3ed": {
+    "price": 219000,
+    "price_area": null,
+    "floor_area": 56.39,
+    "room_number": 2
+  },
+  "13dbeb7506ec95477dc9eae53ccf6ea21a30b815": {
+    "price": 165000,
+    "price_area": null,
+    "floor_area": 66,
+    "room_number": 3
+  },
+  "a309a78800d68b56e1fb569c74ccff9939ddf23d": {
+    "price": 299900,
+    "price_area": null,
+    "floor_area": 69.54,
+    "room_number": 3
+  },
+  "db1ac023c1e0e3eb9008135c499afa008d7f18ef": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 80,
+    "room_number": 3
+  },
+  "f80b99dec83371e9477ff8c3e7bd59bf4b7ffd96": {
+    "price": 289000,
+    "price_area": null,
+    "floor_area": 132,
+    "room_number": 4
+  },
+  "ef75b86450c9b70d65ff9cf893565b9405580be2": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 111,
+    "room_number": 3
+  },
+  "0a86fd49f5721618206fe9555407e5e2f4ab16d3": {
+    "price": 319900,
+    "price_area": null,
+    "floor_area": 76.25,
+    "room_number": 2.5
+  },
+  "17deadc46c1ee9bd20fb6b7b3e7e0aec1a696ab8": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 70,
+    "room_number": 3
+  },
+  "f272b966caddf54b7e5a84aa101f71a08124f35d": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 150,
+    "room_number": 4
+  },
+  "54872c9de9ae98e9a8e7ef4808b936eec0d6f612": {
+    "price": null,
+    "price_area": 66.71,
+    "floor_area": null,
+    "room_number": 4
+  },
+  "b4b4bc45354639e5e6ad76e944eb6c445493d527": {
+    "price": 175000,
+    "price_area": 77.43,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "a7c3f0aca5c5c7a065649dacd56e9e48cb1c6ad0": {
+    "price": 160000,
+    "price_area": 39.47,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "e4ba665df6b7aabcff7863576bb52c86c9d921ca": {
+    "price": null,
+    "price_area": 85,
+    "floor_area": null,
+    "room_number": 4
+  },
+  "e0f706411ef02a75de0d7e7dbf8b37428d91fe71": {
+    "price": 279000,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "2bc86677d47e03f28e96f3cbe4d57b98e67f0838": {
+    "price": 210000,
+    "price_area": 73.23,
+    "floor_area": null,
+    "room_number": 4
+  },
+  "5f520bf3e1ae8ca1d858caaa50f7c4497dee9d6a": {
+    "price": 157500,
+    "price_area": 53.63,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "f599a3e438778655fdc219cce3bb747467ab03eb": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 86,
+    "room_number": 4
+  },
+  "663f551f89616ad0a5f76a7f675059abc80967ef": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 79.39,
+    "room_number": 3
+  },
+  "51bb86ab42453801ebfd7a1a35e847fc154a4572": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 36,
+    "room_number": 1.5
+  },
+  "299dc8ddcabcc9a25d012e4719d71c649452bd26": {
+    "price": 205000,
+    "price_area": null,
+    "floor_area": 68,
+    "room_number": 3
+  },
+  "745d17bb6e9dee87485b64c90268a67394f7304e": {
+    "price": 205000,
+    "price_area": null,
+    "floor_area": 68,
+    "room_number": 3
+  },
+  "52981d5a2ff72264bc1f56b484a602bf89c9b11c": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 65,
+    "room_number": 3
+  },
+  "659c74815f52ea4d6fc470bfaeb964d1c9cdd016": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 3
+  },
+  "6dd8961f6ee63f7aa0cbd679403ac8033d65fa29": {
+    "price": 185000,
+    "price_area": null,
+    "floor_area": 79,
+    "room_number": 3
+  },
+  "819867e1d71d42cfe1177d8c5d0337c2dd4c0166": {
+    "price": 10000,
+    "price_area": 135,
+    "floor_area": 54.39,
+    "room_number": 2
+  },
+  "0aa4e6dc52e7d70567b34af45962bef39330495c": {
+    "price": 52000,
+    "price_area": null,
+    "floor_area": 20,
+    "room_number": 1
+  },
+  "f57218c2fcc0c5966694ef56e957b002e619ed87": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 87,
+    "room_number": 4
+  },
+  "ee6abe39dc808a23122c8d6280ed59b0cdeccb3f": {
+    "price": 185000,
+    "price_area": null,
+    "floor_area": 79,
+    "room_number": 3
+  },
+  "1af72af1c25ec53d92b7e59c24def2ce94a66b9a": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 44.07,
+    "room_number": 2
+  },
+  "03b479d6904acb7a9b497e88bfba27087a10cd8d": {
+    "price": 173000,
+    "price_area": null,
+    "floor_area": 58.3,
+    "room_number": 3
+  },
+  "ea6a3ec4e4e32a3441e79ca1f7a2cb778eeb5b9c": {
+    "price": 158000,
+    "price_area": null,
+    "floor_area": 52.28,
+    "room_number": 2
+  },
+  "814216b1fc406253ad0940972ee3f3685a36e259": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 81,
+    "room_number": 3
+  },
+  "32d4dc9e994580d280e9592102e414083da873a7": {
+    "price": 138050,
+    "price_area": 153500,
+    "floor_area": 46.92,
+    "room_number": 3
+  },
+  "5c85cdf37708b969c2a1649669f4312c4f2133f3": {
+    "price": 183000,
+    "price_area": null,
+    "floor_area": 76,
+    "room_number": 3.5
+  },
+  "734dda1c15334576c24b78e9620907fc77592008": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 79,
+    "room_number": 3
+  },
+  "067b9194ae54e409524de1e3cc3036babda82bb5": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 58.44,
+    "room_number": 2
+  },
+  "0a4d57536f402d9c14fcac21a96ab70f3ba50606": {
+    "price": 175900,
+    "price_area": null,
+    "floor_area": 48,
+    "room_number": 2
+  },
+  "cb93214039c9d6403fc87d29a565d6c5edf25dd3": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 62,
+    "room_number": 2
+  },
+  "15bff0adccec83e7275b37cb6c14df1a874d1574": {
+    "price": 163000,
+    "price_area": 198000,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "ab81d3c7587ac5b8ec657432543440087e48004c": {
+    "price": 250000,
+    "price_area": 265000,
+    "floor_area": 80.62,
+    "room_number": 3
+  },
+  "551ac61391ce6ab684bcdbef04e9f801936f0423": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "3f7f8c4343d48b71667c9a5b110db1eedae4b035": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "297a2efc25139774add779f42f361a3d3198dba0": {
+    "price": 204900,
+    "price_area": 3021,
+    "floor_area": 67.69,
+    "room_number": 3
+  },
+  "92eca5f895a68e9c76b826ce53e6e19284305a52": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 65,
+    "room_number": 3
+  },
+  "2f3c983d1d2f19d99bc18c39a350778b40e8a31f": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "a78747240d7176eb7fa908b4ba46ebe3aa6ed679": {
+    "price": 225000,
+    "price_area": 3955.42,
+    "floor_area": 56.82,
+    "room_number": 2
+  },
+  "eb7e7731867f48ad6693c3fe4d729b5aacb85ea2": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 66,
+    "room_number": 3
+  },
+  "7d1e781d137995cdc5c4387d90bbfc21b67a03cb": {
+    "price": 163550,
+    "price_area": 2726,
+    "floor_area": 60,
+    "room_number": 2
+  },
+  "df9110e2d74fd328a78ed7655400fc55cd7ad5a5": {
+    "price": 189900,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 3
+  },
+  "8fff52c625aab63b3c57457167298fa53bb80e04": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 52,
+    "room_number": 1
+  },
+  "cf06a57c2a948b8967dfab7feca8020e5b170936": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "b1561d130070c066e6e52d6cf5b77187c41a4546": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 73,
+    "room_number": 3
+  },
+  "bc7d77cce1f23fd3e14359dc198b1a542a6f8fdc": {
+    "price": 125900,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "14d07628c07889a9d92a7932d869643823fbcc3c": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 150,
+    "room_number": 5
+  },
+  "7c38042134f89239d3ce944c463a35bf34a17051": {
+    "price": 248000,
+    "price_area": null,
+    "floor_area": 75.65,
+    "room_number": 3
+  },
+  "1337a4bf2b6672659e1bc6ea449ea751476d57fb": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 29.5,
+    "room_number": 1
+  },
+  "213b7f81b0c78b52600f9df440353370f9bf3217": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 67,
+    "room_number": 3
+  },
+  "6329743d79136abcd1582514f5e31977adaefef3": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 106,
+    "room_number": 4
+  },
+  "c5892d7def4df865b245575b5bb763c88d9f9c66": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 78,
+    "room_number": 3
+  },
+  "f559311c211760ad3fc7ea3c3da1d8a588e128cc": {
+    "price": 134990,
+    "price_area": null,
+    "floor_area": 40,
+    "room_number": 1
+  },
+  "a30313ddcd5796fa746e6da999a8939a39943be0": {
+    "price": 299000,
+    "price_area": null,
+    "floor_area": 66.5,
+    "room_number": 3
+  },
+  "130f563cd9c298f2f432c4ca72e0b55c0987a775": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 53.67,
+    "room_number": 2
+  },
+  "1658f6a35738000f3063080259680cdcfe1b97dd": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "403181f6116bc0f269cac8ddc8c3cdc6de54a714": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 4
+  },
+  "dbf00df90954a2006180c96a021eef8cf226a08d": {
+    "price": 549900,
+    "price_area": null,
+    "floor_area": 94.33,
+    "room_number": 3
+  },
+  "a1035362514fa5b4857daafeb6ee1214f096a1cc": {
+    "price": 259900,
+    "price_area": null,
+    "floor_area": 68.08,
+    "room_number": 3
+  },
+  "28f36080c787629d20837e7d153c98885a63cf80": {
+    "price": 134000,
+    "price_area": null,
+    "floor_area": 84,
+    "room_number": null
+  },
+  "f1f0830c46e263bc7c9af310e83d08536e126431": {
+    "price": 53000,
+    "price_area": null,
+    "floor_area": 25,
+    "room_number": 1
+  },
+  "93ecb899b22e81f2b98bb7e0ef96651ce93de4ac": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 88,
+    "room_number": 3
+  },
+  "d0891aeb78d2fe130a09d22e63149f7e11f1de24": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 55,
+    "room_number": 3
+  },
+  "3db940644ee22842b999fa34df12fb2ec122202f": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "657614eef6aafdfebe35e65674dfd760c0369062": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "aa85ee74864243a518997a071d02e18af0c73db4": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 66.7,
+    "room_number": 3
+  },
+  "2467e52f50c5d74a6582f045d9f8a10f0a52dada": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 258,
+    "room_number": null
+  },
+  "81da766276b6350cd0a5c99af55739873f5d41b9": {
+    "price": 135000,
+    "price_area": null,
+    "floor_area": 31.2,
+    "room_number": 1.5
+  },
+  "851c73d6a20dc9f16b84a2ca51e73d083a7126ff": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 50.75,
+    "room_number": 2
+  },
+  "0c7d234467f8c6980ded9b507898a4593263c3d7": {
+    "price": 355000,
+    "price_area": null,
+    "floor_area": 90.77,
+    "room_number": 2
+  },
+  "34252670a6f92cf46a50331a508c46061fc3585b": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 44,
+    "room_number": 2
+  },
+  "44a241a7a70d8758ed19d5250efbd423d3f7e1f5": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 47,
+    "room_number": 2
+  },
+  "1e95c583559d2362cc97805d62f9f0072547bdcb": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 53,
+    "room_number": 2
+  },
+  "376c601f4a46c0508b7f8c3c3e041915199b88c1": {
+    "price": 179900,
+    "price_area": null,
+    "floor_area": 73.39,
+    "room_number": 3
+  },
+  "b7b60983cb42899b2eac4a9c2c7f60434825d097": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 258,
+    "room_number": 5
+  },
+  "5635ce7cb31dcc9a97a1a509ef3cf4a4511d0916": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 72,
+    "room_number": 3
+  },
+  "d4cf34b82430549cfb14885961125fbc28202749": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 42,
+    "room_number": 1
+  },
+  "1afb47b230357b4e2b9e2a1a457a5fa56d85ff89": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "a5189a20b1eac27395c40818e73715eb4a4b99aa": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 135.7,
+    "room_number": null
+  },
+  "a3b541bcce16fa06c68cde6e5d40b93aca67602a": {
+    "price": 140000,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "b358024a1856582549216cc5f9383b4f734d52ac": {
+    "price": 175000,
+    "price_area": null,
+    "floor_area": 74.31,
+    "room_number": 3
+  },
+  "997747f9f6f6f63cd07039f7df068d71305a50e6": {
+    "price": 124000,
+    "price_area": null,
+    "floor_area": 39,
+    "room_number": 1
+  },
+  "fdf807efab9f5205652c6eb42a8abf3dd802ffa1": {
+    "price": 138000,
+    "price_area": null,
+    "floor_area": 58.44,
+    "room_number": 2
+  },
+  "36b839794c14687c35706a393e42b96c27fc03f6": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 69,
+    "room_number": 3
+  },
+  "e7796fcd7fe25bffd44eb8cc5df7ac046dda3bfe": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 82,
+    "room_number": 3
+  },
+  "de68b162ff1e07e364730a172f3cb3a6b77764cd": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "61aee0a81bd01e5e5375ec76bb01107e9507856a": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 53,
+    "room_number": 2
+  },
+  "c63b2282d50caefbc1aad9212605406fefaec48b": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "1ffd14c45673b4d9a46ce5cf306a1e9817595c88": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 55,
+    "room_number": 2
+  },
+  "197e8d3a882fd8f92e991446123a7514d17188d0": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 74.99,
+    "room_number": 3
+  },
+  "66d14281739aaa4bfdae08ad1b343bda996a2e65": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "3d9dfbd0322b6a6b30792df042b159016278dc0a": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 3
+  },
+  "f0142cb48f6f5d80d32bcd30c38853b1239f85e7": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 40,
+    "room_number": 1.5
+  },
+  "1e1f7c263baf1f3b9d8b1ca4f2413d1c12c41fea": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 46.5,
+    "room_number": 2
+  },
+  "fe0b9e3c5fcbe8132289bda1aa75d0bce1f138c5": {
+    "price": 199900,
+    "price_area": null,
+    "floor_area": 79.3,
+    "room_number": 3
+  },
+  "d10bf57d0f74b676ce24cc07ace7b07c456cd8f0": {
+    "price": 247000,
+    "price_area": null,
+    "floor_area": 57,
+    "room_number": 2
+  },
+  "c7ff92f6b75bf7bf19c520919605d9d219b26778": {
+    "price": 247000,
+    "price_area": 0,
+    "floor_area": 85,
+    "room_number": 2
+  },
+  "8eedca4d913de5a0f4bca79d9bae233ecf76573b": {
+    "price": 150000,
+    "price_area": 0,
+    "floor_area": 50,
+    "room_number": 2
+  },
+  "7182259c1c3bbffd4eae193bfeaf15d88e31c4e2": {
+    "price": 168000,
+    "price_area": 0,
+    "floor_area": 68,
+    "room_number": 3
+  },
+  "31444a3718e07e61ad58b8fae8622f58a005adf2": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 65,
+    "room_number": 3
+  },
+  "967f90fffb35435ef50f34c9db0d6db0f672b909": {
+    "price": 199900,
+    "price_area": 0,
+    "floor_area": 79.3,
+    "room_number": 3
+  },
+  "554ae827ed2adce4537c27c8dad8569110ec8457": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 52,
+    "room_number": 2
+  },
+  "8a5362d69ce1c0689e65d1c1f17b4612636271b8": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 0,
+    "room_number": null
+  },
+  "7e78499b65945e33a318ddd870aca3d6156cb8d4": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 2
+  },
+  "9837f2a736b4b19b788da532ff71ec656774cceb": {
+    "price": 289900,
+    "price_area": null,
+    "floor_area": 104.15,
+    "room_number": 4
+  },
+  "40fe7f20ff9cc664df49962ca51600a6ac30d9d1": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 27.7,
+    "room_number": null
+  },
+  "f3a99ad909b96784c31ee11fef8e5b6fc1b06b0a": {
+    "price": 103000,
+    "price_area": null,
+    "floor_area": 20,
+    "room_number": null
+  },
+  "efa60f87a449c23cba886c0a3f47806d6cdb80bf": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "b6f3ff30c23994546d716dee74a59639a1961321": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "924839bc8be9cef95a5cfc2a6da08f476b9473c6": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "b1954f8e9ca1643475f9c6d21b3266c10a0852af": {
+    "price": 122500,
+    "price_area": null,
+    "floor_area": 44.46,
+    "room_number": 2
+  },
+  "5397a928eff16f0c05fa7a075165ec9b8f8c7350": {
+    "price": 160000,
+    "price_area": 0,
+    "floor_area": 46,
+    "room_number": 1
+  },
+  "3ce637d0e8f459039670e86d72866a9ef654358e": {
+    "price": 169900,
+    "price_area": 0,
+    "floor_area": 61.5,
+    "room_number": 2
+  },
+  "5d10eac481f7cbd4f62dc536913da1b7723b7de4": {
+    "price": null,
+    "price_area": 0,
+    "floor_area": 53.63,
+    "room_number": 2
+  },
+  "85123fff631da763e9f833ac24831758e18d643c": {
+    "price": 169900,
+    "price_area": 0,
+    "floor_area": 61.5,
+    "room_number": 2
+  },
+  "6cb952a3d1f38db4d8a50c281d9c4768e49ece02": {
+    "price": null,
+    "price_area": 0,
+    "floor_area": 41.82,
+    "room_number": 2
+  },
+  "2f8c021e5e9ba507fdcad6e1a21c8d1e4c7e1442": {
+    "price": 155000,
+    "price_area": 0,
+    "floor_area": 52.28,
+    "room_number": 2
+  },
+  "b67ec36802c1cfc64e17aa8321b32d6f709caa69": {
+    "price": 173000,
+    "price_area": 0,
+    "floor_area": 60,
+    "room_number": 3
+  },
+  "186e0772b9b108cb159a9f9ac0ebcc4abe0985ff": {
+    "price": null,
+    "price_area": 0,
+    "floor_area": 60.9,
+    "room_number": 3
+  },
+  "ba1cd90e572d1a5bc30987547a4790a6dc05e501": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 67,
+    "room_number": 3
+  },
+  "644180de38e51aed131c4788845ef3a1dc3645f3": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 80,
+    "room_number": 3
+  },
+  "7cc3009955f6c94080fa5df4beca11f3100b86f3": {
+    "price": 244900,
+    "price_area": null,
+    "floor_area": 72.89,
+    "room_number": 3
+  },
+  "0149277a70c10016e0cb3157af0e23e229dc1f80": {
+    "price": 163500,
+    "price_area": null,
+    "floor_area": 67.74,
+    "room_number": 3
+  },
+  "9d6501cadf0b95f33b96700dc161083faeb32731": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 51.54,
+    "room_number": 2
+  },
+  "543066231aa10e90db6fb83ad6cc45f638958031": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 49,
+    "room_number": 2
+  },
+  "620895dd5a0c181c35050d4c0ae2020895fb65c0": {
+    "price": 112500,
+    "price_area": null,
+    "floor_area": 31,
+    "room_number": 1
+  },
+  "98f9ec2376dee9936ca7bcdef4c0923cc68cd943": {
+    "price": 176000,
+    "price_area": null,
+    "floor_area": 69,
+    "room_number": 3
+  },
+  "88f70745adbead57b7ed07e22fd60e49c4966732": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 96.51,
+    "room_number": 3
+  },
+  "5a6933d94686ebe1eb1a9b06dd8163797d7638f6": {
+    "price": 364000,
+    "price_area": null,
+    "floor_area": 74,
+    "room_number": 3
+  },
+  "9310e70670a29342ee87497b743bb930e26b1a38": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 67,
+    "room_number": 3
+  },
+  "8049b52309e64692ba23c14aadb78acbb36ecb71": {
+    "price": 1100,
+    "price_area": null,
+    "floor_area": 37.86,
+    "room_number": 1
+  },
+  "d777b45f18f8aca99f405df333ae875f7e179f64": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 50,
+    "room_number": 2
+  },
+  "6bbc4f1b3a48956db219ff56b0eab512d36e0f56": {
+    "price": 149990,
+    "price_area": null,
+    "floor_area": 57.12,
+    "room_number": 2
+  },
+  "cea6ab6772d09596691a23340db0ab307c34d063": {
+    "price": 168900,
+    "price_area": null,
+    "floor_area": 50,
+    "room_number": 2
+  },
+  "8f339706a3ec02be4584b8a80facdb3d0744b8d3": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 68,
+    "room_number": 3
+  },
+  "76c120772870b314c17bb7b772d8f202fa80a046": {
+    "price": 25000,
+    "price_area": 0,
+    "floor_area": 75.77,
+    "room_number": 3
+  },
+  "4f6978a7ec4155cc731def12b634ea8f98ca7f9d": {
+    "price": 149990,
+    "price_area": 0,
+    "floor_area": 57.12,
+    "room_number": 2
+  },
+  "22968a472b4bcb7bdac39aa57e537ee3467a91d8": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 56.4,
+    "room_number": 2
+  },
+  "9eb2145d7c4c89b62bd66e098f45c9d987b03db8": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 0,
+    "room_number": null
+  },
+  "bb12a192679a7e0df4dc3f1973615a2566c99244": {
+    "price": 120000,
+    "price_area": 0,
+    "floor_area": 0,
+    "room_number": null
+  },
+  "29761ee16db7f08b1746419a1df3e15db637d641": {
+    "price": 0,
+    "price_area": 0,
+    "floor_area": 102.88,
+    "room_number": 4
+  },
+  "34321963097be54eb60d6b10157a313148d43985": {
+    "price": 145000,
+    "price_area": 0,
+    "floor_area": 49.7,
+    "room_number": 2
+  },
+  "1a6ff17546d4c99b02f98b3016f28564cce617e5": {
+    "price": 175000,
+    "price_area": 0,
+    "floor_area": 66.19,
+    "room_number": 3
+  },
+  "bda1d99c50cbca51f46f3ebdeadb88a25aaf7433": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 84.12,
+    "room_number": 4
+  },
+  "f723ca7f36c831bcffee83348f6e33652d94cb48": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "4c38b57b67bae009f955927d3d31cb69693fe85c": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "1031dc5d623e148bd55e40219d45feed9fe2f414": {
+    "price": 164000,
+    "price_area": 3037.04,
+    "floor_area": 54,
+    "room_number": 2
+  },
+  "0b226a34c848af68616e5947a745656a15978070": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 51,
+    "room_number": 2
+  },
+  "bfcabfcdfb026c42de8e4dadc7378eedab05d95b": {
+    "price": 145000,
+    "price_area": 3222.22,
+    "floor_area": 45,
+    "room_number": 2
+  },
+  "48e00516279acaf4f2053bfdb475c2d4f0a80631": {
+    "price": 495000,
+    "price_area": 4890.1,
+    "floor_area": 101,
+    "room_number": 4
+  },
+  "53f2bceeee6e4a5491871ef1cb102c93f1f94de0": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 87.75,
+    "room_number": 3
+  },
+  "1d8f8d96a66d74ba56b6014a48d42800b37ae3c0": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "cca76b95ac0b7950901ecdfcfa30c2293aabb1bb": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "722c682995d395337376ade91807ea051372d06b": {
+    "price": 529000,
+    "price_area": null,
+    "floor_area": 101,
+    "room_number": 4
+  },
+  "e916aad02631083545f5937e014273237ee5cd60": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 47,
+    "room_number": 2
+  },
+  "ee5d98bbd4607fe22ce65b8d2d097b03692770db": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 51.29,
+    "room_number": 2
+  },
+  "097e54753e1ea61f76e8779ae79810b9a804c23b": {
+    "price": 197500,
+    "price_area": null,
+    "floor_area": 59.51,
+    "room_number": 2
+  },
+  "356fe88b590c3dfd3a6085ad2e7c27636b9f99c1": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 3
+  },
+  "24af704de042893d7653d22624033f8d44a72dbd": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": 1
+  },
+  "7f045f193a658ea7336b41351a67dbace986069b": {
+    "price": null,
+    "price_area": 65.77,
+    "floor_area": 5.5,
+    "room_number": 3
+  },
+  "cd303a28bc5f26c1cc2de6252f09729ff0f13203": {
+    "price": null,
+    "price_area": 44,
+    "floor_area": 4.61,
+    "room_number": 2
+  },
+  "8695ba60b8b467b60c33fd769b600d90eb4dfa81": {
+    "price": 141900,
+    "price_area": null,
+    "floor_area": 34,
+    "room_number": 2
+  },
+  "11c3cf36a37504fcfa473e7c06384ea001856700": {
+    "price": 158900,
+    "price_area": 52.56,
+    "floor_area": null,
+    "room_number": 2
+  },
+  "4f96a38f2755448c06a9923cb8b7f9ef4c6ddb11": {
+    "price": null,
+    "price_area": 43.81,
+    "floor_area": 23,
+    "room_number": 2
+  },
+  "a5bd6cba9946e47c019244364c21305d9d4f1526": {
+    "price": 159000,
+    "price_area": null,
+    "floor_area": 62,
+    "room_number": 3
+  },
+  "f7cceb2c9504c9a41ab1a5a14a7e2f5e96218192": {
+    "price": 239000,
+    "price_area": null,
+    "floor_area": 105,
+    "room_number": 4
+  },
+  "e68fccca40b744e60e65fb0176aa4c87bc9f466e": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 87,
+    "room_number": 4
+  },
+  "89e27cb930c73c9d4006b67df160e59caf35e5d8": {
+    "price": 175000,
+    "price_area": null,
+    "floor_area": 63.1,
+    "room_number": 3
+  },
+  "388712a159160d11114a9f881aaa23985a76ab5a": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 60,
+    "room_number": 2
+  },
+  "475aecfe86f074485b845394ebbf8ebc97dbcc61": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 49,
+    "room_number": 2
+  },
+  "4bc6ba0329c0770f91b05b75290e71103d593ab5": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 74.77,
+    "room_number": 3
+  },
+  "6b527a60a68cafe8346ef75cb452b5cb85d14270": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 72,
+    "room_number": 3
+  },
+  "dc5926d5a02cc42a5cabfc410e2205325c745056": {
+    "price": 329900,
+    "price_area": null,
+    "floor_area": 73.54,
+    "room_number": 3
+  },
+  "8f6937ae19670b47e0b87a12131e15f3abee2ab9": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 64.34,
+    "room_number": 3
+  },
+  "01c8af4817ad0300b683aebc4d21203327d4ed5c": {
+    "price": 10000,
+    "price_area": null,
+    "floor_area": 36.19,
+    "room_number": 3
+  },
+  "e73a95f2e247c597d16cc83bac3d40a96724d985": {
+    "price": null,
+    "price_area": null,
+    "floor_area": null,
+    "room_number": null
+  },
+  "aec164e13dc125e3ace75e77bb97cdb676919108": {
+    "price": null,
+    "price_area": null,
+    "floor_area": 66.83,
+    "room_number": 3
+  }
+}

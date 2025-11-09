@@ -1,0 +1,379 @@
+{
+  "generated_at": "2025-11-09T05:15:34.158710+00:00",
+  "source_files": [
+    "output/bazos_prenajom_output.csv",
+    "output/nehnutelnosti_prenajom_output.csv",
+    "output/reality_prenajom_output.csv"
+  ],
+  "total_listings": 679,
+  "filters": {
+    "min_price": 0.0,
+    "transaction": "prenajom"
+  },
+  "averages": {
+    "city_averages": [
+      {
+        "city": "Trnava",
+        "avg_price": 767.52,
+        "median_price": 750.0,
+        "min_price": 390.0,
+        "max_price": 1500.0,
+        "listings": 264
+      },
+      {
+        "city": "Džungľa",
+        "avg_price": 900.0,
+        "median_price": 900.0,
+        "min_price": 900.0,
+        "max_price": 900.0,
+        "listings": 1
+      },
+      {
+        "city": "Košice",
+        "avg_price": 923.51,
+        "median_price": 800.0,
+        "min_price": 0.0,
+        "max_price": 25200.0,
+        "listings": 412
+      },
+      {
+        "city": "Vyšné Opátske",
+        "avg_price": 1150.0,
+        "median_price": 1150.0,
+        "min_price": 1050.0,
+        "max_price": 1250.0,
+        "listings": 2
+      }
+    ],
+    "room_number_averages": [
+      {
+        "room_number_label": "2-izbový",
+        "avg_price": 785.38,
+        "listings": 242
+      },
+      {
+        "room_number_label": "Unknown",
+        "avg_price": 844.3,
+        "listings": 131
+      },
+      {
+        "room_number_label": "1-izbový",
+        "avg_price": 880.8,
+        "listings": 97
+      },
+      {
+        "room_number_label": "3-izbový",
+        "avg_price": 947.26,
+        "listings": 198
+      },
+      {
+        "room_number_label": "4-izbový",
+        "avg_price": 1072.22,
+        "listings": 9
+      },
+      {
+        "room_number_label": "5-izbový",
+        "avg_price": 1500.0,
+        "listings": 2
+      }
+    ],
+    "cluster_averages": [
+      {
+        "cluster": "text:košice|na hore 1",
+        "city": "Košice",
+        "avg_price": 575.0,
+        "listings": 4,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|palárikova",
+        "city": "Košice",
+        "avg_price": 610.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|ulica hlavná",
+        "city": "Trnava",
+        "avg_price": 610.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|kysucká",
+        "city": "Košice",
+        "avg_price": 640.0,
+        "listings": 5,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|košice-juh",
+        "city": "Košice",
+        "avg_price": 643.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|ulica veterná",
+        "city": "Trnava",
+        "avg_price": 649.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|košice-západ",
+        "city": "Košice",
+        "avg_price": 670.0,
+        "listings": 5,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|trieda snp",
+        "city": "Košice",
+        "avg_price": 688.33,
+        "listings": 6,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|tolstého",
+        "city": "Košice",
+        "avg_price": 691.67,
+        "listings": 6,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|andreja žarnova",
+        "city": "Trnava",
+        "avg_price": 712.5,
+        "listings": 4,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|považská",
+        "city": "Košice",
+        "avg_price": 726.0,
+        "listings": 5,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|veterná",
+        "city": "Trnava",
+        "avg_price": 740.0,
+        "listings": 4,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|cesta pod hradovou",
+        "city": "Košice",
+        "avg_price": 760.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|cukrovarská",
+        "city": "Trnava",
+        "avg_price": 763.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "city:trnava",
+        "city": "Trnava",
+        "avg_price": 767.2,
+        "listings": 128,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|botanická",
+        "city": "Trnava",
+        "avg_price": 783.33,
+        "listings": 6,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|trnava",
+        "city": "Trnava",
+        "avg_price": 794.55,
+        "listings": 11,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|pekárska",
+        "city": "Trnava",
+        "avg_price": 802.5,
+        "listings": 4,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|gerlachovská",
+        "city": "Košice",
+        "avg_price": 806.67,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|krivá",
+        "city": "Košice",
+        "avg_price": 808.0,
+        "listings": 5,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|včelárska ulica",
+        "city": "Trnava",
+        "avg_price": 833.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|ulica na grunte",
+        "city": "Košice",
+        "avg_price": 843.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|košice-sever",
+        "city": "Košice",
+        "avg_price": 866.67,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|halenárska",
+        "city": "Trnava",
+        "avg_price": 870.0,
+        "listings": 6,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "city:košice",
+        "city": "Košice",
+        "avg_price": 880.81,
+        "listings": 199,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|alvinczyho",
+        "city": "Košice",
+        "avg_price": 892.25,
+        "listings": 4,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|lomená",
+        "city": "Košice",
+        "avg_price": 900.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|hviezdoslavova",
+        "city": "Trnava",
+        "avg_price": 997.14,
+        "listings": 7,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|štúrova",
+        "city": "Košice",
+        "avg_price": 999.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:trnava|hlavná",
+        "city": "Trnava",
+        "avg_price": 1000.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|thurzova",
+        "city": "Košice",
+        "avg_price": 1003.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|hlavná",
+        "city": "Košice",
+        "avg_price": 1047.5,
+        "listings": 8,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|žižkova",
+        "city": "Košice",
+        "avg_price": 1083.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|popradská",
+        "city": "Košice",
+        "avg_price": 1160.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|mlynská",
+        "city": "Košice",
+        "avg_price": 1193.33,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|moyzesova",
+        "city": "Košice",
+        "avg_price": 1260.0,
+        "listings": 3,
+        "center_lat": null,
+        "center_lng": null
+      },
+      {
+        "cluster": "text:košice|košice-staré mesto",
+        "city": "Košice",
+        "avg_price": 5858.0,
+        "listings": 5,
+        "center_lat": null,
+        "center_lng": null
+      }
+    ]
+  }
+}

@@ -98,11 +98,11 @@ class SessionPool:
 
 
 def request_with_retry(session: Session, url: str, params: Optional[Dict[str, str]] = None,
-                       retries: int = 3, backoff: float = 2.0) -> Response:
+                       retries: int = 5, backoff: float = 3.0) -> Response:
     last_exc: Optional[Exception] = None
     for attempt in range(1, retries + 1):
         try:
-            response = session.get(url, params=params, timeout=30)
+            response = session.get(url, params=params, timeout=45)
             response.raise_for_status()
             return response
         except Exception as exc:  # pylint: disable=broad-except

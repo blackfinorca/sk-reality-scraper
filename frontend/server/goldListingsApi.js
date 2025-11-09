@@ -229,9 +229,18 @@ function normalizeRecord(record) {
   const listingId = record.listing_id || record.listing_uid || record.id;
   if (!listingId) return null;
 
-  const price = toNumber(record.price);
-  const size = toNumber(record.size_m2);
-  const pricePerSqm = toNumber(record.price_psm) || (price && size ? Math.round(price / size) : null);
+  let price = toNumber(record.price);
+  let size = toNumber(record.size_m2);
+  let pricePerSqm = toNumber(record.price_psm) || (price && size ? Math.round(price / size) : null);
+  if (!price && pricePerSqm && size) {
+    price = Math.round(pricePerSqm * size);
+  }
+  if (!pricePerSqm && price && size) {
+    pricePerSqm = Math.round(price / size);
+  }
+  if (!size && price && pricePerSqm) {
+    size = Math.round(price / pricePerSqm);
+  }
   const monthlyRent = price ? Math.round(price * 0.004) : null;
   const monthlyExpenses = price ? Math.round(price * 0.0009) : null;
   const cashFlow =

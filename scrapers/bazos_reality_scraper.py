@@ -43,8 +43,10 @@ DEFAULT_HEADERS = {
 }
 
 CUSTOM_SEARCH_URLS = {
-    "trnava": "https://reality.bazos.sk/predam/byt/1120/?hledat=&rubriky=reality&hlokalita=91701&humkreis=10&cenaod=&cenado=&order=&crp=&kitx=ano",
+    "trnava": "https://reality.bazos.sk/predam/byt/?hledat=&rubriky=reality&hlokalita=91701&humkreis=10&cenaod=&cenado=&order=&crp=&kitx=ano",
 }
+
+DEFAULT_SEARCH_PARAMS = "hledat=&rubriky=reality&cenaod=&cenado=&order=&crp=&kitx=ano"
 
 LISTING_LINK_PATTERN = re.compile(r"/inzerat/(\d+)/")
 ROOM_PATTERN = re.compile(r"(\d+)\s*izb", re.IGNORECASE)
@@ -76,6 +78,21 @@ def create_session() -> Session:
     return session
 
 
+def normalize_listing_url(url: str) -> str:
+    if not url:
+        return url
+    if "?" in url:
+        base, query = url.split("?", 1)
+    else:
+        base, query = url, None
+    base = base.rstrip("/")
+    if not base.endswith(".php"):
+        base += ".php"
+    if query:
+        return f"{base}?{query}"
+    return base
+
+
 def request_with_retry(session: Session, url: str, params: Optional[Dict[str, str]] = None,
                        retries: int = 3, backoff: float = 2.0) -> Response:
     last_exc: Optional[Exception] = None
@@ -100,12 +117,15 @@ def request_with_retry(session: Session, url: str, params: Optional[Dict[str, st
 
 
 def build_search_url(city: str, transaction: str) -> str:
-    city_key = city.strip().lower()
+    city_key = (city or "").strip().lower()
+    if "," in city_key:
+        city_key = city_key.split(",")[0].strip()
     if not city_key and transaction:
         city_key = transaction.strip().lower()
     if city_key in CUSTOM_SEARCH_URLS:
         return CUSTOM_SEARCH_URLS[city_key]
-    return f"https://reality.bazos.sk/{transaction}/byt/"
+    query = DEFAULT_SEARCH_PARAMS
+    return f"https://reality.bazos.sk/{transaction}/byt/?{query}"
 
 
 def parse_search_page(html: str, base_url: str) -> Tuple[List[str], Optional[str]]:
@@ -336,6 +356,7 @@ def extract_photo_urls(soup: BeautifulSoup, detail_url: str, limit: int = 3) -> 
 
 
 def parse_listing_detail(session: Session, url: str, transaction: str, default_city: str) -> ListingRecord:
+    url = normalize_listing_url(url)
     canonical_city = canonical_city_from_slug(default_city) or default_city
     response = request_with_retry(session, url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -363,8 +384,20 @@ def parse_listing_detail(session: Session, url: str, transaction: str, default_c
     description_block = soup.select_one("div.popisdetail")
     description_text = normalise_text(description_block.get_text(" ", strip=True) if description_block else "")
 
+    if price is None:
+        price = extract_price_from_text(description_text)
+    if price is None:
+        price = extract_price_from_text(title)
+
     room_number = parse_room_count(room_attr, title, description_text)
+    if room_number is None:
+        room_number = extract_rooms_from_text(title) or extract_rooms_from_text(description_text)
+
     floor_area = parse_area_value(floor_area_attr, description_text)
+    if floor_area is None:
+        area_from_text = extract_area_from_text(title) or extract_area_from_text(description_text)
+        if area_from_text is not None:
+            floor_area = area_from_text
     if not floor_attr:
         floor_attr = infer_floor_from_text(description_text)
     if not status_attr:
@@ -461,6 +494,7 @@ def scrape_listings(city: str, transaction: str, max_pages: Optional[int],
     worker_count = max(1, workers)
 
     def fetch_listing_detail(url: str) -> Optional[ListingRecord]:
+        url = normalize_listing_url(url)
         local_session = create_session()
         try:
             return parse_listing_detail(local_session, url, transaction, default_city=canonical_city)
@@ -492,6 +526,7 @@ def scrape_listings(city: str, transaction: str, max_pages: Optional[int],
                 logging.info("No listings found at %s", current_url)
 
             for url in urls:
+                url = normalize_listing_url(url)
                 if url in detail_urls:
                     continue
                 detail_urls.append(url)
@@ -620,6 +655,60 @@ def main() -> None:
         logging.info("Exported %s listings to %s", len(df), xls_path)
     except Exception as exc:  # pylint: disable=broad-except
         logging.error("Failed to export XLS: %s", exc)
+
+
+PRICE_REGEX = re.compile(
+    r"(?:cena(?:\s+bytu)?(?:\s+je)?|predajná cena|predajna cena|predaj\s+za|predaj)\s*[:=]?\s*([0-9\s.,]{3,})\s*(?:eur|€|euro|e|z\.?)",
+    re.IGNORECASE,
+)
+AREA_REGEX = re.compile(
+    r"(\d+(?:[.,]\d+)?)\s*(?:m2|m\^2|m²)",
+    re.IGNORECASE,
+)
+ROOM_REGEX = re.compile(
+    r"(\d+)\s*(?:izb(?:\.)?|izby|rooms?)",
+    re.IGNORECASE,
+)
+
+
+def extract_price_from_text(text: str) -> Optional[int]:
+    if not text:
+        return None
+    match = PRICE_REGEX.search(text)
+    if not match:
+        return None
+    digits = re.sub(r"[^0-9]", "", match.group(1))
+    if not digits:
+        return None
+    try:
+        return int(digits)
+    except ValueError:
+        return None
+
+
+def extract_area_from_text(text: str) -> Optional[float]:
+    if not text:
+        return None
+    match = AREA_REGEX.search(text)
+    if not match:
+        return None
+    value = match.group(1).replace(" ", "").replace(",", ".")
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
+def extract_rooms_from_text(text: str) -> Optional[int]:
+    if not text:
+        return None
+    match = ROOM_REGEX.search(text)
+    if not match:
+        return None
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return None
 
 
 if __name__ == "__main__":

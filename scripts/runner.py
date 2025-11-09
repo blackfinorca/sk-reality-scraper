@@ -27,7 +27,7 @@ PIPELINE_START: Optional[float] = None
 SCRAPER_SHARED_DEFAULTS = {
     # Set any of these keys to apply the same default across every scraper.
     # Leave as None to keep the individual scraper defaults below.
-    "city": ["trnava", "kosice"],  # e.g. ["trnava", "kosice"] or "trnava,kosice"
+    "city": ["trnava"],  # e.g. ["trnava", "kosice"] or "trnava,kosice"
     "transaction": "predaj",  # e.g. "predaj"
     "max_pages": None,
     "limit": None,
@@ -327,6 +327,51 @@ def build_bazos_command(config: Dict[str, object]) -> List[str]:
         cmd.append("--verbose")
 
     return cmd
+
+
+def run_attribute_backfills(csv_paths: Sequence[Union[str, Path]], project_root: Path) -> None:
+    resolved: List[Path] = []
+    for path_value in csv_paths:
+        if not path_value:
+            continue
+        candidate = Path(path_value)
+        if not candidate.is_absolute():
+            candidate = project_root / candidate
+        resolved.append(candidate)
+
+    if not resolved:
+        return
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        logging.info("Skipping attribute fallback (OPENAI_API_KEY not set).")
+        return
+
+    try:
+        from tools import sumamrizer as summarizer_module  # pylint: disable=import-outside-toplevel
+    except ModuleNotFoundError as exc:
+        logging.warning("Attribute fallback unavailable; dependency missing: %s", exc)
+        return
+
+    fill_missing_attributes_for_csv = getattr(summarizer_module, "fill_missing_attributes_for_csv", None)
+    if fill_missing_attributes_for_csv is None:
+        logging.warning("Attribute fallback unavailable; helper not found in tools.sumamrizer.")
+        return
+
+    cache_path = project_root / "data" / "attribute_cache.json"
+    for csv_path in resolved:
+        if not csv_path.exists():
+            logging.warning("Attribute fallback skipped; %s is missing.", csv_path)
+            continue
+        try:
+            fill_missing_attributes_for_csv(
+                csv_path=csv_path,
+                description_column="description",
+                cache_path=cache_path,
+                api_key=api_key,
+            )
+        except Exception as exc:  # pylint: disable=broad-except
+            logging.warning("Attribute fallback failed for %s: %s", csv_path, exc)
 
 
 def run_deduplicate_pipeline(
@@ -732,6 +777,9 @@ def main() -> None:
             scraped_csvs.append(reality_cfg["csv_output"])
         if run_bazos:
             scraped_csvs.append(bazos_cfg["csv_output"])
+
+        if scraped_csvs:
+            run_attribute_backfills(scraped_csvs, project_root)
 
         etl_jobs = []
         if run_nehn:

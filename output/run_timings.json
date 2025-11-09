@@ -1,0 +1,13 @@
+{
+  "generated_at": "2025-11-09T02:14:52.531223+00:00",
+  "run_date": "2025-11-09",
+  "transaction": "predaj",
+  "timings_seconds": {
+    "bazos.sk scraper": 107.26185637502931,
+    "etl (bazos_sk)": 0.8611500840634108,
+    "normalizer": 77.8413482500473,
+    "geo locator": 0.5339324160013348,
+    "summarizer": 23.363443040987477,
+    "total_pipeline": 518.9852634170093
+  }
+}

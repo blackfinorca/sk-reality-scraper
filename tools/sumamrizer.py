@@ -20,7 +20,7 @@ PROMPT_TEMPLATE = (
     "Cieľ: vyprodukuj 2-3 krátke vety v slovenčine s investične dôležitými faktami.\n\n"
     "Pravidlá:\n"
     "- Ak údaj v DESCRIPTION nie je, NEUVÁDZAJ ho. Nič nevymýšľaj, žiadne superlatívy.\n"
-    "- VÝSTUP = 12-3 vety, spolu ≤ 35 slov. Žiadne ceny, odkazy, kontakty.\n"
+    "- VÝSTUP = 2-3 vety, spolu ≤ 35 slov. Žiadne ceny, odkazy, kontakty.\n"
     "- Uprednostni: počet izieb, výmera (m²), stav (novostavba/kompletná/čiastočná rekonštrukcia/bez nutnej), poschodie + výťah, vonkajší priestor (balkón/loggia/terasa/záhrada), parkovanie, pivnica/komora/technická miestnosť, vykurovanie/klíma/rekuperácia/podlahové kúrenie, mesačné náklady/poplatky, pešia dostupnosť/čas k centru/MHD/žst, špecifiká projektu/lokality a nieco co je zaujimave pre investorov.\n"
     "- Jazyk vecný a úsporný; Pouzi cele vety ak sa neda, informácie môžeš oddeliť bodkočiarkami.\n\n"
     "FORMÁT:\n"
@@ -38,6 +38,36 @@ BATCH_PROMPT_HEADER = (
     "Výstup musí byť čisté JSON pole, kde každý objekt obsahuje polia \"id\" a \"summary_short_sk\". "
     "Drž sa formátu JSON, žiadne komentáre ani úvodný text.\n\n"
 )
+
+ATTRIBUTE_PROMPT_TEMPLATE = (
+    "Si dátový analytik. Z textu nehnuteľnosti vyextrahuj číselné hodnoty:\n"
+    "- price: celková cena v EUR\n"
+    "- price_area: cena za m² v EUR\n"
+    "- floor_area: podlahová plocha v m²\n"
+    "- room_number: počet obytných izieb\n"
+    "Ak údaj neexistuje, nastav hodnotu null. "
+    "Výstup musí byť čisto JSON objekt s týmito štyrmi kľúčmi a ničím navyše.\n\n"
+    'TEXT: """{description}"""\n'
+    "JSON:"
+)
+
+ATTRIBUTE_BATCH_PROMPT_HEADER = (
+    "Si dátový analytik. Pre každú nehnuteľnosť nižšie priprav JSON objekt s kľúčmi "
+    '"id", "price", "price_area", "floor_area", "room_number". '
+    "Hodnoty musia byť čísla bez jednotiek (EUR alebo m²) alebo null, ak údaj v texte nie je. "
+    "Výsledok musí byť čisté JSON pole (žiadne komentáre ani úvodné vysvetlenia).\n\n"
+)
+
+ATTRIBUTE_FIELD_MAP = {
+    "price": ["price", "price_eur"],
+    "price_area": ["price_psm", "price_psm_eur", "price_area"],
+    "floor_area": ["size_m2", "floor_area", "floor_area_m2"],
+    "room_number": ["rooms", "room_number"],
+}
+
+ATTRIBUTE_FIELDS = list(ATTRIBUTE_FIELD_MAP.keys())
+ATTRIBUTE_BATCH_SIZE = 8
+
 
 
 def load_dataframe(path: Path) -> pd.DataFrame:
@@ -279,7 +309,20 @@ def summarise_gold(
     missing_details: List[Dict[str, object]] = []
     pending_items: List[Dict[str, object]] = []
 
-    for idx, row in tqdm(gold_df.iterrows(), total=len(gold_df), desc="Summarizing listings", unit="listing"):
+    progress = tqdm(total=len(gold_df), desc="Summarizing listings", unit="listing")
+    def _update_progress():
+        progress.set_postfix(
+            written=stats["summaries_written"],
+            cache=stats["cache_hits"],
+            generated=stats["generated"],
+            missing=stats["missing_description"],
+            api_fail=stats["api_failures"],
+        )
+
+    for idx, row in gold_df.iterrows():
+        progress.update(1)
+        if progress.n % 25 == 0:
+            _update_progress()
         existing_summary = str(row.get(summary_column, "") or "").strip()
         if existing_summary and not force:
             continue
@@ -361,6 +404,12 @@ def summarise_gold(
             gold_df.at[item["df_idx"], summary_column] = summary
             stats["generated"] += 1
             stats["summaries_written"] += 1
+        _update_progress()
+
+    if progress.n < progress.total:
+        progress.update(progress.total - progress.n)
+    _update_progress()
+    progress.close()
 
     logging.info(
         "Listings: %s | Summaries written: %s | Cache hits: %s | Generated: %s | Missing descriptions: %s | API failures: %s",
@@ -384,6 +433,279 @@ def summarise_gold(
 
     save_cache(cache_path, cache)
     return gold_df
+
+
+def load_attribute_cache(path: Path) -> Dict[str, Dict[str, object]]:
+    if not path.exists():
+        return {}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except json.JSONDecodeError:
+        logging.warning("Failed to parse attribute cache %s; starting empty.", path)
+        return {}
+
+    cache: Dict[str, Dict[str, object]] = {}
+    if isinstance(data, dict):
+        for key, payload in data.items():
+            if isinstance(payload, dict):
+                cache[str(key)] = {field: payload.get(field) for field in ATTRIBUTE_FIELDS}
+    return cache
+
+
+def save_attribute_cache(path: Path, cache: Dict[str, Dict[str, object]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(cache, handle, ensure_ascii=False, indent=2)
+
+
+def _ensure_attribute_columns(df: pd.DataFrame, target_attributes: Optional[List[str]]) -> Dict[str, str]:
+    attributes = target_attributes or ATTRIBUTE_FIELDS
+    column_map: Dict[str, str] = {}
+    for attr in attributes:
+        candidates = ATTRIBUTE_FIELD_MAP.get(attr, [attr])
+        column_name = next((col for col in candidates if col in df.columns), None)
+        if column_name is None:
+            column_name = candidates[0]
+            df[column_name] = pd.NA
+        column_map[attr] = column_name
+    return column_map
+
+
+def _is_missing(value: object) -> bool:
+    if value is None:
+        return True
+    if isinstance(value, str):
+        stripped = value.strip()
+        return not stripped or stripped.lower() in {"nan", "none", "null"}
+    return bool(pd.isna(value))
+
+
+def _coerce_attribute_value(attribute: str, value: object) -> Optional[float]:
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        if pd.isna(value):
+            return None
+        numeric = float(value)
+    elif isinstance(value, str):
+        stripped = value.replace("\xa0", " ").strip()
+        stripped = stripped.replace(" ", "")
+        stripped = stripped.replace(",", ".")
+        if not stripped:
+            return None
+        try:
+            numeric = float(stripped)
+        except ValueError:
+            return None
+    else:
+        return None
+
+    if attribute == "room_number":
+        return float(int(round(numeric)))
+    return numeric
+
+
+def _compute_price_per_sqm(price: object, floor_area: object) -> Optional[float]:
+    try:
+        price_val = float(price)
+        area_val = float(floor_area)
+    except (TypeError, ValueError):
+        return None
+    if pd.isna(price_val) or pd.isna(area_val) or area_val <= 0:
+        return None
+    return price_val / area_val
+
+
+def build_attribute_batch_prompt(items: List[Dict[str, str]]) -> str:
+    sections = [ATTRIBUTE_BATCH_PROMPT_HEADER]
+    for item in items:
+        sections.append(f'ID: {item["row_id"]}\nTEXT: """{item["description"]}"""')
+    sections.append("JSON OUTPUT:")
+    return "\n\n".join(sections)
+
+
+def extract_attribute_batch(
+    items: List[Dict[str, str]],
+    client: OpenAI,
+    model: str,
+) -> Dict[str, Dict[str, object]]:
+    if not items:
+        return {}
+    prompt = build_attribute_batch_prompt(items)
+    try:
+        response = client.responses.create(
+            model=model,
+            input=[{"role": "user", "content": prompt}],
+        )
+    except (APIConnectionError, APIError) as exc:
+        logging.warning("Attribute batch request failed: %s", exc)
+        return {}
+
+    text = response.output[0].content[0].text.strip()  # type: ignore[attr-defined]
+    text = _strip_code_fences(text)
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError as exc:
+        logging.warning("Failed to parse attribute batch JSON: %s", exc)
+        return {}
+
+    if isinstance(payload, dict):
+        if "items" in payload and isinstance(payload["items"], list):
+            entries = payload["items"]
+        else:
+            entries = [payload]
+    elif isinstance(payload, list):
+        entries = payload
+    else:
+        logging.warning("Attribute batch JSON has unexpected shape: %s", type(payload))
+        return {}
+
+    results: Dict[str, Dict[str, object]] = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        row_id = entry.get("id") or entry.get("row_id") or entry.get("listing_id")
+        if not row_id:
+            continue
+        values: Dict[str, object] = {}
+        for field in ATTRIBUTE_FIELDS:
+            values[field] = entry.get(field)
+        results[str(row_id)] = values
+    return results
+
+
+def _apply_attribute_updates(
+    df: pd.DataFrame,
+    row_index: int,
+    attrs: Dict[str, object],
+    attr_columns: Dict[str, str],
+    overwrite: bool,
+) -> bool:
+    updated = False
+    for attr, column in attr_columns.items():
+        value = attrs.get(attr)
+        if value is None:
+            continue
+        if not overwrite and not _is_missing(df.at[row_index, column]):
+            continue
+        numeric = _coerce_attribute_value(attr, value)
+        if numeric is None:
+            continue
+        if attr == "room_number":
+            df.at[row_index, column] = int(round(numeric))
+        else:
+            df.at[row_index, column] = numeric
+        updated = True
+
+    price_col = attr_columns.get("price")
+    area_col = attr_columns.get("floor_area")
+    price_area_col = attr_columns.get("price_area")
+    if price_col and area_col and price_area_col:
+        current_price_area = df.at[row_index, price_area_col]
+        if _is_missing(current_price_area):
+            computed = _compute_price_per_sqm(df.at[row_index, price_col], df.at[row_index, area_col])
+            if computed is not None:
+                df.at[row_index, price_area_col] = computed
+                updated = True
+    return updated
+
+
+def fill_missing_attributes_for_csv(
+    csv_path: Path,
+    description_column: str = "description",
+    target_attributes: Optional[List[str]] = None,
+    batch_size: int = ATTRIBUTE_BATCH_SIZE,
+    cache_path: Optional[Path] = None,
+    api_key: Optional[str] = None,
+    model: str = "gpt-4o-mini",
+    overwrite: bool = False,
+    client: Optional[OpenAI] = None,
+) -> bool:
+    csv_path = Path(csv_path)
+    if not csv_path.exists():
+        logging.warning("Attribute fallback skipped; %s not found.", csv_path)
+        return False
+
+    df = pd.read_csv(csv_path)
+    if description_column not in df.columns:
+        logging.info(
+            "Attribute fallback skipped for %s because description column '%s' is missing.",
+            csv_path,
+            description_column,
+        )
+        return False
+
+    attr_columns = _ensure_attribute_columns(df, target_attributes)
+    cache_file = cache_path or Path("data/attribute_cache.json")
+    cache = load_attribute_cache(cache_file)
+    cache_dirty = False
+
+    pending: List[Dict[str, object]] = []
+    updates = 0
+    for idx, row in df.iterrows():
+        description = str(row.get(description_column, "") or "").strip()
+        if not description:
+            continue
+        needs_backfill = overwrite or any(_is_missing(row.get(col)) for col in attr_columns.values())
+        if not needs_backfill:
+            continue
+        key = cache_key(description)
+        cached_attrs = cache.get(key)
+        if cached_attrs:
+            if _apply_attribute_updates(df, idx, cached_attrs, attr_columns, overwrite):
+                updates += 1
+            continue
+        pending.append(
+            {
+                "df_idx": idx,
+                "row_id": str(
+                    row.get("property_id")
+                    or row.get("listing_id")
+                    or row.get("id")
+                    or f"row-{idx}"
+                ),
+                "description": description,
+                "cache_key": key,
+            }
+        )
+
+    if not pending:
+        if updates:
+            df.to_csv(csv_path, index=False)
+        if cache_dirty:
+            save_attribute_cache(cache_file, cache)
+        logging.info("Attribute fallback: no API calls needed for %s (updated rows: %s)", csv_path, updates)
+        return updates > 0
+
+    if client is None:
+        if not api_key:
+            logging.info("Attribute fallback skipped for %s; OpenAI API key missing.", csv_path)
+            return False
+        client = OpenAI(api_key=api_key)
+
+    for start in range(0, len(pending), batch_size):
+        chunk = pending[start : start + batch_size]
+        batch_items = [{"row_id": item["row_id"], "description": item["description"]} for item in chunk]
+        batch_results = extract_attribute_batch(batch_items, client, model)
+        if not batch_results:
+            continue
+        for item in chunk:
+            attrs = batch_results.get(item["row_id"])
+            if not attrs:
+                continue
+            cache[item["cache_key"]] = attrs
+            cache_dirty = True
+            if _apply_attribute_updates(df, item["df_idx"], attrs, attr_columns, overwrite):
+                updates += 1
+
+    if updates:
+        df.to_csv(csv_path, index=False)
+    if cache_dirty:
+        save_attribute_cache(cache_file, cache)
+
+    logging.info("Attribute fallback finished for %s; rows updated: %s", csv_path, updates)
+    return updates > 0
 
 
 def parse_args() -> argparse.Namespace:
