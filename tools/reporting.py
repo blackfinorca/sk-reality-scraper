@@ -11,10 +11,10 @@ import argparse
 import csv
 import json
 import logging
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, Optional, Tuple
+from typing import Dict, Iterable, Optional, Tuple, List
 
 import pandas as pd
 
@@ -184,6 +184,98 @@ def compute_city_transaction_stats(parquet_path: Path) -> pd.DataFrame:
     return grouped
 
 
+def _load_city_map(path: Path) -> Dict[str, str]:
+    if not path.exists():
+        raise FileNotFoundError(f"Gold listings parquet not found: {path}")
+    df = pd.read_parquet(path, columns=["listing_id", "address_town"])
+    if df.empty:
+        return {}
+    df["city"] = (
+        df["address_town"]
+        .fillna("")
+        .astype(str)
+        .apply(lambda value: _normalize_city(value) or "Unknown")
+    )
+    df["listing_id"] = df["listing_id"].astype(str)
+    return dict(zip(df["listing_id"], df["city"]))
+
+
+def _compute_city_deltas(current: Path, previous: Path) -> Tuple[Dict[str, int], Dict[str, int]]:
+    current_map = _load_city_map(current)
+    previous_map = _load_city_map(previous)
+    current_ids = set(current_map.keys())
+    previous_ids = set(previous_map.keys())
+
+    new_ids = current_ids - previous_ids
+    gone_ids = previous_ids - current_ids
+
+    new_counts: Dict[str, int] = defaultdict(int)
+    for listing_id in new_ids:
+        city = current_map.get(listing_id, "Unknown")
+        new_counts[city] += 1
+
+    gone_counts: Dict[str, int] = defaultdict(int)
+    for listing_id in gone_ids:
+        city = previous_map.get(listing_id, "Unknown")
+        gone_counts[city] += 1
+
+    return dict(new_counts), dict(gone_counts)
+
+
+def _list_run_dirs(base_dir: Path) -> List[Path]:
+    return sorted([path for path in base_dir.glob("run=*") if path.is_dir()])
+
+
+def resolve_run_history(base_dir: Path, run_date: Optional[str]) -> Tuple[Optional[Path], Optional[Path]]:
+    run_dirs = _list_run_dirs(base_dir)
+    if not run_dirs:
+        logging.info("No historical runs found under %s; skipping delta comparison.", base_dir)
+        return None, None
+
+    if run_date:
+        current_dir = base_dir / f"run={run_date}"
+        if not current_dir.exists():
+            logging.warning("Requested run date %s not found under %s.", run_date, base_dir)
+            return None, None
+    else:
+        current_dir = run_dirs[-1]
+
+    # Align with list ordering
+    idx = None
+    for i, path in enumerate(run_dirs):
+        if path == current_dir or (path.exists() and current_dir.exists() and path.resolve() == current_dir.resolve()):
+            idx = i
+            break
+    if idx is None:
+        run_dirs.append(current_dir)
+        run_dirs.sort()
+        idx = run_dirs.index(current_dir)
+
+    previous_dir = run_dirs[idx - 1] if idx > 0 else None
+    if previous_dir is None:
+        logging.info("Previous run not available; skipping delta comparison.")
+    return current_dir, previous_dir
+
+
+def print_listing_deltas(new_counts: Dict[str, int], gone_counts: Dict[str, int]) -> None:
+    print("\nListing deltas vs previous run")
+    print("------------------------------")
+    if not new_counts and not gone_counts:
+        print("No differences detected.")
+        return
+
+    def _print_block(title: str, data: Dict[str, int]) -> None:
+        print(title)
+        if not data:
+            print("  None")
+            return
+        for city, count in sorted(data.items(), key=lambda item: (-item[1], item[0])):
+            print(f"  {city}: {count:,}")
+
+    _print_block("New listings by city:", new_counts)
+    _print_block("Removed listings by city:", gone_counts)
+
+
 def print_section(title: str, snapshot: CountSnapshot, extra: Optional[Dict[str, float]] = None) -> None:
     print(f"\n{title}")
     print("-" * len(title))
@@ -320,6 +412,18 @@ def main() -> None:
             print(f"{label}: n/a")
         else:
             print(f"{label}: {value:.2%}")
+
+    current_run_dir, previous_run_dir = resolve_run_history(args.dedupe_dir, args.run_date)
+    if current_run_dir and previous_run_dir:
+        current_gold = current_run_dir / "gold_listings.parquet"
+        previous_gold = previous_run_dir / "gold_listings.parquet"
+        if current_gold.exists() and previous_gold.exists():
+            new_counts, gone_counts = _compute_city_deltas(current_gold, previous_gold)
+            print_listing_deltas(new_counts, gone_counts)
+        else:
+            print("\nListing deltas vs previous run")
+            print("------------------------------")
+            print("Gold listing parquet missing in current or previous run; skipping delta calculation.")
 
     timing_info = load_timings(args.timings_file)
     print_timings(timing_info)

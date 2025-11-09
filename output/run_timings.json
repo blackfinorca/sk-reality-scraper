@@ -1,13 +1,17 @@
 {
-  "generated_at": "2025-11-09T02:14:52.531223+00:00",
+  "generated_at": "2025-11-09T07:10:59.408743+00:00",
   "run_date": "2025-11-09",
   "transaction": "predaj",
   "timings_seconds": {
-    "bazos.sk scraper": 107.26185637502931,
-    "etl (bazos_sk)": 0.8611500840634108,
-    "normalizer": 77.8413482500473,
-    "geo locator": 0.5339324160013348,
-    "summarizer": 23.363443040987477,
-    "total_pipeline": 518.9852634170093
+    "nehnutelnosti.sk scraper": 1401.6073212920455,
+    "reality.sk scraper": 2461.4391118749045,
+    "bazos.sk scraper": 466.0407910000067,
+    "etl (nehnutelnosti_sk)": 1.0797852498944849,
+    "etl (reality_sk)": 0.5114529159618542,
+    "etl (bazos_sk)": 0.4986318330047652,
+    "normalizer": 122.25508324999828,
+    "geo locator": 0.6226485000224784,
+    "summarizer": 8.838918082998134,
+    "total_pipeline": 4689.412027416984
   }
 }

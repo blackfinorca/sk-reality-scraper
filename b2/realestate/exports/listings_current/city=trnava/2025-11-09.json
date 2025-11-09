@@ -5,13 +5,13 @@
     "url": "https://www.reality.sk/byty/gestto-2-5-izbovy-byt-predaj-maly-pariz-horne-basty-trnava-videoobhliadka/JuGqKZKGKVu/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 68.0,
     "price_eur": 189000.0,
     "price_psm_eur": 2779.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuXEBEw3V11",
@@ -19,13 +19,13 @@
     "url": "https://www.reality.sk/byty/gestto-1-izbovy-byt-predaj-maly-pariz-horne-basty-trnava-videoobhliadka/JuXEBEw3V11/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 55.0,
     "price_eur": 146000.0,
     "price_psm_eur": 2655.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuhJ9v9iE58",
@@ -33,13 +33,13 @@
     "url": "https://www.reality.sk/byty/gestto-3-izbova-novostavba-na-predaj-parkovacie-miesto-balkon-loggia-zavar/JuhJ9v9iE58/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 80.0,
     "price_eur": 172900.0,
     "price_psm_eur": 2161.0,
     "status": "Developerský projekt",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuqhhktsM6i",
@@ -53,7 +53,7 @@
     "price_psm_eur": 1757.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jux2sNFAbCH",
@@ -67,21 +67,21 @@
     "price_psm_eur": 3731.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuQqRAFMZup",
     "title": "Luxusná rezidencia Zelenice s bazénom, wellness,15min od TT",
-    "url": "https://www.reality.sk/byty/luxusna-rezidencia-zelenice-s-bazenom-wellness-15min-od-tt/JuQqRAFMZup/",
+    "url": "https://www.nehnutelnosti.sk/detail/JuQqRAFMZup/luxusna-rezidencia-zelenice-s-bazenoml-wellnessl15min-od-tt",
     "city": "Trnava",
-    "region": "Trnavský kraj",
+    "region": "okres Trnava",
     "rooms": 2.0,
     "floor_area_m2": 45.0,
     "price_eur": 110616.0,
     "price_psm_eur": 2458.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju6fYDQptul",
@@ -95,7 +95,7 @@
     "price_psm_eur": 2502.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juig_N_sjwB",
@@ -109,7 +109,7 @@
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiMFrdNmGd",
@@ -123,7 +123,7 @@
     "price_psm_eur": 3575.0,
     "status": "Vo výstavbe",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju2cV3HUuWj",
@@ -131,13 +131,13 @@
     "url": "https://www.reality.sk/byty/nestor-capital-moderny-1-5-izbovy-byt-v-projekte-arboria-idealna-kombinacia-komfortu-dizajnu-a-skvelej-investicie/Ju2cV3HUuWj/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 43.0,
     "price_eur": 167900.0,
     "price_psm_eur": 3905.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3KpPztQf_",
@@ -151,7 +151,7 @@
     "price_psm_eur": 4125.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuN1kXmY3-K",
@@ -165,7 +165,7 @@
     "price_psm_eur": 3782.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDblLiozu8",
@@ -179,7 +179,7 @@
     "price_psm_eur": 3300.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxoDOQmadt",
@@ -193,7 +193,7 @@
     "price_psm_eur": 3299.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juxd4JQKlX2",
@@ -207,7 +207,7 @@
     "price_psm_eur": 3239.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFgVdypRDT",
@@ -221,7 +221,7 @@
     "price_psm_eur": 2534.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju4bNWQxqXm",
@@ -229,13 +229,13 @@
     "url": "https://www.reality.sk/byty/pupava-development-ponuka-luxusne-3-izbove-byty-v-centre-trnavy-pupavy-residence/Ju4bNWQxqXm/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 73.0,
     "price_eur": 427000.0,
     "price_psm_eur": 5849.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JudiR-wR4x_",
@@ -243,13 +243,13 @@
     "url": "https://www.reality.sk/byty/pupava-development-ponuka-luxusne-2-izbove-byty-v-centre-trnavy-pupavy-residence/JudiR-wR4x_/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 45.0,
     "price_eur": 274000.0,
     "price_psm_eur": 6089.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9U9nUk-cY",
@@ -263,7 +263,7 @@
     "price_psm_eur": 3818.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju04Y9NUngp",
@@ -277,7 +277,7 @@
     "price_psm_eur": 3062.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuQWecyPiI2",
@@ -291,7 +291,7 @@
     "price_psm_eur": 4224.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDk6n7v_1i",
@@ -299,13 +299,13 @@
     "url": "https://www.reality.sk/byty/az-byty-kamenac-2-izbovy-byt-jedinecne-byvanie-v-srdci-kamenneho-mlynu-v-trnave/JuDk6n7v_1i/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 50.0,
     "price_eur": 179900.0,
     "price_psm_eur": 3598.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju7-lbz4eo2",
@@ -319,7 +319,7 @@
     "price_psm_eur": 3560.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupVz_cNj8T",
@@ -333,7 +333,7 @@
     "price_psm_eur": 4622.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuoQXDfA_uP",
@@ -347,7 +347,7 @@
     "price_psm_eur": 3384.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju1C2imAy8E",
@@ -361,7 +361,7 @@
     "price_psm_eur": 3493.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHB6u_6pE1",
@@ -375,7 +375,7 @@
     "price_psm_eur": 3094.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju008y6DVb4",
@@ -403,7 +403,7 @@
     "price_psm_eur": 2427.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuGPw7RKPo4",
@@ -417,7 +417,7 @@
     "price_psm_eur": 2408.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuTqHjYuCBr",
@@ -431,7 +431,7 @@
     "price_psm_eur": 3823.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuKCQb-n4aI",
@@ -439,13 +439,13 @@
     "url": "https://www.reality.sk/byty/az-3-izbovy-byt-67-m2-lodzia-kompletna-rekonstrukcia/JuKCQb-n4aI/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 67.0,
     "price_eur": 181990.0,
     "price_psm_eur": 2716.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFo4rt9R8e",
@@ -459,7 +459,7 @@
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuArckoRwmC",
@@ -473,7 +473,7 @@
     "price_psm_eur": 2871.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuClc0V3AzA",
@@ -482,12 +482,12 @@
     "city": "Trnava",
     "region": "okres Trnava",
     "rooms": 2.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 54.0,
     "price_eur": 164000.0,
     "price_psm_eur": 3037.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuYwbLmYEs3",
@@ -501,7 +501,7 @@
     "price_psm_eur": 3698.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuezUC0_OFn",
@@ -529,7 +529,7 @@
     "price_psm_eur": 3333.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juwga8-vL9H",
@@ -543,7 +543,7 @@
     "price_psm_eur": 3953.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juv3YkcrPKd",
@@ -557,7 +557,7 @@
     "price_psm_eur": 4103.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuSeaEF_sKOK",
@@ -585,7 +585,7 @@
     "price_psm_eur": 2582.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jujw83XTPdL",
@@ -599,7 +599,7 @@
     "price_psm_eur": 3364.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju05KFvk_te",
@@ -621,27 +621,27 @@
     "url": "https://www.reality.sk/byty/rezervovane-2-izbovy-byt-trnava-ul-na-hlinach/JuMEmAQZkPI/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 50.0,
     "price_eur": 150000.0,
     "price_psm_eur": 3000.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Judjn07Ilc8",
-    "title": "ALL PERFECT| Na predaj luxusný 2 izbový byt so záhradou v Trnave - Modranka",
+    "title": "",
     "url": "https://www.reality.sk/byty/all-perfect-na-predaj-luxusny-2-izbovy-byt-so-zahradou-v-trnave-modranka/Judjn07Ilc8/",
     "city": "Trnava",
-    "region": "Trnavský kraj",
+    "region": "",
     "rooms": null,
-    "floor_area_m2": 53.0,
-    "price_eur": 199000.0,
-    "price_psm_eur": 3755.0,
-    "status": "Novostavba",
-    "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "floor_area_m2": null,
+    "price_eur": null,
+    "price_psm_eur": null,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9j5EmuApU",
@@ -655,7 +655,7 @@
     "price_psm_eur": 5286.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JukDHqljqFa",
@@ -677,13 +677,13 @@
     "url": "https://www.reality.sk/byty/rk-diamant-predaj-1-izboveho-bytu-rezervovany/JuOq8By0CdU/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 52.0,
     "price_eur": 131990.0,
     "price_psm_eur": 2538.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JueWx8Di9vP",
@@ -691,13 +691,13 @@
     "url": "https://www.reality.sk/byty/rk-diamant-predaj-2-izboveho-tehloveho-bytu-rezervovany/JueWx8Di9vP/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 52.0,
     "price_eur": 149000.0,
     "price_psm_eur": 2865.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuEmG2j8Y7G",
@@ -705,13 +705,13 @@
     "url": "https://www.reality.sk/byty/rk-diamant-predaj-3-izboveho-bytu-rezervovany/JuEmG2j8Y7G/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 66.0,
     "price_eur": 179900.0,
     "price_psm_eur": 2726.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juh-GNVavAfR",
@@ -725,21 +725,21 @@
     "price_psm_eur": 3516.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuziP25-aP3",
     "title": "PPonúkam na predaj v centre mesta veľký tehlový 3 izbový byt s halou + veľká loggia veľkou pivnicou a garážou v uzatvorenom dvore",
-    "url": "https://www.nehnutelnosti.sk/detail/JuziP25-aP3/pponukam-na-predaj-v-centre-mesta-velky-tehlovy-3-izbovy-byt-s-halou--velka-loggia-velkou-pivnicou-a-garazou-v-uzatvorenom-dvore",
+    "url": "https://www.reality.sk/byty/pponukam-na-predaj-v-centre-mesta-velky-tehlovy-3-izbovy-byt-s-halou-velka-loggia-velkou-pivnicou-a-garazou-v-uzatvorenom-dvore/JuziP25-aP3/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 85.0,
     "price_eur": 249900.0,
     "price_psm_eur": 2940.0,
-    "status": "Novostavba",
+    "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju5rHY39PIJ3",
@@ -767,7 +767,7 @@
     "price_psm_eur": 2871.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuR2ZfinW1k",
@@ -775,13 +775,13 @@
     "url": "https://www.reality.sk/byty/exkluzivny-3-izbovy-penthouse-s-terasou-158-77-m2-trnava/JuR2ZfinW1k/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 159.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Developerský projekt",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutlPBrP8I2",
@@ -803,13 +803,13 @@
     "url": "https://www.reality.sk/byty/investicny-2-izbovy-byt-53-63-m2-spacinska-cesta-trnava/JuJnm2zAVeI/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 54.0,
     "price_eur": 157500.0,
     "price_psm_eur": 2917.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juhm3MnBA8J",
@@ -823,7 +823,7 @@
     "price_psm_eur": 2727.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jue15Ktckn1",
@@ -837,35 +837,35 @@
     "price_psm_eur": 2793.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3cFiaEW-L",
     "title": "PLUS REALITY | Trojizbový byt s balkónom v obci Biely Kostol pri Trnave na predaj!",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju3cFiaEW-L/plus-reality--trojizbovy-byt-s-balkonom-v-obci-biely-kostol-pri-trnave-na-predaj",
+    "url": "https://www.reality.sk/byty/plus-reality-trojizbovy-byt-s-balkonom-v-obci-biely-kostol-pri-trnave-na-predaj/Ju3cFiaEW-L/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 47.0,
     "price_eur": 152200.0,
-    "price_psm_eur": 3244.0,
+    "price_psm_eur": 3238.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiVJzBqupX",
     "title": "PLUS REALITY | Dvojizbový byt s balkónom v obci Biely Kostol pri Trnave na predaj!",
-    "url": "https://www.nehnutelnosti.sk/detail/JuiVJzBqupX/plus-reality--dvojizbovy-byt-s-balkonom-v-obci-biely-kostol-pri-trnave-na-predaj",
+    "url": "https://www.reality.sk/byty/plus-reality-dvojizbovy-byt-s-balkonom-v-obci-biely-kostol-pri-trnave-na-predaj/JuiVJzBqupX/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
     "floor_area_m2": 44.0,
     "price_eur": 142100.0,
-    "price_psm_eur": 3224.0,
+    "price_psm_eur": 3230.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju-FKO_Wbai",
@@ -887,13 +887,13 @@
     "url": "https://www.reality.sk/byty/3izbovy-byt-s-balkonom-a-rychlou-dostupnostou-na-d1/JupQxResbUL/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 63.0,
     "price_eur": 175000.0,
     "price_psm_eur": 2778.0,
     "status": "Pôvodný stav",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju5VBnVzxLv",
@@ -901,13 +901,13 @@
     "url": "https://www.reality.sk/byty/zrekonstruovany-stylovy-3-izbovy-byt-na-predaj-prednadrazie/Ju5VBnVzxLv/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 82.0,
     "price_eur": 259000.0,
     "price_psm_eur": 3159.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxvSdmjQLC",
@@ -921,7 +921,7 @@
     "price_psm_eur": 2818.0,
     "status": "Vo výstavbe",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JukTVodZoHa",
@@ -935,7 +935,7 @@
     "price_psm_eur": 4130.0,
     "status": "Vo výstavbe",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JumYIavQaNA",
@@ -949,7 +949,7 @@
     "price_psm_eur": 1595.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuEMBfun8P2",
@@ -963,7 +963,7 @@
     "price_psm_eur": 2306.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jub83x-nQxH",
@@ -991,7 +991,7 @@
     "price_psm_eur": 3181.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRxa-DdKfC",
@@ -1005,7 +1005,7 @@
     "price_psm_eur": 5672.0,
     "status": "Vo výstavbe",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuI9aNkqzao",
@@ -1019,7 +1019,7 @@
     "price_psm_eur": 3549.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuS7PBxspyv",
@@ -1033,7 +1033,7 @@
     "price_psm_eur": 2776.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxfU0OP9-a",
@@ -1047,7 +1047,7 @@
     "price_psm_eur": 3355.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuUkt2-wyuW",
@@ -1061,7 +1061,7 @@
     "price_psm_eur": 3307.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupSuQkL6GD",
@@ -1075,7 +1075,7 @@
     "price_psm_eur": 3514.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju82bAdsnpi",
@@ -1089,7 +1089,7 @@
     "price_psm_eur": 6018.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JudYmimj7iZ",
@@ -1103,7 +1103,7 @@
     "price_psm_eur": 3100.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju7v6FZvP--",
@@ -1117,7 +1117,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JujYZBWfLNv",
@@ -1131,7 +1131,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju4QCkCXQPc",
@@ -1139,13 +1139,13 @@
     "url": "https://www.reality.sk/byty/neo-stvorlistok-modranka-zariadeny-2-izbovy-byt-v-novostavbe/Ju4QCkCXQPc/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 51.0,
     "price_eur": 175000.0,
     "price_psm_eur": 3431.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju23OxVWmkP",
@@ -1167,13 +1167,13 @@
     "url": "https://www.reality.sk/byty/neo-priestranny-byt-s-velkou-obyvacou-izbou-a-vyhladom-na-zelen/Ju8yd-e4Gbd/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 54.0,
     "price_eur": 189900.0,
     "price_psm_eur": 3517.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju6imPSz2WJ",
@@ -1187,7 +1187,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuBvVwVI2Ik",
@@ -1195,13 +1195,13 @@
     "url": "https://www.reality.sk/byty/2i-byt-v-novostavbe-s-velkym-balkonom/JuBvVwVI2Ik/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 48.0,
     "price_eur": 175900.0,
     "price_psm_eur": 3665.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuLBqfP-NCg",
@@ -1209,13 +1209,13 @@
     "url": "https://www.reality.sk/byty/neo-priestranny-kompletne-zariadeny-byt-na-predaj/JuLBqfP-NCg/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 78.0,
     "price_eur": 159900.0,
     "price_psm_eur": 2050.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuoTpCxRBUF",
@@ -1237,13 +1237,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-vynimocny-3-izbovy-byt-v-rodinnom-dome-vo-velkom-orvisti/JuhFWJVWCBX/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 79.0,
     "price_eur": 163500.0,
     "price_psm_eur": 2070.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuT1dP-o8uM",
@@ -1257,7 +1257,7 @@
     "price_psm_eur": 3838.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JujqS0BzJCF",
@@ -1271,7 +1271,7 @@
     "price_psm_eur": 2499.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRE5BXKys_",
@@ -1285,7 +1285,7 @@
     "price_psm_eur": 2307.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuAMAUFxW6W",
@@ -1299,7 +1299,7 @@
     "price_psm_eur": 3953.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jupl-fyb0zo",
@@ -1327,7 +1327,7 @@
     "price_psm_eur": 3143.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JueVSZjWTm3",
@@ -1341,21 +1341,21 @@
     "price_psm_eur": 4982.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JusBHtNd9ee",
     "title": "REZERVOVANÉ 1-IZB. BYT, DRUŽBA, BALKÓN, 37m2, MOŽNOSŤ NA 2-IZB.",
-    "url": "https://www.nehnutelnosti.sk/detail/JusBHtNd9ee/rezervovane-1-izb-bytl-druzbal-balkonl-37m2l-moznost-na-2-izb",
+    "url": "https://www.reality.sk/byty/rezervovane-1-izb-byt-druzba-balkon-37m2-moznost-na-2-izb/JusBHtNd9ee/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 1.0,
     "floor_area_m2": 37.0,
     "price_eur": 139000.0,
     "price_psm_eur": 3757.0,
-    "status": "Novostavba",
+    "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupTiEc_xrL",
@@ -1369,7 +1369,7 @@
     "price_psm_eur": 2917.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuE8eNFs7lb",
@@ -1383,7 +1383,7 @@
     "price_psm_eur": 4212.0,
     "status": "Pôvodný stav",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuOYzbdJl_-",
@@ -1391,13 +1391,13 @@
     "url": "https://www.reality.sk/byty/halo-reality-predaj-dvojizbovy-byt-trnava-62-m2-hospodarska-ul-exkluzivne-halo-reality/JuOYzbdJl_-/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 62.0,
     "price_eur": 159900.0,
     "price_psm_eur": 2579.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juhmw6UGo2W",
@@ -1425,7 +1425,7 @@
     "price_psm_eur": 2480.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuSp2CHHEJZ",
@@ -1472,16 +1472,16 @@
   {
     "listing_uid": "Ju2fY2JxLwg",
     "title": "Veľmi pekný 3-izbový byt po kompletnej rekonštrukcii – sídlisko Zátvor, Trnava",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju2fY2JxLwg/velmi-pekny-3-izbovy-byt-po-kompletnej-rekonstrukcii--sidlisko-zatvorl-trnava",
+    "url": "https://www.reality.sk/byty/velmi-pekny-3-izbovy-byt-po-kompletnej-rekonstrukcii-sidlisko-zatvor-trnava/Ju2fY2JxLwg/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 68.0,
     "price_eur": 205000.0,
     "price_psm_eur": 3015.0,
-    "status": "Novostavba",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JullHbkKWjY",
@@ -1495,7 +1495,7 @@
     "price_psm_eur": 3782.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuYwvZ96jYa",
@@ -1509,7 +1509,7 @@
     "price_psm_eur": 3286.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuKG2Qeu_il",
@@ -1517,27 +1517,27 @@
     "url": "https://www.reality.sk/byty/rezervovane-1-5-izbovy-byt-4-posch-rekonstrukcia-31-2-m2-prednadrazie-trnava/JuKG2Qeu_il/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 31.0,
     "price_eur": 135000.0,
     "price_psm_eur": 4355.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupNnDwsiVM",
     "title": "3-izbový byt 75,64 m², Arboria, Veterná ulica, Trnava",
-    "url": "https://www.nehnutelnosti.sk/detail/JupNnDwsiVM/3-izbovy-byt-75l64-ml-arborial-veterna-ulical-trnava",
+    "url": "https://www.reality.sk/byty/3-izbovy-byt-75-64-m2-arboria-veterna-ulica-trnava/JupNnDwsiVM/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 76.0,
     "price_eur": 248000.0,
-    "price_psm_eur": 3278.0,
+    "price_psm_eur": 3263.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJcUo69CgU",
@@ -1545,13 +1545,13 @@
     "url": "https://www.reality.sk/byty/1-izbovy-byt-na-topolovej-ulici/JuJcUo69CgU/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 46.0,
     "price_eur": 160000.0,
     "price_psm_eur": 3478.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubcOYwGzlw",
@@ -1559,13 +1559,13 @@
     "url": "https://www.reality.sk/byty/rezervovane-3-izbovy-byt-s-lodziou-7-posch-69-m2-pivnica-l-v-beethovena-trnava/JubcOYwGzlw/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 69.0,
     "price_eur": 176000.0,
     "price_psm_eur": 2551.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJlRY6tZcr",
@@ -1579,7 +1579,7 @@
     "price_psm_eur": 2500.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuB7eqLYk28",
@@ -1587,13 +1587,13 @@
     "url": "https://www.reality.sk/byty/gestto-3-izbovy-byt-kompletna-rekonstrukcia-balkon/JuB7eqLYk28/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 61.0,
     "price_eur": 179900.0,
     "price_psm_eur": 2949.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuLjK5qd5Yk",
@@ -1607,7 +1607,7 @@
     "price_psm_eur": 4167.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuUU8KGey1Q",
@@ -1615,27 +1615,27 @@
     "url": "https://www.reality.sk/byty/gestto-2-izbovy-byt-na-studentskej-ulici-na-predaj-kompletna-rekonstrukcia/JuUU8KGey1Q/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 42.0,
     "price_eur": 159900.0,
     "price_psm_eur": 3807.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3ffsZn65r",
     "title": "Predaj zariadeného 3-izbového bytu po kompletnej rekonštrukcii s loggiou na Nerudovej ulici v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju3ffsZn65r/predaj-zariadeneho-3-izboveho-bytu-po-kompletnej-rekonstrukcii-s-loggiou-na-nerudovej-ulici-v-trnave",
+    "url": "https://www.reality.sk/byty/predaj-zariadeneho-3-izboveho-bytu-po-kompletnej-rekonstrukcii-s-loggiou-na-nerudovej-ulici-v-trnave/Ju3ffsZn65r/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 79.0,
     "price_eur": 185000.0,
     "price_psm_eur": 2342.0,
-    "status": "Novostavba",
+    "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuVqBhwv-Fa",
@@ -1649,7 +1649,7 @@
     "price_psm_eur": 3155.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JujDXHmU4xE",
@@ -1719,7 +1719,7 @@
     "price_psm_eur": 2536.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju29vCM9TyV",
@@ -1727,13 +1727,13 @@
     "url": "https://www.reality.sk/byty/rezervovane-territoryreal-vam-ponuka-na-predaj-2-izbovy-retro-byt-v-trnave/Ju29vCM9TyV/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 51.0,
     "price_eur": 126000.0,
     "price_psm_eur": 2471.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuClrsRi4IH",
@@ -1747,7 +1747,7 @@
     "price_psm_eur": 4348.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9H32v4mCH",
@@ -1755,13 +1755,13 @@
     "url": "https://www.reality.sk/byty/hospodarska-ulica-3-izbovy-svetly-byt-s-vymerou-83m2/Ju9H32v4mCH/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 83.0,
     "price_eur": 186990.0,
     "price_psm_eur": 2253.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JugkK4gjx6s",
@@ -1775,7 +1775,7 @@
     "price_psm_eur": 4167.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuX_7FY-hoN",
@@ -1789,7 +1789,7 @@
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jue_iMf3EG0",
@@ -1803,7 +1803,7 @@
     "price_psm_eur": 2646.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubCjrg1qXI",
@@ -1817,7 +1817,7 @@
     "price_psm_eur": 3165.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju4i6Y3ueOu",
@@ -1831,7 +1831,7 @@
     "price_psm_eur": 3626.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuPGe3sMf--",
@@ -1845,7 +1845,7 @@
     "price_psm_eur": 4282.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuTDB4hTs3j",
@@ -1859,7 +1859,7 @@
     "price_psm_eur": 2998.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDAbCMDaoS",
@@ -1873,7 +1873,7 @@
     "price_psm_eur": 3500.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuemDdaTEEL",
@@ -1887,7 +1887,7 @@
     "price_psm_eur": 3310.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jugeti9vrNS",
@@ -1895,13 +1895,13 @@
     "url": "https://www.reality.sk/byty/rezervovane-1-izbovy-byt-typu-bauring-po-rekonstrukcii-trnava-okruzna-ulica/Jugeti9vrNS/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 29.0,
     "price_eur": 125900.0,
     "price_psm_eur": 4341.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDG7uxRipQ",
@@ -1915,7 +1915,7 @@
     "price_psm_eur": 2652.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0eBPVzCtK",
@@ -1929,7 +1929,7 @@
     "price_psm_eur": 4727.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuGArFuruWV",
@@ -1943,7 +1943,7 @@
     "price_psm_eur": 2681.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuM9BYzeZVz",
@@ -1957,7 +1957,7 @@
     "price_psm_eur": 4113.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju78XrOA8Pr",
@@ -1971,7 +1971,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuOkIB2EKIL",
@@ -1985,7 +1985,7 @@
     "price_psm_eur": 2729.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuXtncJmADQ",
@@ -1999,7 +1999,7 @@
     "price_psm_eur": 2444.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju_pRq_q8lR",
@@ -2007,13 +2007,13 @@
     "url": "https://www.reality.sk/byty/rezervovane-na-predaj-2-izbovy-byt-po-kompletnej-rekonstrukcii-trnava-spartakovska-ul/Ju_pRq_q8lR/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 50.0,
     "price_eur": 168900.0,
     "price_psm_eur": 3378.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju6LBEYsrM-",
@@ -2027,7 +2027,7 @@
     "price_psm_eur": 4000.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju_b8ETeu0r",
@@ -2049,13 +2049,13 @@
     "url": "https://www.reality.sk/byty/1-izbovy-byt-na-predaj-s-loggiou-nerudova-ulica-trnava/JuipQqMDiva/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 31.0,
     "price_eur": 112500.0,
     "price_psm_eur": 3629.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxevBLfoLx",
@@ -2063,13 +2063,13 @@
     "url": "https://www.reality.sk/byty/3-izbovy-byt-s-balkonom-na-zelenecskej-ulici-v-trnave/JuxevBLfoLx/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 68.0,
     "price_eur": 164999.0,
     "price_psm_eur": 2426.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JueH04JAQoR",
@@ -2083,7 +2083,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuC6oBcbYya",
@@ -2097,7 +2097,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuZCaXR0lt4",
@@ -2111,7 +2111,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuVk8dv5N-T",
@@ -2125,7 +2125,7 @@
     "price_psm_eur": 2554.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunIaWNWqY4",
@@ -2139,7 +2139,7 @@
     "price_psm_eur": 2615.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuGuySBViCT",
@@ -2153,21 +2153,21 @@
     "price_psm_eur": 2864.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxmaUWwHET",
     "title": "REZERVOVANÉ - Moderne zrekonštruovaný 3i byt 72,1m2, ul. Čajkovského, Trnava",
-    "url": "https://www.nehnutelnosti.sk/detail/JuxmaUWwHET/rezervovane---moderne-zrekonstruovany-3i-byt-72l1m2l-ul-cajkovskehol-trnava",
+    "url": "https://www.reality.sk/byty/rezervovane-moderne-zrekonstruovany-3i-byt-72-1m2-ul-cajkovskeho-trnava/JuxmaUWwHET/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
     "price_eur": null,
     "price_psm_eur": null,
-    "status": "Novostavba",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuEH3qlrpCL",
@@ -2181,7 +2181,7 @@
     "price_psm_eur": null,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju99JBhBnTR",
@@ -2189,13 +2189,13 @@
     "url": "https://www.reality.sk/byty/tima-real-arboria-3i-byt-74m2-parkovacie-miesto-a-kobka/Ju99JBhBnTR/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 74.0,
     "price_eur": 231500.0,
     "price_psm_eur": 3128.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuCTMTSmLJs",
@@ -2209,7 +2209,7 @@
     "price_psm_eur": 2536.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubiVbm5YbF",
@@ -2217,13 +2217,13 @@
     "url": "https://www.reality.sk/byty/rezervovane-tima-real-3i-byt-o-velkosti-92m2-prednadrazie-i-ul-kornela-mahra/JubiVbm5YbF/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 85.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JumPGe5325u",
@@ -2237,7 +2237,7 @@
     "price_psm_eur": 2883.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju2EM-GV-gg",
@@ -2251,7 +2251,7 @@
     "price_psm_eur": 2883.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJFOHMXwrd",
@@ -2265,7 +2265,7 @@
     "price_psm_eur": 4000.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju_1DvVURGh",
@@ -2279,7 +2279,7 @@
     "price_psm_eur": 2471.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuoSAfdUqlp",
@@ -2293,7 +2293,7 @@
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuztQa4DYls",
@@ -2301,13 +2301,13 @@
     "url": "https://www.reality.sk/byty/velky-slnecny-2-izbovy-byt-skvela-ponuka/JuztQa4DYls/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 58.0,
     "price_eur": 132900.0,
     "price_psm_eur": 2291.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JurKwttg3ls",
@@ -2321,7 +2321,7 @@
     "price_psm_eur": 1859.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju-H4J3f3c3",
@@ -2335,7 +2335,7 @@
     "price_psm_eur": 2887.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuTmqFXC-w_",
@@ -2343,13 +2343,13 @@
     "url": "https://www.reality.sk/byty/velky-slnecny-3-5-izbovy-byt/JuTmqFXC-w_/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 79.0,
     "price_eur": 169500.0,
     "price_psm_eur": 2146.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuZU7m7y-Rj",
@@ -2363,7 +2363,7 @@
     "price_psm_eur": 2619.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuOmT5EeemK",
@@ -2377,21 +2377,21 @@
     "price_psm_eur": 2273.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju7GzyoZfdj",
     "title": "REZERVOVANÉ - Slnečný 3-izbový byt s loggiou, pivnicou a kočikárňou – ul. Jána Bottu, Trnava",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju7GzyoZfdj/-rezervovane---slnecny-3-izbovy-byt-s-loggioul-pivnicou-a-kocikarnou--ul-jana-bottul-trnava",
+    "url": "https://www.reality.sk/byty/rezervovane-slnecny-3-izbovy-byt-s-loggiou-pivnicou-a-kocikarnou-ul-jana-bottu-trnava/Ju7GzyoZfdj/",
     "city": "Trnava",
-    "region": "okres Trnava",
-    "rooms": 3.0,
+    "region": "Trnavský kraj",
+    "rooms": 2.0,
     "floor_area_m2": 65.0,
     "price_eur": 159900.0,
-    "price_psm_eur": 2476.0,
-    "status": "Novostavba",
+    "price_psm_eur": 2460.0,
+    "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jus0-3WUWVs",
@@ -2405,7 +2405,7 @@
     "price_psm_eur": 3460.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiE8PkhLXY",
@@ -2419,7 +2419,7 @@
     "price_psm_eur": 2631.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju4BBu88bhKl",
@@ -2433,7 +2433,7 @@
     "price_psm_eur": 3071.0,
     "status": "",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juivj1tAZUO",
@@ -2455,13 +2455,13 @@
     "url": "https://www.reality.sk/byty/predaj-exkluzivne-3-izbovy-byt-v-centre-trnavy-v-projekte-city-residance/JuHF8bJCRU4/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 94.0,
     "price_eur": 549900.0,
     "price_psm_eur": 5850.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JurYm28adXC",
@@ -2489,7 +2489,7 @@
     "price_psm_eur": 3276.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuLQwJhZJEd",
@@ -2503,7 +2503,7 @@
     "price_psm_eur": 2157.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuuaUxWgBE7",
@@ -2511,27 +2511,27 @@
     "url": "https://www.reality.sk/byty/rezervovane-homreal-sk-hladate-byvanie-do-ktoreho-sa-mozete-okamzite-nastahovat-bez-dalsich-starosti/JuuaUxWgBE7/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 52.0,
     "price_eur": 144990.0,
     "price_psm_eur": 2788.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuIcCE6VPVv",
     "title": "**REZERVOVANÝ** 2-izbový byt s balkónom A. Kubinu v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/JuIcCE6VPVv/rezervovany-2-izbovy-byt-s-balkonom-a-kubinu-v-trnave",
+    "url": "https://www.reality.sk/byty/rezervovany-2-izbovy-byt-s-balkonom-a-kubinu-v-trnave/JuIcCE6VPVv/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
     "floor_area_m2": 54.0,
     "price_eur": 154900.0,
     "price_psm_eur": 2869.0,
-    "status": "",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFableWUZw",
@@ -2545,7 +2545,7 @@
     "price_psm_eur": 3338.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFNejVKq_0",
@@ -2559,7 +2559,7 @@
     "price_psm_eur": 3380.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuG-EWV2qKo",
@@ -2573,7 +2573,7 @@
     "price_psm_eur": 2697.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JugRRdLvMRh",
@@ -2587,63 +2587,63 @@
     "price_psm_eur": 2818.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHYFp5Tom2",
     "title": "CreeX reality - Exkluzívne iba u nás - 2 izbový tehlový byt s balkónom na Saleziánskej v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/JuHYFp5Tom2/creex-reality---exkluzivne-iba-u-nas---2-izbovy-tehlovy-byt-s-balkonom-na-salezianskej-v-trnave-",
+    "url": "https://www.reality.sk/byty/creex-reality-exkluzivne-iba-u-nas-2-izbovy-tehlovy-byt-s-balkonom-na-salezianskej-v-trnave/JuHYFp5Tom2/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
     "floor_area_m2": 40.0,
     "price_eur": 144000.0,
     "price_psm_eur": 3600.0,
-    "status": "",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuKAFpdxFFe",
     "title": "CreeX reality - exkluzívne iba u nás - Príjemný 2-izbový byt s výbornou dispozíciou a dvoma balkónmi – Čajkovského, Trnava",
-    "url": "https://www.nehnutelnosti.sk/detail/JuKAFpdxFFe/creex-reality---exkluzivne-iba-u-nas---prijemny-2-izbovy-byt-s-vybornou-dispoziciou-a-dvoma-balkonmi--cajkovskehol-trnava",
+    "url": "https://www.reality.sk/byty/creex-reality-exkluzivne-iba-u-nas-prijemny-2-izbovy-byt-s-vybornou-dispoziciou-a-dvoma-balkonmi-cajkovskeho-trnava/JuKAFpdxFFe/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 48.0,
     "price_eur": 149900.0,
     "price_psm_eur": 3123.0,
-    "status": "",
-    "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "status": "Čiastočná rekonštrukcia",
+    "energy_cert": "V príprave",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuBGzRQgPYz",
     "title": "CreeX reality - Exkluzívne iba u nás - Svetlý 2-izbový byt s dvoma balkónmi na Špačinskej ulici – komfortné bývanie v obľúbenej časti Trnavy",
-    "url": "https://www.nehnutelnosti.sk/detail/JuBGzRQgPYz/creex-reality---exkluzivne-iba-u-nas---svetly-2-izbovy-byt-s-dvoma-balkonmi-na-spacinskej-ulici--komfortne-byvanie-v-oblubenej-casti-trnavy",
+    "url": "https://www.reality.sk/byty/creex-reality-exkluzivne-iba-u-nas-svetly-2-izbovy-byt-s-dvoma-balkonmi-na-spacinskej-ulici-komfortne-byvanie-v-oblubenej-casti-trnavy/JuBGzRQgPYz/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 58.0,
     "price_eur": 159900.0,
     "price_psm_eur": 2757.0,
-    "status": "",
-    "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "status": "Čiastočná rekonštrukcia",
+    "energy_cert": "V príprave",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jux7otgyhub",
     "title": "CreeX Reality - Rezervované - 1-izbový byt po kompletnej rekonštrukcii na Veternej ulici v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/Jux7otgyhub/creex-reality---rezervovane---1-izbovy-byt-po-kompletnej-rekonstrukcii-na-veternej-ulici-v-trnave",
+    "url": "https://www.reality.sk/byty/creex-reality-rezervovane-1-izbovy-byt-po-kompletnej-rekonstrukcii-na-veternej-ulici-v-trnave/Jux7otgyhub/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 1.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 30.0,
     "price_eur": 127000.0,
     "price_psm_eur": 4233.0,
-    "status": "",
-    "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "status": "Kompletná rekonštrukcia",
+    "energy_cert": "V príprave",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jumi-R0Y4uF",
@@ -2671,7 +2671,7 @@
     "price_psm_eur": 1873.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuI3-wclwcn",
@@ -2679,13 +2679,13 @@
     "url": "https://www.reality.sk/byty/nestor-capital-moderny-1-5-izbovy-byt-v-projekte-arboria-idealna-kombinacia-komfortu-dizajnu-a-skvelej-investicie/JuI3-wclwcn/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 43.0,
     "price_eur": 167900.0,
     "price_psm_eur": 3905.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiPKh1KCGp",
@@ -2699,7 +2699,7 @@
     "price_psm_eur": 3775.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDpEUWX__y",
@@ -2713,7 +2713,7 @@
     "price_psm_eur": 2414.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juw1rKJUnWg",
@@ -2732,16 +2732,16 @@
   {
     "listing_uid": "JueGegjBZ02",
     "title": "IBA U NÁS! Štýlový 3-izbový byt v TOP lokalite Trnavy",
-    "url": "https://www.nehnutelnosti.sk/detail/JueGegjBZ02/iba-u-nas-stylovy-3-izbovy-byt-v-top-lokalite-trnavy",
+    "url": "https://www.reality.sk/byty/iba-u-nas-stylovy-3-izbovy-byt-v-top-lokalite-trnavy/JueGegjBZ02/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 80.0,
     "price_eur": 299900.0,
     "price_psm_eur": 3749.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju-cDdK84G9",
@@ -2755,7 +2755,7 @@
     "price_psm_eur": 2981.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JulXdvgqDWj",
@@ -2769,7 +2769,7 @@
     "price_psm_eur": 3530.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juz_fx_AFO7",
@@ -2783,7 +2783,7 @@
     "price_psm_eur": 3359.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuIQPrCb6tK",
@@ -2797,7 +2797,7 @@
     "price_psm_eur": 2991.0,
     "status": "Novostavba",
     "energy_cert": "D",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JundseGyt44",
@@ -2814,6 +2814,20 @@
     "last_seen": "2025-10-30"
   },
   {
+    "listing_uid": "JuY5qwcXPLn",
+    "title": "DIRECTREAL|REZERVOVANÉ|Moderný a štýlový 2-izb. byt v novostavbe s terasou, šatníkom a výhľadom na prírodu",
+    "url": "https://www.reality.sk/byty/directreal-rezervovane-moderny-a-stylovy-2-izb-byt-v-novostavbe-s-terasou-satnikom-a-vyhladom-na-prirodu/JuY5qwcXPLn/",
+    "city": "Trnava",
+    "region": "Trnavský kraj",
+    "rooms": 2.0,
+    "floor_area_m2": 52.0,
+    "price_eur": 169500.0,
+    "price_psm_eur": 3260.0,
+    "status": "Novostavba",
+    "energy_cert": "nie je",
+    "last_seen": "2025-11-09"
+  },
+  {
     "listing_uid": "JuQmsKWAJV4",
     "title": "LEN U NÁS - Predaj moderného 3-izbového bytu v novostavbe s parkovacím miestom, belkónom, výťahom a terasou",
     "url": "https://www.nehnutelnosti.sk/detail/JuQmsKWAJV4/len-u-nas---predaj-moderneho-3-izboveho-bytu-v-novostavbe-s-parkovacim-miestoml-belkonoml-vytahom-a-terasou",
@@ -2823,9 +2837,9 @@
     "floor_area_m2": 70.0,
     "price_eur": 219990.0,
     "price_psm_eur": 3143.0,
-    "status": "Novostavba",
+    "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHIJxIgyXM",
@@ -2847,13 +2861,13 @@
     "url": "https://www.reality.sk/byty/az-predaj-3i-bytu-v-trnave/JuaaqgYTF-6/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 66.0,
     "price_eur": 169000.0,
     "price_psm_eur": 2561.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubHw1970JN",
@@ -2861,13 +2875,13 @@
     "url": "https://www.reality.sk/byty/az-az-hospodarska-3-izbovy-byt-po-ciastocnej-rekonstrukcii/JubHw1970JN/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 66.0,
     "price_eur": 164000.0,
     "price_psm_eur": 2485.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFPcGhHopY",
@@ -2881,7 +2895,7 @@
     "price_psm_eur": 2594.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3AJe7k6MS",
@@ -2889,13 +2903,13 @@
     "url": "https://www.reality.sk/byty/predaj-2-izboveho-bytu-na-kalinciakovej-ulici-v-trnave/Ju3AJe7k6MS/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 60.0,
     "price_eur": 163550.0,
     "price_psm_eur": 2726.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuxyQvyBtjm",
@@ -2903,13 +2917,13 @@
     "url": "https://www.reality.sk/byty/jedinecny-3-izbovy-byt-balkon-s-vyhladom-na-koruny-stromov-trnava/JuxyQvyBtjm/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 56.0,
     "price_eur": 169900.0,
     "price_psm_eur": 3034.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju8KbIYqumt",
@@ -2917,41 +2931,41 @@
     "url": "https://www.reality.sk/byty/jedinecny-2-5-izbovy-byt-balkon-s-vyhladom-na-koruny-stromov-trnava/Ju8KbIYqumt/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 56.0,
     "price_eur": 169900.0,
     "price_psm_eur": 3034.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju89l8wOPHG_",
     "title": "Posledné voľné skolaudované byty v developerskom projekte. B. Kostol",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju89l8wOPHG_/-posledne-volne-skolaudovane-byty-v-developerskom-projekte-b-kostol",
+    "url": "https://www.reality.sk/byty/posledne-volne-skolaudovane-byty-v-developerskom-projekte-b-kostol/Ju89l8wOPHG_/",
     "city": "Trnava",
-    "region": "okres Trnava",
-    "rooms": 3.0,
+    "region": "Trnavský kraj",
+    "rooms": 2.0,
     "floor_area_m2": 47.0,
     "price_eur": 146900.0,
     "price_psm_eur": 3126.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3lCHMrX7s",
     "title": "Posledné voľné skolaudované byty v developerskom projekte. B. Kostol",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju3lCHMrX7s/-posledne-volne-skolaudovane-byty-v-developerskom-projekte-b-kostol",
+    "url": "https://www.reality.sk/byty/posledne-volne-skolaudovane-byty-v-developerskom-projekte-b-kostol/Ju3lCHMrX7s/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
     "floor_area_m2": 44.0,
     "price_eur": 140000.0,
     "price_psm_eur": 3182.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Judx7lewsMY",
@@ -2965,7 +2979,7 @@
     "price_psm_eur": 4300.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuYyMVvf0K6",
@@ -2973,13 +2987,13 @@
     "url": "https://www.reality.sk/byty/svoboda-williams-i-107435-i-v-rezidencii-levan-v-trnave-exkluzivne-ponukame-tento-3-izbovy-byt-s-terasou/JuYyMVvf0K6/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 81.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuLXMpPFMhb",
@@ -2987,13 +3001,13 @@
     "url": "https://www.reality.sk/byty/svoboda-williams-i-107426-i-v-rezidencii-levan-v-trnave-exkluzivne-ponukame-tento-1-izbovy-byt-s-terasou/JuLXMpPFMhb/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 35.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuaFlP5sbnX",
@@ -3001,13 +3015,13 @@
     "url": "https://www.reality.sk/byty/svoboda-williams-i-107394-i-v-rezidencii-levan-v-trnave-exkluzivne-ponukame-tento-2-izbovy-byt-s-terasou/JuaFlP5sbnX/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 47.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiqRfT2Pc8",
@@ -3015,13 +3029,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-3-izbovy-byt-s-balkonom-v-trnave/JuiqRfT2Pc8/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 67.0,
     "price_eur": 160000.0,
     "price_psm_eur": 2388.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "G",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juc9t77mCie",
@@ -3029,13 +3043,13 @@
     "url": "https://www.reality.sk/byty/az-3-izbovy-moderny-byt-80m2-11m2-terasa-arboria-2x-kupelna/Juc9t77mCie/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": null,
     "price_eur": 284900.0,
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuahVPX2SvZ",
@@ -3043,13 +3057,13 @@
     "url": "https://www.reality.sk/byty/nadcasovy-3-izbovy-byt-s-loggiou-cifer-pac/JuahVPX2SvZ/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 89.0,
     "price_eur": 169160.0,
     "price_psm_eur": 1901.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuZF--Z1A5P",
@@ -3077,7 +3091,7 @@
     "price_psm_eur": 89000.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunGrNsaEUi",
@@ -3091,7 +3105,7 @@
     "price_psm_eur": 2315.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuogZfSd8kA",
@@ -3119,7 +3133,7 @@
     "price_psm_eur": 4500.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuMPVAT3HUr",
@@ -3133,7 +3147,7 @@
     "price_psm_eur": 2567.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0H_jYzwBM",
@@ -3152,44 +3166,44 @@
   {
     "listing_uid": "Jukg1UcJSSm",
     "title": "3 izbový byt s loggiou v Trnave na predaj - časť Zátvor",
-    "url": "https://www.nehnutelnosti.sk/detail/Jukg1UcJSSm/3-izbovy-byt-s-loggiou-v-trnave-na-predaj---cast-zatvor",
+    "url": "https://www.reality.sk/byty/3-izbovy-byt-s-loggiou-v-trnave-na-predaj-cast-zatvor/Jukg1UcJSSm/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
     "price_eur": 183000.0,
     "price_psm_eur": 2542.0,
-    "status": "Novostavba",
+    "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJzZlD4_Kv",
     "title": "3iz. byt s balkónom po kompletnej rekonštrukcii v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/JuJzZlD4_Kv/3iz-byt-s-balkonom-po-kompletnej-rekonstrukcii-v-trnave",
+    "url": "https://www.reality.sk/byty/3iz-byt-s-balkonom-po-kompletnej-rekonstrukcii-v-trnave/JuJzZlD4_Kv/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": null,
     "price_eur": 173000.0,
     "price_psm_eur": null,
-    "status": "Novostavba",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0qXnUNTDY",
     "title": "Na predaj 2iz. byt s pivnicou v Trnave na Špačinskej ulici",
-    "url": "https://www.nehnutelnosti.sk/detail/Ju0qXnUNTDY/na-predaj-2iz-byt-s-pivnicou-v-trnave-na-spacinskej-ulici",
+    "url": "https://www.reality.sk/byty/na-predaj-2iz-byt-s-pivnicou-v-trnave-na-spacinskej-ulici/Ju0qXnUNTDY/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
     "floor_area_m2": null,
     "price_eur": 158000.0,
     "price_psm_eur": null,
-    "status": "Novostavba",
+    "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuAOdzdgHLe",
@@ -3217,7 +3231,7 @@
     "price_psm_eur": 2437.0,
     "status": "Novostavba",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuWpeuHdgeV",
@@ -3225,13 +3239,13 @@
     "url": "https://www.reality.sk/byty/az-predaj-2i-bytu-v-trnave/JuWpeuHdgeV/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 66.0,
     "price_eur": 169900.0,
     "price_psm_eur": 2574.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupZEI9tIHQ",
@@ -3245,7 +3259,7 @@
     "price_psm_eur": 2661.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0B4yGrBx1",
@@ -3273,7 +3287,7 @@
     "price_psm_eur": 2971.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jua0x3SOMhh",
@@ -3287,7 +3301,7 @@
     "price_psm_eur": 2338.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuYtqsu27MMx",
@@ -3301,7 +3315,7 @@
     "price_psm_eur": 2500.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuCijuTNSmE",
@@ -3315,7 +3329,7 @@
     "price_psm_eur": 3475.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju7UctwuRhwk",
@@ -3324,12 +3338,12 @@
     "city": "Trnava",
     "region": "okres Trnava",
     "rooms": 3.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 66.13,
     "price_eur": 167000.0,
-    "price_psm_eur": null,
+    "price_psm_eur": 2525.3288976258887,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuIoWw2pEl1",
@@ -3343,7 +3357,7 @@
     "price_psm_eur": 3420.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupJOc83uUm",
@@ -3357,7 +3371,7 @@
     "price_psm_eur": 2802.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuD4TsXvXyp",
@@ -3371,7 +3385,7 @@
     "price_psm_eur": 3507.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuhFwfvQvPD",
@@ -3379,13 +3393,13 @@
     "url": "https://www.reality.sk/byty/vivareal-velky-3-izb-byt-z-casti-zariadeny-rekonstrukcia-uzatvorena-loggia-vymera-az-71-m2-trnava/JuhFwfvQvPD/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 74.0,
     "price_eur": 175000.0,
     "price_psm_eur": 2365.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju2gIP0GyYa",
@@ -3399,7 +3413,7 @@
     "price_psm_eur": 2783.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JufVopfDDDO",
@@ -3413,7 +3427,7 @@
     "price_psm_eur": 2788.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jux3ijOdpPQ",
@@ -3427,7 +3441,7 @@
     "price_psm_eur": 2548.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juqq8BtNWUm",
@@ -3441,7 +3455,7 @@
     "price_psm_eur": 3294.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunzI7YI2vK",
@@ -3455,7 +3469,7 @@
     "price_psm_eur": 2640.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju5obZO7azE",
@@ -3463,13 +3477,13 @@
     "url": "https://www.reality.sk/byty/vivareal-byt-s-garazou-3-izb-byt-uzatvoreny-pozemok-bd-kompletna-nova-rekonstrukcia-balkon-garaz-trnava/Ju5obZO7azE/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 60.0,
     "price_eur": 173000.0,
     "price_psm_eur": 2883.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuE1_338b13",
@@ -3477,13 +3491,13 @@
     "url": "https://www.reality.sk/byty/vivareal-tehlovy-3-izb-byt-rekonstrukcia-zatepleny-bd-vyhladavana-lokalita-zelenecska-trnava/JuE1_338b13/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 67.0,
     "price_eur": 159000.0,
     "price_psm_eur": 2373.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuAazylxO7F",
@@ -3497,7 +3511,7 @@
     "price_psm_eur": 2366.0,
     "status": "Pôvodný stav",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juo9SIXj5U5",
@@ -3511,7 +3525,7 @@
     "price_psm_eur": 2324.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHHBho5YOs",
@@ -3519,13 +3533,13 @@
     "url": "https://www.reality.sk/byty/vivareal-rezervovane-2-izb-byt-vymera-54-m2-uzatvoreny-balkon-na-hlinach-trnava/JuHHBho5YOs/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 54.0,
     "price_eur": 145000.0,
     "price_psm_eur": 2685.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunmU3VF9vP",
@@ -3539,7 +3553,7 @@
     "price_psm_eur": 4174.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juks6Imy7Kt",
@@ -3553,7 +3567,7 @@
     "price_psm_eur": 3723.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juor_jUoZQL",
@@ -3567,7 +3581,7 @@
     "price_psm_eur": 2877.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuzYCSDPqU5",
@@ -3581,7 +3595,7 @@
     "price_psm_eur": 2883.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JudplUu7lxm",
@@ -3609,7 +3623,7 @@
     "price_psm_eur": 2170.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuD6VOhrN9b",
@@ -3637,7 +3651,7 @@
     "price_psm_eur": 3377.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju8BFy8OdYZ",
@@ -3645,13 +3659,13 @@
     "url": "https://www.reality.sk/byty/az-az-rezervovane-3-izbovy-byt-na-vybornej-adrese/Ju8BFy8OdYZ/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 65.0,
     "price_eur": 159900.0,
     "price_psm_eur": 2460.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuVJtzhYbEN",
@@ -3659,13 +3673,13 @@
     "url": "https://www.reality.sk/byty/az-na-predaj-priestranny-3-izbovy-byt-s-dvoma-balkonmi-a-vnutornym-garazovym-statim-v-rezidencii-botanika-trnava/JuVJtzhYbEN/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 82.0,
     "price_eur": 244900.0,
     "price_psm_eur": 2987.0,
     "status": "Pôvodný stav",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubuyD0qzFG",
@@ -3679,7 +3693,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuOpXhDJVlu",
@@ -3693,7 +3707,7 @@
     "price_psm_eur": 3565.0,
     "status": "Novostavba",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JueTJAsAFEK",
@@ -3707,7 +3721,7 @@
     "price_psm_eur": 3240.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuBlHlfgQz6",
@@ -3715,13 +3729,13 @@
     "url": "https://www.reality.sk/byty/az-na-predaj-zrekonstruovany-2-izbovy-byt-v-centre-trnavy-na-hospodarskej-ulici/JuBlHlfgQz6/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 52.0,
     "price_eur": 175800.0,
     "price_psm_eur": 3381.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRc08fOHEF",
@@ -3735,7 +3749,7 @@
     "price_psm_eur": 2906.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunP_bgCGax",
@@ -3749,7 +3763,7 @@
     "price_psm_eur": 2521.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JulHFZD0CJp",
@@ -3761,9 +3775,9 @@
     "floor_area_m2": 80.0,
     "price_eur": 174950.0,
     "price_psm_eur": 2187.0,
-    "status": "Novostavba",
+    "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuhpnWDp7N_",
@@ -3777,7 +3791,7 @@
     "price_psm_eur": 2422.0,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jup_Bm0r-bU",
@@ -3791,7 +3805,7 @@
     "price_psm_eur": 3101.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiXIg22BoA",
@@ -3805,7 +3819,7 @@
     "price_psm_eur": 3015.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuaZ9rhoXoh",
@@ -3819,7 +3833,7 @@
     "price_psm_eur": 2981.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3IhZyJKRI",
@@ -3833,7 +3847,7 @@
     "price_psm_eur": 3056.0,
     "status": "",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9wOGH69Hu",
@@ -3847,7 +3861,7 @@
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jum5jfbpOY0",
@@ -3861,7 +3875,7 @@
     "price_psm_eur": 3083.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJgKd6FInO",
@@ -3875,7 +3889,7 @@
     "price_psm_eur": 2691.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju2C2VyuDWt",
@@ -3889,7 +3903,7 @@
     "price_psm_eur": 2763.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutMP0hh8G4",
@@ -3903,7 +3917,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju8gVC5HGMA",
@@ -3917,7 +3931,7 @@
     "price_psm_eur": 3201.0,
     "status": "",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju46cEC9uoN",
@@ -3931,7 +3945,7 @@
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jur7XspFQFy",
@@ -3945,7 +3959,7 @@
     "price_psm_eur": 2347.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuY4O_sPFpc",
@@ -3959,7 +3973,7 @@
     "price_psm_eur": 3319.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuiGiLSdiys",
@@ -3987,7 +4001,7 @@
     "price_psm_eur": 2855.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubMCOFJDxa",
@@ -4001,7 +4015,7 @@
     "price_psm_eur": 4068.0,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuPAOCm96L0",
@@ -4029,7 +4043,7 @@
     "price_psm_eur": 2787.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuvLICl7HmQ",
@@ -4037,13 +4051,13 @@
     "url": "https://www.reality.sk/byty/az-rezervovane-na-predaj-2i-byt-v-trnave/JuvLICl7HmQ/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 63.0,
     "price_eur": 169900.0,
     "price_psm_eur": 2697.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jub901y12oA",
@@ -4057,7 +4071,7 @@
     "price_psm_eur": 3819.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuFhqi-KqGf",
@@ -4085,7 +4099,7 @@
     "price_psm_eur": 3096.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju__5nEh_rE",
@@ -4093,13 +4107,13 @@
     "url": "https://www.reality.sk/byty/az-rezervovane-stylovy-2-izbovy-byt-so-zahradkou-v-oblubenom-projekte-stvorlistok-modranka/Ju__5nEh_rE/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 66.0,
     "price_eur": 210000.0,
     "price_psm_eur": 3182.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuSqqQAfxty",
@@ -4127,7 +4141,7 @@
     "price_psm_eur": 2962.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuP7aPYxsXp",
@@ -4141,7 +4155,7 @@
     "price_psm_eur": 3629.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jus_rsCXOh0",
@@ -4155,7 +4169,7 @@
     "price_psm_eur": 4286.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JufdjUiMRgx",
@@ -4167,9 +4181,9 @@
     "floor_area_m2": 37.0,
     "price_eur": 59000.0,
     "price_psm_eur": 1595.0,
-    "status": "Novostavba",
+    "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuNnGW06Kxn",
@@ -4181,9 +4195,9 @@
     "floor_area_m2": 67.0,
     "price_eur": null,
     "price_psm_eur": null,
-    "status": "Novostavba",
+    "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JulHwQV4v12",
@@ -4197,7 +4211,7 @@
     "price_psm_eur": 2734.0,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju7ZIGHBfll",
@@ -4211,7 +4225,7 @@
     "price_psm_eur": 2973.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubzpPmd8XB",
@@ -4225,7 +4239,7 @@
     "price_psm_eur": 0.023809523809523808,
     "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0daHVl17g",
@@ -4239,7 +4253,7 @@
     "price_psm_eur": 0.014705882352941176,
     "status": "",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juq2SGAQBk0",
@@ -4253,7 +4267,7 @@
     "price_psm_eur": 3333.0,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuNMH7GOr6q",
@@ -4267,7 +4281,7 @@
     "price_psm_eur": 3310.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutEGVx88le",
@@ -4281,7 +4295,7 @@
     "price_psm_eur": 5764.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JupPwmA7dzU",
@@ -4295,7 +4309,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuP4yF9uCeK",
@@ -4309,7 +4323,7 @@
     "price_psm_eur": 2738.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jun2GS86FRv",
@@ -4323,7 +4337,7 @@
     "price_psm_eur": 2848.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuZXUXmQfoH",
@@ -4337,7 +4351,7 @@
     "price_psm_eur": 2924.0,
     "status": "Vo výstavbe",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuguonC1WQr",
@@ -4351,7 +4365,7 @@
     "price_psm_eur": 2524.0,
     "status": "",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju0xkpKjO9g",
@@ -4365,7 +4379,7 @@
     "price_psm_eur": 2937.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuWvbjGNdE-",
@@ -4379,7 +4393,7 @@
     "price_psm_eur": 3187.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuJjXCPDHyx",
@@ -4398,16 +4412,16 @@
   {
     "listing_uid": "JuYG4fKLzHR",
     "title": "MAXIS REAL: NA PREDAJ: Moderný 2-izbový byt po kompletnej rekonštrukcii s dvoma lodžiami – Trnava, Prednádražie",
-    "url": "https://www.nehnutelnosti.sk/detail/JuYG4fKLzHR/maxis-real-na-predaj-moderny-2-izbovy-byt-po-kompletnej-rekonstrukcii-s-dvoma-lodziami--trnaval-prednadrazie-",
+    "url": "https://www.reality.sk/byty/maxis-real-na-predaj-moderny-2-izbovy-byt-po-kompletnej-rekonstrukcii-s-dvoma-lodziami-trnava-prednadrazie/JuYG4fKLzHR/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 2.0,
-    "floor_area_m2": null,
+    "floor_area_m2": 50.0,
     "price_eur": 150000.0,
     "price_psm_eur": 3000.0,
-    "status": "Novostavba",
-    "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "status": "Kompletná rekonštrukcia",
+    "energy_cert": "B",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuioMaRbz62",
@@ -4449,21 +4463,21 @@
     "price_psm_eur": 2395.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuMkVoE-03G",
     "title": "Na predaj 3-izbový byt na Saleziánskej ulici v Trnave",
-    "url": "https://www.nehnutelnosti.sk/detail/JuMkVoE-03G/na-predaj-3-izbovy-byt-na-salezianskej-ulici-v-trnave",
+    "url": "https://www.reality.sk/byty/na-predaj-3-izbovy-byt-na-salezianskej-ulici-v-trnave/JuMkVoE-03G/",
     "city": "Trnava",
-    "region": "okres Trnava",
+    "region": "Trnavský kraj",
     "rooms": 3.0,
     "floor_area_m2": 65.0,
     "price_eur": 179900.0,
     "price_psm_eur": 2768.0,
-    "status": "Novostavba",
+    "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuT9HanNfdX",
@@ -4471,13 +4485,13 @@
     "url": "https://www.reality.sk/byty/creex-reality-exkluzivne-iba-u-nas-ponukame-na-predaj-priestranny-4-izbovy-byt-na-spacinskej-ulici-v-trnave-ktory-vas-zaujme-hned-na-prvy-pohlad/JuT9HanNfdX/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 75.0,
     "price_eur": 189000.0,
     "price_psm_eur": 2520.0,
     "status": "Pôvodný stav",
     "energy_cert": "V príprave",
-    "last_seen": "2025-11-07"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "184270716",
@@ -4501,7 +4515,7 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": 86.0,
     "status": "Novostavba",
     "energy_cert": "",
@@ -4557,8 +4571,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2431.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2429.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4571,8 +4585,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 85.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2059.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2058.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4627,8 +4641,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 70.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2500.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2499.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4641,7 +4655,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Pôvodný stav",
     "energy_cert": "",
@@ -4655,8 +4669,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 111.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1577.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1576.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4669,8 +4683,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 60.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2917.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2915.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4723,10 +4737,10 @@
     "url": "https://reality.bazos.sk/inzerat/184787870/zelenydvortrnavask-novy-projekt-na-spacinskej.php",
     "city": "Trnava",
     "region": "",
-    "rooms": null,
-    "floor_area_m2": null,
-    "price_eur": 175000.0,
-    "price_psm_eur": null,
+    "rooms": 4.0,
+    "floor_area_m2": 150.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1166.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4739,8 +4753,8 @@
     "region": "",
     "rooms": 1.0,
     "floor_area_m2": 39.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 4487.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 4485.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -4751,13 +4765,13 @@
     "url": "https://www.reality.sk/byty/novy-2-5-izbovy-byt-v-centre-trnavy-76-25-m2-video/JuO4hVKVSrK/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 76.0,
     "price_eur": 319900.0,
     "price_psm_eur": 4209.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunBF6isRNx",
@@ -4793,13 +4807,13 @@
     "url": "https://www.reality.sk/byty/domy-viesky-predpredaj-3i-domov-s-vlastnym-pozemkom-a-dvomi-parkovacimi-miestami-slovenska-nova-ves/JuYQjydQMII/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 71.0,
     "price_eur": 167770.0,
     "price_psm_eur": 2363.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juq_z1RNHco",
@@ -4807,13 +4821,13 @@
     "url": "https://www.reality.sk/byty/domy-viesky-predpredaj-2i-domov-s-vlastnym-pozemkom-a-parkovacimi-miestom-slovenska-nova-ves/Juq_z1RNHco/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 47.0,
     "price_eur": 127770.0,
     "price_psm_eur": 2719.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutIlN93jL7",
@@ -4821,13 +4835,13 @@
     "url": "https://www.reality.sk/byty/domy-viesky-predpredaj-3i-domov-s-vlastnym-pozemkom-a-dvomi-parkovacimi-miestami-slovenska-nova-ves/JutIlN93jL7/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 71.0,
     "price_eur": 157770.0,
     "price_psm_eur": 2222.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutBV0NtF23",
@@ -4869,21 +4883,21 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JufyJrEaVMR",
-    "title": "NEO - 5-izbový luxus ako rodinný dom v oblakoch",
-    "url": "https://www.reality.sk/byty/neo-5-izbovy-luxus-ako-rodinny-dom-v-oblakoch/JufyJrEaVMR/",
+    "title": "NEO - 5-izbový luxus ako rodinný dom v oblakoch Pri kúpe do konca roka Parkovanie ZDARMA !!",
+    "url": "https://www.reality.sk/byty/neo-5-izbovy-luxus-ako-rodinny-dom-v-oblakoch-pri-kupe-do-konca-roka-parkovanie-zdarma/JufyJrEaVMR/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 5.0,
     "floor_area_m2": 309.0,
     "price_eur": 439000.0,
     "price_psm_eur": 1421.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuAHjXEGWKQ",
@@ -4897,7 +4911,7 @@
     "price_psm_eur": 3483.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHr7mW2V2z",
@@ -4911,7 +4925,7 @@
     "price_psm_eur": 2754.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuBvY2U7vSw",
@@ -4925,7 +4939,7 @@
     "price_psm_eur": 1861.0,
     "status": "Vo výstavbe",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jux63A7KqeK",
@@ -4939,7 +4953,7 @@
     "price_psm_eur": 2894.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jul1Umr2xZ0",
@@ -4953,7 +4967,7 @@
     "price_psm_eur": 2619.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuEHDfp0mER",
@@ -4961,13 +4975,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-4-izbovy-byt-v-tichej-lokalite-v-trnave/JuEHDfp0mER/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 100.0,
     "price_eur": 199000.0,
     "price_psm_eur": 1990.0,
     "status": "Pôvodný stav",
     "energy_cert": "G",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuI1zqsHBFb",
@@ -4981,7 +4995,7 @@
     "price_psm_eur": 2694.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju_oBgK1Hwz",
@@ -4989,13 +5003,13 @@
     "url": "https://www.reality.sk/byty/rk-diamant-predaj-4-izboveho-bytu-rezervovany/Ju_oBgK1Hwz/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 79.0,
     "price_eur": 219990.0,
     "price_psm_eur": 2785.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju6Qj6ItVRr",
@@ -5059,13 +5073,13 @@
     "url": "https://www.reality.sk/byty/4-izbovy-jedinecny-byt-v-lukrativnej-casti-centra-mesta/JuIx4jR6qLJ/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 85.0,
     "price_eur": 289000.0,
     "price_psm_eur": 3400.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-07"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuDvZYSuSuK",
@@ -5073,13 +5087,13 @@
     "url": "https://www.reality.sk/byty/krasny-4-izbovy-byt-v-historickej-casti-trnavy/JuDvZYSuSuK/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 85.0,
     "price_eur": 329000.0,
     "price_psm_eur": 3871.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-07"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuD_ahFPxbv",
@@ -5087,13 +5101,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-4-izbovy-byt-s-vlastnou-zahradou-vo-velkom-orvisti/JuD_ahFPxbv/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 103.0,
     "price_eur": 233500.0,
     "price_psm_eur": 2267.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuO7sKOd4bn",
@@ -5101,13 +5115,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-vynimocny-4-izbovy-byt-v-rodinnom-dome-vo-velkom-orvisti/JuO7sKOd4bn/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 114.0,
     "price_eur": 232800.0,
     "price_psm_eur": 2042.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuWwFI9cCDG",
@@ -5115,13 +5129,13 @@
     "url": "https://www.reality.sk/byty/gestto-4-izbovy-byt-kompletna-rekonstrukcia-cajkovskeho-ulica-trnava/JuWwFI9cCDG/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 71.0,
     "price_eur": 197900.0,
     "price_psm_eur": 2787.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-07"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9ozWp8z0a",
@@ -5135,7 +5149,7 @@
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuwM8Zmh-eo",
@@ -5149,7 +5163,7 @@
     "price_psm_eur": 2619.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRZLLGXthQM",
@@ -5163,7 +5177,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuUrW1ulwtu",
@@ -5171,13 +5185,13 @@
     "url": "https://www.reality.sk/byty/tima-real-4i-byt-so-satnikom-83m2-ul-postova-trnava/JuUrW1ulwtu/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 83.0,
     "price_eur": 213000.0,
     "price_psm_eur": 2566.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuQzEapDf-k",
@@ -5191,7 +5205,7 @@
     "price_psm_eur": 2198.0,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju-6a2dP0C9",
@@ -5199,13 +5213,13 @@
     "url": "https://www.reality.sk/byty/4-izbovy-mezonetovy-byt-na-hospodarskej-ul-v-trnave-v-cukrovarskej-vile-116-m2-balkon-parkovanie-vo-vlastnom-dvore-zahradka-klima/Ju-6a2dP0C9/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 116.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuSQv0MxBGv",
@@ -5219,7 +5233,7 @@
     "price_psm_eur": 4227.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuSereWP4Lm",
@@ -5227,13 +5241,13 @@
     "url": "https://www.reality.sk/byty/svoboda-williams-i-107434-i-v-rezidencii-levan-v-trnave-exkluzivne-ponukame-tento-4-izbovy-byt-s-terasou/JuSereWP4Lm/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 162.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "184775610",
@@ -5355,11 +5369,11 @@
     "region": "okres Trnava",
     "rooms": 1.0,
     "floor_area_m2": null,
-    "price_eur": 168000.0,
-    "price_psm_eur": 5250.0,
+    "price_eur": 165000.0,
+    "price_psm_eur": 5156.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuMtP1Iaeks",
@@ -5373,7 +5387,7 @@
     "price_psm_eur": 2967.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JubukPb2k-b",
@@ -5387,7 +5401,7 @@
     "price_psm_eur": 3036.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JutJYfsX7gY",
@@ -5415,7 +5429,7 @@
     "price_psm_eur": 2257.0,
     "status": "Vo výstavbe",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jut07PmeEny",
@@ -5429,7 +5443,7 @@
     "price_psm_eur": 2804.0,
     "status": "Vo výstavbe",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRd1HC03eo",
@@ -5443,7 +5457,7 @@
     "price_psm_eur": 3049.0,
     "status": "Vo výstavbe",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuD7ODehrHO",
@@ -5457,7 +5471,7 @@
     "price_psm_eur": 3307.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju2TtOuxquz",
@@ -5465,41 +5479,41 @@
     "url": "https://www.reality.sk/byty/na-predaj-moderny-3-izbovy-byt-v-novostavbe-trnava/Ju2TtOuxquz/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 79.0,
     "price_eur": 259900.0,
     "price_psm_eur": 3290.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju8mzSCzE_6",
-    "title": "Bývajte priamo v historickom centre Trnavy a zároveň si užívajte súkromie v tichom vnútrobloku.",
+    "title": "",
     "url": "https://www.reality.sk/byty/byvajte-priamo-v-historickom-centre-trnavy-a-zaroven-si-uzivajte-sukromie-v-tichom-vnutrobloku/Ju8mzSCzE_6/",
     "city": "Trnava",
-    "region": "Trnavský kraj",
-    "rooms": null,
-    "floor_area_m2": 53.0,
-    "price_eur": 169000.0,
-    "price_psm_eur": 3189.0,
-    "status": "Kompletná rekonštrukcia",
-    "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "region": "",
+    "rooms": 2.0,
+    "floor_area_m2": 51.0,
+    "price_eur": 950.0,
+    "price_psm_eur": 300.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuY0UaL0tAX",
-    "title": "Predaj 2 izb. byt v projekte Prúdy - II. etapa E 2.02",
+    "title": "",
     "url": "https://www.reality.sk/byty/predaj-2-izb-byt-v-projekte-prudy-ii-etapa-e-2-02/JuY0UaL0tAX/",
     "city": "Trnava",
-    "region": "Trnavský kraj",
-    "rooms": null,
-    "floor_area_m2": 53.0,
-    "price_eur": 174900.0,
-    "price_psm_eur": 3300.0,
-    "status": "Novostavba",
-    "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "region": "",
+    "rooms": 2.0,
+    "floor_area_m2": 51.0,
+    "price_eur": 950.0,
+    "price_psm_eur": 300.0,
+    "status": "",
+    "energy_cert": "",
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jux78P6YZA1",
@@ -5513,7 +5527,7 @@
     "price_psm_eur": 4867.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju_b6SMwDNS",
@@ -5527,7 +5541,7 @@
     "price_psm_eur": 2799.0,
     "status": "Vo výstavbe",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuO2EPJ0pCG",
@@ -5541,7 +5555,7 @@
     "price_psm_eur": 5150.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JumoUtSBHTZ",
@@ -5565,8 +5579,8 @@
     "region": "",
     "rooms": 5.0,
     "floor_area_m2": 56.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3125.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3123.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5593,8 +5607,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 50.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3500.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3498.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5607,8 +5621,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 69.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2536.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2535.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5621,8 +5635,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 100.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1750.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1749.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5635,7 +5649,7 @@
     "region": "",
     "rooms": 1.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -5649,8 +5663,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 70.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2500.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2499.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5709,7 +5723,7 @@
     "price_psm_eur": 2877.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuO2jF6GPeH",
@@ -5723,7 +5737,7 @@
     "price_psm_eur": 2464.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuAo1ipi8VI",
@@ -5737,7 +5751,7 @@
     "price_psm_eur": 3198.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "183556810",
@@ -5747,8 +5761,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 95.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1842.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1841.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5789,8 +5803,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 62.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2823.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2821.0,
     "status": "Rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5803,8 +5817,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2431.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2429.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5817,8 +5831,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 78.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2244.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2242.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5831,8 +5845,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 89.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1966.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1965.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5859,8 +5873,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 56.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3125.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3123.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5887,8 +5901,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 69.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2536.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2535.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5915,8 +5929,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 124.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1411.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1410.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5943,8 +5957,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 59.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2966.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2964.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5957,8 +5971,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 77.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2273.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2271.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5971,8 +5985,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 56.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3125.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3123.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5985,8 +5999,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 76.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2303.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2301.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -5999,8 +6013,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 78.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2244.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2242.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6013,8 +6027,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 80.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2188.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2186.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6027,8 +6041,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 74.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2365.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2364.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6055,8 +6069,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 58.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3017.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3016.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6069,8 +6083,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 70.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2500.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2499.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6083,8 +6097,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 132.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1326.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1325.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6111,8 +6125,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 42.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 4167.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 4164.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6125,8 +6139,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 77.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2273.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2271.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6139,8 +6153,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 67.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2612.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2610.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6167,7 +6181,7 @@
     "region": "",
     "rooms": null,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
@@ -6181,8 +6195,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 85.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2059.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2058.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6237,8 +6251,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 86.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2035.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2034.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6251,8 +6265,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 66.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2652.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2650.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6307,7 +6321,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -6363,8 +6377,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 73.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2397.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2396.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6377,8 +6391,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 54.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3241.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3239.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6391,8 +6405,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 79.0,
-    "price_eur": null,
-    "price_psm_eur": null,
+    "price_eur": 165000.0,
+    "price_psm_eur": 2089.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -6405,8 +6419,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 36.0,
-    "price_eur": null,
-    "price_psm_eur": null,
+    "price_eur": 174900.0,
+    "price_psm_eur": 4858.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -7621,8 +7635,8 @@
     "url": "https://reality.bazos.sk/inzerat/184170003/zelenydvortrnavask-novy-projekt-na-spacinskej.php",
     "city": "Trnava",
     "region": "",
-    "rooms": null,
-    "floor_area_m2": null,
+    "rooms": 4.0,
+    "floor_area_m2": 150.0,
     "price_eur": null,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
@@ -9373,7 +9387,7 @@
     "region": "",
     "rooms": 1.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -9429,8 +9443,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2431.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2429.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -9441,13 +9455,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-3-izbovy-byt-s-vlastnou-zahradou-vo-velkom-orvisti/Juw_sy_HAOv/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 70.0,
     "price_eur": 163500.0,
     "price_psm_eur": 2336.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3ILyiJTjC",
@@ -9469,13 +9483,13 @@
     "url": "https://www.reality.sk/byty/homreal-sk-top-lokalita-3-izbovy-byt-na-a-kubinu-trnava/JuzaE6VNQ5U/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 66.0,
     "price_eur": 159900.0,
     "price_psm_eur": 2423.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuCnWleS_KQ",
@@ -9489,7 +9503,7 @@
     "price_psm_eur": 3625.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuZ5Onnx_m3",
@@ -9531,7 +9545,7 @@
     "price_psm_eur": 2783.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju9qnUDgk6c",
@@ -9555,8 +9569,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 80.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2188.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2186.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -9583,8 +9597,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 65.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2692.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2691.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -9681,8 +9695,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 64.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2734.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2733.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -9769,7 +9783,7 @@
     "price_psm_eur": 0.023809523809523808,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuOJCfVT9Do",
@@ -9797,7 +9811,7 @@
     "price_psm_eur": 2857.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuvR5sMmOpn",
@@ -9811,7 +9825,7 @@
     "price_psm_eur": 2940.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju188Df3n5P",
@@ -9825,7 +9839,7 @@
     "price_psm_eur": 4468.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3WgID_U6K",
@@ -9833,13 +9847,13 @@
     "url": "https://www.reality.sk/byty/na-predaj-vynimocny-2-izbovy-byt-s-loggiou-a-nadstandardnou-vymerou-81-m2-bohdanovce-nad-trnavou/Ju3WgID_U6K/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 81.0,
     "price_eur": 195000.0,
     "price_psm_eur": 2407.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jum7WljJMQH",
@@ -9853,7 +9867,7 @@
     "price_psm_eur": 2750.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JunAagGttkz",
@@ -9867,7 +9881,7 @@
     "price_psm_eur": null,
     "status": "Pôvodný stav",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuoIHQCBpvl",
@@ -9895,7 +9909,7 @@
     "price_psm_eur": 3306.0,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju1RGoPijMv",
@@ -9909,7 +9923,7 @@
     "price_psm_eur": null,
     "status": "Novostavba",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHp4YlXJTa",
@@ -9917,13 +9931,13 @@
     "url": "https://www.reality.sk/byty/priestranny-1-izbovy-byt-s-balkonom-na-hospodarskej-ulici-trnava/JuHp4YlXJTa/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 39.0,
     "price_eur": 137000.0,
     "price_psm_eur": 3513.0,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "D",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju3gT0HYDe_",
@@ -9937,7 +9951,7 @@
     "price_psm_eur": 2353.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuBAfQ3kosh",
@@ -9951,7 +9965,7 @@
     "price_psm_eur": 2353.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuQn__QMdqj",
@@ -9959,13 +9973,13 @@
     "url": "https://www.reality.sk/byty/az-exkluzivny-4-izbovy-mezonet-so-zahradou-a-parkovanim-v-trnave/JuQn__QMdqj/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 150.0,
     "price_eur": 369000.0,
     "price_psm_eur": 2460.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju1th86DRIo",
@@ -9973,13 +9987,13 @@
     "url": "https://www.reality.sk/byty/az-az-byty-kamenac-4-izbovy-byt-jedinecne-byvanie-v-srdci-kamenneho-mlynu-v-trnave/Ju1th86DRIo/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 119.0,
     "price_eur": 449900.0,
     "price_psm_eur": 3781.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "185022459",
@@ -9989,8 +10003,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 61.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2869.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2867.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10031,8 +10045,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 85.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2059.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2058.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10045,8 +10059,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 109.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1606.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1605.0,
     "status": "",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10059,8 +10073,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 109.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 1606.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 1605.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10073,8 +10087,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 81.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2160.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2159.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10087,8 +10101,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 55.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3182.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3180.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10143,7 +10157,7 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -10157,7 +10171,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -10171,7 +10185,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
@@ -10185,7 +10199,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -10203,7 +10217,7 @@
     "price_psm_eur": 2871.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuL2BnPtljK",
@@ -10211,13 +10225,13 @@
     "url": "https://www.reality.sk/byty/realitna-kancelaria-treef-ponuka-2-i-byt-na-hlinach-v-trnave/JuL2BnPtljK/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 40.0,
     "price_eur": 150900.0,
     "price_psm_eur": 3772.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuPBxF0cPsS",
@@ -10231,7 +10245,7 @@
     "price_psm_eur": 3091.0,
     "status": "",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Juo0-1U_4_M",
@@ -10239,13 +10253,13 @@
     "url": "https://www.reality.sk/byty/gestto-2-5-a-1-izbovy-byt-predaj-maly-pariz-horne-basty-trnava-videoobhliadka/Juo0-1U_4_M/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 10336.0,
     "price_eur": 335000.0,
     "price_psm_eur": 32.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuIhGzDBCdU",
@@ -10253,13 +10267,13 @@
     "url": "https://www.reality.sk/byty/hladam-pre-klienta-s-hotovostou-1-izbovy-byt-alebo-garsonku/JuIhGzDBCdU/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 1.0,
     "floor_area_m2": 20.0,
     "price_eur": 1.0,
     "price_psm_eur": 0.05,
     "status": "Čiastočná rekonštrukcia",
     "energy_cert": "C",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuQZ7789JBs",
@@ -10267,13 +10281,13 @@
     "url": "https://www.reality.sk/byty/posledny-2-izbovy-byt-s-priestrannou-loggiou-v-projekte-polianky-zavar/JuQZ7789JBs/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 2.0,
     "floor_area_m2": 60.0,
     "price_eur": 126900.0,
     "price_psm_eur": 2115.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Jupmvxtxe0Y",
@@ -10281,13 +10295,13 @@
     "url": "https://www.reality.sk/byty/stylovy-3-izbovy-byt-so-zariadenim-loggiou-a-balkonom/Jupmvxtxe0Y/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 77.0,
     "price_eur": 198700.0,
     "price_psm_eur": 2581.0,
     "status": "Novostavba",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuRHrOE6IwB",
@@ -10295,13 +10309,13 @@
     "url": "https://www.reality.sk/byty/az-az-byty-kamenac-stresny-3-izbovy-byt-v-srdci-kamenaca/JuRHrOE6IwB/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 3.0,
     "floor_area_m2": 79.0,
     "price_eur": 292000.0,
     "price_psm_eur": 3696.0,
     "status": "Novostavba",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuMLMBgMMfi",
@@ -10315,7 +10329,7 @@
     "price_psm_eur": 2612.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "B",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuE7PtRrhi0",
@@ -10329,7 +10343,7 @@
     "price_psm_eur": 4018.0,
     "status": "Novostavba",
     "energy_cert": "nie je",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "Ju8Bigbdu6Z",
@@ -10343,7 +10357,7 @@
     "price_psm_eur": 2988.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "JuHMyQKsJ_e",
@@ -10351,13 +10365,13 @@
     "url": "https://www.reality.sk/byty/fox-4-izbovy-byt-hospodarska-kompletna-nova-rekonstrukcia-balkon/JuHMyQKsJ_e/",
     "city": "Trnava",
     "region": "Trnavský kraj",
-    "rooms": null,
+    "rooms": 4.0,
     "floor_area_m2": 66.0,
     "price_eur": 196900.0,
     "price_psm_eur": 2983.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "A",
-    "last_seen": "2025-11-08"
+    "last_seen": "2025-11-09"
   },
   {
     "listing_uid": "185060308",
@@ -10367,8 +10381,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 63.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2778.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2776.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10381,7 +10395,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
@@ -10395,8 +10409,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 86.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2035.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2034.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10409,7 +10423,7 @@
     "region": "",
     "rooms": null,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Pôvodný stav",
     "energy_cert": "",
@@ -10423,7 +10437,7 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
@@ -10451,8 +10465,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 66.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2652.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2650.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10465,7 +10479,7 @@
     "region": "",
     "rooms": 1.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "",
     "energy_cert": "",
@@ -10479,7 +10493,7 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
@@ -10493,8 +10507,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 86.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2035.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2034.0,
     "status": "",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10521,8 +10535,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2431.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2429.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10549,8 +10563,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 54.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3241.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3239.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10563,8 +10577,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 56.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3125.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3123.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10577,8 +10591,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 67.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2612.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2610.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10591,8 +10605,8 @@
     "region": "",
     "rooms": 4.0,
     "floor_area_m2": 66.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2652.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2650.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10605,8 +10619,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 60.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2917.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2915.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10619,8 +10633,8 @@
     "region": "",
     "rooms": 2.0,
     "floor_area_m2": 56.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 3125.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3123.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -10633,7 +10647,7 @@
     "region": "",
     "rooms": null,
     "floor_area_m2": null,
-    "price_eur": 175000.0,
+    "price_eur": 174900.0,
     "price_psm_eur": 105000.0,
     "status": "",
     "energy_cert": "",
@@ -12677,8 +12691,8 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": 72.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 2431.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 2429.0,
     "status": "Kompletná rekonštrukcia",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -12691,8 +12705,8 @@
     "region": "",
     "rooms": 1.0,
     "floor_area_m2": 28.0,
-    "price_eur": 175000.0,
-    "price_psm_eur": 6250.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 6246.0,
     "status": "Novostavba",
     "energy_cert": "",
     "last_seen": "2025-11-09"
@@ -12705,9 +12719,79 @@
     "region": "",
     "rooms": 3.0,
     "floor_area_m2": null,
-    "price_eur": 198700.0,
+    "price_eur": 174900.0,
     "price_psm_eur": null,
     "status": "Rekonštrukcia",
+    "energy_cert": "",
+    "last_seen": "2025-11-09"
+  },
+  {
+    "listing_uid": "JuFqg4tD_4f",
+    "title": "Na predaj 1.izb. byt v BAKER STREET RESIDENCE, 28m2, historické centrum Trnavy",
+    "url": "https://www.reality.sk/byty/na-predaj-1-izb-byt-v-baker-street-residence-28m2-historicke-centrum-trnavy/JuFqg4tD_4f/",
+    "city": "Trnava",
+    "region": "Trnavský kraj",
+    "rooms": 1.0,
+    "floor_area_m2": 28.0,
+    "price_eur": 147900.0,
+    "price_psm_eur": 5282.0,
+    "status": "Novostavba",
+    "energy_cert": "A",
+    "last_seen": "2025-11-09"
+  },
+  {
+    "listing_uid": "Ju39_W9WdGt",
+    "title": "3.5 izbový byt v centre Trnavy, 74 m2",
+    "url": "https://www.reality.sk/byty/3-5-izbovy-byt-v-centre-trnavy-74-m2/Ju39_W9WdGt/",
+    "city": "Trnava",
+    "region": "Trnavský kraj",
+    "rooms": 4.0,
+    "floor_area_m2": 74.0,
+    "price_eur": 186000.0,
+    "price_psm_eur": 2514.0,
+    "status": "Čiastočná rekonštrukcia",
+    "energy_cert": "nie je",
+    "last_seen": "2025-11-09"
+  },
+  {
+    "listing_uid": "Ju2vp4Vv0nK",
+    "title": "4-izbový byt v centre Trnavy",
+    "url": "https://www.reality.sk/byty/4-izbovy-byt-v-centre-trnavy/Ju2vp4Vv0nK/",
+    "city": "Trnava",
+    "region": "Trnavský kraj",
+    "rooms": 4.0,
+    "floor_area_m2": 74.0,
+    "price_eur": 186000.0,
+    "price_psm_eur": 2514.0,
+    "status": "Čiastočná rekonštrukcia",
+    "energy_cert": "nie je",
+    "last_seen": "2025-11-09"
+  },
+  {
+    "listing_uid": "185108320",
+    "title": "Predaj 2 izb. byt v projekte Prúdy - II. etapa E 2.02",
+    "url": "https://reality.bazos.sk/inzerat/185108320/predaj-2-izb-byt-v-projekte-prudy-ii-etapa-e-202.php",
+    "city": "Trnava",
+    "region": "",
+    "rooms": 2.0,
+    "floor_area_m2": 53.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3300.0,
+    "status": "Novostavba",
+    "energy_cert": "",
+    "last_seen": "2025-11-09"
+  },
+  {
+    "listing_uid": "185109671",
+    "title": "Predaj 2 izb. byt v projekte Prúdy - II. etapa E 2.02",
+    "url": "https://reality.bazos.sk/inzerat/185109671/predaj-2-izb-byt-v-projekte-prudy-ii-etapa-e-202.php",
+    "city": "Trnava",
+    "region": "",
+    "rooms": 2.0,
+    "floor_area_m2": 53.0,
+    "price_eur": 174900.0,
+    "price_psm_eur": 3300.0,
+    "status": "",
     "energy_cert": "",
     "last_seen": "2025-11-09"
   }

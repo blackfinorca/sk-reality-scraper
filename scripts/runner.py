@@ -32,7 +32,7 @@ SCRAPER_SHARED_DEFAULTS = {
     "max_pages": None,
     "limit": None,
     "delay": 1,
-    "workers": 5,
+    "workers": 2,
     "verbose": None,
 }
 
@@ -329,7 +329,7 @@ def build_bazos_command(config: Dict[str, object]) -> List[str]:
     return cmd
 
 
-def run_attribute_backfills(csv_paths: Sequence[Union[str, Path]], project_root: Path) -> None:
+def run_attribute_backfills(csv_paths: Sequence[Union[str, Path]], project_root: Path) -> List[Path]:
     resolved: List[Path] = []
     for path_value in csv_paths:
         if not path_value:
@@ -340,23 +340,23 @@ def run_attribute_backfills(csv_paths: Sequence[Union[str, Path]], project_root:
         resolved.append(candidate)
 
     if not resolved:
-        return
+        return []
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         logging.info("Skipping attribute fallback (OPENAI_API_KEY not set).")
-        return
+        return resolved
 
     try:
         from tools import sumamrizer as summarizer_module  # pylint: disable=import-outside-toplevel
     except ModuleNotFoundError as exc:
         logging.warning("Attribute fallback unavailable; dependency missing: %s", exc)
-        return
+        return resolved
 
     fill_missing_attributes_for_csv = getattr(summarizer_module, "fill_missing_attributes_for_csv", None)
     if fill_missing_attributes_for_csv is None:
         logging.warning("Attribute fallback unavailable; helper not found in tools.sumamrizer.")
-        return
+        return resolved
 
     cache_path = project_root / "data" / "attribute_cache.json"
     for csv_path in resolved:
@@ -372,6 +372,27 @@ def run_attribute_backfills(csv_paths: Sequence[Union[str, Path]], project_root:
             )
         except Exception as exc:  # pylint: disable=broad-except
             logging.warning("Attribute fallback failed for %s: %s", csv_path, exc)
+    return resolved
+
+
+def run_rental_cost_summarizer(csv_paths: Sequence[Path], project_root: Path) -> None:
+    if not csv_paths:
+        return
+    if not os.getenv("OPENAI_API_KEY"):
+        logging.warning("OPENAI_API_KEY not set; skipping rental cost summarizer.")
+        return
+    existing = [path for path in csv_paths if path.exists()]
+    if not existing:
+        logging.info("Rental cost summarizer skipped; no CSV files found.")
+        return
+
+    cmd = [
+        sys.executable,
+        str(PROJECT_ROOT / "tools" / "rental_summarizer.py"),
+        "--inputs",
+    ]
+    cmd.extend(str(path) for path in existing)
+    run_command("rental summarizer", cmd, project_root)
 
 
 def run_deduplicate_pipeline(
@@ -778,8 +799,11 @@ def main() -> None:
         if run_bazos:
             scraped_csvs.append(bazos_cfg["csv_output"])
 
+        resolved_csvs: List[Path] = []
         if scraped_csvs:
-            run_attribute_backfills(scraped_csvs, project_root)
+            resolved_csvs = run_attribute_backfills(scraped_csvs, project_root)
+            if pipeline_transaction == "prenajom":
+                run_rental_cost_summarizer(resolved_csvs, project_root)
 
         etl_jobs = []
         if run_nehn:
@@ -849,7 +873,13 @@ def main() -> None:
 
         if gold_latest_path and gold_latest_path.exists():
             run_geo_locator(gold_latest_path, geo_cfg, project_root)
-            run_summarizer(gold_latest_path, summarizer_cfg, project_root)
+            if pipeline_transaction == "predaj":
+                run_summarizer(gold_latest_path, summarizer_cfg, project_root)
+            else:
+                logging.info(
+                    "Skipping summarizer for transaction '%s'; summaries are only generated for predaj listings.",
+                    pipeline_transaction or "unknown",
+                )
         else:
             logging.info("Skipping geo locator and summarizer; gold listings parquet not available.")
 
